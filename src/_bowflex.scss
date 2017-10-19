@@ -6,6 +6,19 @@
 [flex],
 [col] { box-sizing: border-box; }
 
+/// @content Retrieve a breakpoint from the $bps array
+/// @param {str} $key - Array key
+/// @example
+/// bp(lrg)
+@function bp($key) {
+	@if map-has-key($bps, $key) {
+		@return map-get($bps, $key)
+	}
+
+	@warn "Unkown `#{$key}` in $bps";
+	@return null;
+}
+
 /// @content CSS rules inside the media query
 /// @param {str} $bp - Size value of media query
 /// @param {str} $direction [min] - min or max query

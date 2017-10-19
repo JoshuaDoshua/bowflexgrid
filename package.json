@@ -1,0 +1,35 @@
+{
+  "name": "bowflexgrid",
+  "version": "0.9.0",
+  "description": "BowFlex grid system sass generator based on the flexbox model",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JoshuaDoshua/bowflexgrid.git"
+  },
+  "keywords": [
+    "flex",
+    "flexbox",
+    "grid",
+    "system",
+    "layout"
+  ],
+  "author": "JoshuaDoshua",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/JoshuaDoshua/bowflexgrid/issues"
+  },
+  "homepage": "http://joshuadoshua.github.io/bowflexgrid/",
+  "devDependencies": {
+    "autoprefixer": "^7.1.5",
+    "cssnano": "^3.5.1",
+    "gulp": "^3.9.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-stats": "^0.0.4",
+    "gulp-watch": "^4.3.11",
+    "sassdoc": "^2.3.0"
+  },
+  "dependencies": {}
+}

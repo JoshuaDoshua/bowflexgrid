@@ -1,0 +1,40 @@
+////
+/// @group BowFlexGrid
+////
+
+/*
+/// This is the base file for the dist BowFlexGrid
+/// Customizing: just copy this file, edit, and include in your build
+*/
+
+@import "_bowflex";
+
+/// Number of colunms in your layout
+$columns: 12;
+
+///  Margin between columns (start/center/end)
+$gutter: 20px;
+
+/// @content Associative array of nicknames => breakpoints
+/// @example
+///  <div flex="vertical" flex-sml="row wrap" flex-med="nowrap">
+///  <div col="12" col-sml="6" col-med="4" col-lrg="3" col-xlg="2">
+$bps: (
+	sml: 400px,
+	med: 768px,
+	lrg: 1200px,
+	xlg: 1600px
+);
+
+/// The main container breakpoint
+///
+/// *can be overridden with (div flex="flush")
+$main: map-get($bps, lrg);
+
+/// The outer container width
+///
+/// *can be overridden with (div bow="flush")
+$outer: map-get($bps, xlg);
+
+// create the grid
+@include bowflex-grid($bps, $columns, $gutter, $main, $outer);

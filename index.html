@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BowFlex Grid System</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:300,600|Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="dist/bowflex.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+    <script type="text/javascript">
+      var wow = new WOW();
+      wow.init();
+
+    </script>
+
+		<style type="text/css">
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Source Code Pro", "monospace";
+  text-align: center;
+  transition: all ease 450ms;
+}
+
+body { margin-bottom: 400px; }
+
+h1,h2,h3,h4,h5,h6 { font-family: 'Lato', 'sans-serif'; text-transform: uppercase; font-weight:300; }
+h1 { margin: 80px auto; }
+h2 {
+  padding: 80px 0;
+  margin-top: 40px;
+  background: powderblue;
+}
+h3 {}
+header {
+  margin: 40px auto;
+  padding: 40px 0;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+header p {
+	font-style: italic;
+	font-size: 80%;
+	margin-top: 1.5em;
+}
+
+small { font-size: .75em; line-height: 1.2; }
+
+#links li {
+  list-style: none;
+  margin-bottom: .5em;
+}
+
+
+dt {
+  font-weight: 600;
+  margin-top: 1em;
+}
+dt:first-child { margin-top: 0; }
+#summary [bow] { padding-top: 0; padding-bottom: 0; }
+dd { margin-bottom: 1em; }
+
+a {
+  text-decoration: none;
+  font-weight: 800;
+  color: darkcyan;
+}
+a:hover { color: darkslategray; }
+
+[class^="vert-"],
+[col],
+[flex],
+[bow] {
+  position: relative;
+  overflow: hidden;
+  padding: 30px 0;
+}
+
+[flex] > div {
+ background: powderblue;
+ padding: 20px 0;
+}
+
+#default h2 { margin-bottom: 40px; }
+.sample {
+  display: block;
+  background: powderblue;
+}
+.sample.pad { padding: 1.5em; }
+
+.vert-1 { min-height: 40px; padding-top: 16px !important; }
+.vert-1:before { height: 16px; }
+.vert-2 { min-height: 140px; padding-top: 24px !important; }
+.vert-2:before { height: 24px; }
+.vert-3 { min-height: 200px; padding-top: 50px !important; }
+.vert-3:before { height: 50px; }
+.vert-4 { min-height: 80px; padding-top: 40px !important; }
+.vert-4:before { height: 40px; }
+
+/**
+ | HELPERS
+ */
+.helpers [col]:after,
+.helpers [flex]:after,
+.helpers [bow]:after {
+  display: block;
+  position: absolute;
+  top: 6px;
+  left: 4px;
+  opacity: 0;
+  font-size: 12px;
+  width: 100%;
+  pointer-events: none;
+  color: black;
+}
+.helpers [col]:after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.helpers [bow]:after { content: "<div bow>"; }
+.helpers [flex]:after { content: '<div flex="' attr(flex)'">'; }
+.helpers [col]:after { content: '<div col="' attr(col)'">'; }
+
+#even [flex]:after,
+#compliment [flex]:after,
+#responsive [flex]:after,
+#default [flex]:after { content: "<div flex>"; }
+
+#play-wrap [bow]:after,
+#fluid [bow]:after { content: '<div bow="'attr(bow)'">'; }
+#fluid [flex]:after { content: '<div flex="'attr(flex)'">'; }
+#fluid [bow]:first-of-type:after { content: "<div bow>"; }
+#fluid [bow]:nth-of-type(2) [flex]:after { content: "<div flex>"; }
+
+#play .helpers [flex]:after,
+#play .helpers [bow]:after,
+.helpers [bow]:hover [flex]:after,
+.helpers [bow]:hover [col]:after,
+.helpers [bow]:hover:after { opacity: 1; }
+
+
+#play .helpers [bow],
+#play .helpers [flex],
+.helpers [bow]:hover,
+.helpers [bow]:hover [flex] { background: rgba(0,0,0,0.05); }
+
+#play-wrap [col]:after { content: ""; }
+
+/**
+ | STRETCH HELPERS
+ */
+ #stretch [class^="vert-"]:before {
+  display: block;
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  font-size: 12px;
+  width: 100%;
+  height: 20px;
+  opacity: 0;
+  color: darkgray;
+ }
+ #stretch .vert-1:before { content: "min-height:40px"}
+ #stretch .vert-2:before { content: "min-height:140px"}
+ #stretch .vert-3:before { content: "min-height:200px"}
+ #stretch .vert-4:before { content: "min-height:80px"}
+ #stretch [bow]:hover [class^="vert-"]:before { opacity: 1; }
+
+/**
+ | BASELINE HELPERS
+ */
+ #baseline [class^="vert-"]:after { color: darkgray; }
+ #self-baseline [class^="vert-"]:before,
+ #baseline [class^="vert-"]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,200,0,0.15);
+  opacity: 0;
+  transition: all ease 450ms;
+ }
+ #baseline [col]:after { top: auto; bottom: 4px; transform: translate(-50%,0); }
+ #self-baseline .vert-1:after,
+ #baseline .vert-1:after { content: "padding-top: 16px"; }
+ #self-baseline .vert-2:after,
+ #baseline .vert-2:after { content: "padding-top: 24px"; }
+ #self-baseline .vert-3:after,
+ #baseline .vert-3:after { content: "padding-top: 50px"; }
+ #self-baseline .vert-4:after,
+ #baseline .vert-4:after { content: "padding-top: 40px"; }
+ #baseline [flex]:hover [class^="vert-"]:before { opacity: 1; }
+
+#nowrap [col] { border-right: 1px solid rgba(0,0,0,0.25); }
+#nowrap [col]:last-child { border-right: 0; }
+
+.play-col,
+#wrap [col="2"],
+#wrap [col="6"],
+#wraprev [col],
+#vertical [col="8"],
+#vertical [col="6"],
+#verticalrev [col="10"],
+#verticalrev [col="6"],
+#verticalrev [col="8"],
+#vertical [col="4"] { margin-bottom: 20px; }
+
+#wraprev [bow]:hover [col],
+#vertical [bow]:hover [col],
+#verticalrev [bow]:hover [col] { color: transparent; }
+
+#wraprev [bow]:first-of-type [col="6"] { margin-bottom: 0; }
+#wraprev [bow]:last-of-type [col="1"],
+#wraprev [bow]:last-of-type [col="2"],
+#wraprev [bow]:last-of-type [col="3"],
+#wraprev [bow]:last-of-type [col="4"] { margin-bottom: 0; }
+
+#responsive-col [col]:after {
+  content: '<div col="' attr(col)'" col-med="' attr(col-med) '" col-lrg="' attr(col-lrg) '">';
+}
+#responsive-row [flex] {
+  padding-top: 50px;
+}
+#responsive-row [flex]:after {
+  content: '<div flex="' attr(flex)'" flex-med="' attr(flex-med) '">';
+}
+
+#responsive-col [col] {
+  min-height: 200px;
+}
+
+
+[flex] .play-form-col { padding: 20px 30px; }
+
+.play-col.height-1 { min-height: 60px; padding-top: 20px; }
+.play-col.height-2 { min-height: 80px; padding-top: 10px; }
+.play-col.height-3 { min-height: 100px; padding-top: 40px; }
+.play-col.height-4 { min-height: 120px;  padding-top: 20px; }
+.play-col.height-5 { min-height: 140px;  padding-top: 30px; }
+.play-col.height-6 { min-height: 160px;  padding-top: 20px; }
+
+h4 { margin-bottom: 1.5em; }
+form label { width: 100%; display: block; }
+button {
+  border: 0;
+  padding: .5em 1em;
+  background: lightskyblue;
+  cursor: pointer;
+  margin: 0 auto 1.5em;
+  display: inline-block;
+  text-transform: uppercase;
+}
+button:hover { background: lightblue; }
+		</style>
+  </head>
+  <body>
+
+    <div id="intro">
+      <h1>BowFlex Grid System</h1>
+    </div>
+
+    <h2 id="playground">Playground</h2>
+
+    <div id="play">
+      <div bow>
+        <form id="play-form" flex="middle around stretch">
+					<div class="play-form-col">
+						<h4>Fluid</h4>
+						<label><input type="checkbox" name="bowfluid" value="foo"> Outer</label>
+						<label><input type="checkbox" name="flexfluid" value="fluid"> Inner</label>
+						<br>
+						<hr>
+						<br>
+						<h4>Children</h4>
+						<label><input type="checkbox" name="flexfill" value="fill"> Fill</label>
+						<label><input type="checkbox" name="flexcontainer" value="container"> Container</label>
+					</div>
+					<div class="play-form-col">
+            <h4>Direction</h4>
+            <label><input type="radio" name="direction" value="row" checked> Row</label>
+            <label><input type="radio" name="direction" value="rowrev"> Row Reverse</label>
+            <label><input type="radio" name="direction" value="vertical"> Vertical</label>
+            <label><input type="radio" name="direction" value="vertrev"> Vertical Reverse</label>
+            <!--label><input type="checkbox" name="flush" value="flush"> Flush</label-->
+          </div>
+
+          <div class="play-form-col">
+            <h4>Wrap</h4>
+            <label><input type="radio" name="wrap" value="wrap" checked> Wrap</label>
+            <label><input type="radio" name="wrap" value="nowrap"> No Wrap</label>
+            <label><input type="radio" name="wrap" value="wraprev"> Wrap Reverse</label>
+          </div>
+
+          <div class="play-form-col">
+            <h4>Horizontal</h4>
+            <label><input type="radio" name="horizontal" value="start"> Start</label>
+            <label><input type="radio" name="horizontal" value="center"> Center</label>
+            <label><input type="radio" name="horizontal" value="around"> Around</label>
+            <label><input type="radio" name="horizontal" value="between" checked> Between</label>
+            <label><input type="radio" name="horizontal" value="end"> End</label>
+          </div>
+
+          <div class="play-form-col">
+            <h4>Vertical</h4>
+            <label><input type="radio" name="vertical" value="top" checked> Top</label>
+            <label><input type="radio" name="vertical" value="middle"> Middle</label>
+            <label><input type="radio" name="vertical" value="bottom"> Bottom</label>
+            <label><input type="radio" name="vertical" value="stretch"> Stretch</label>
+            <label><input type="radio" name="vertical" value="baseline"> Baseline</label>
+          </div>
+
+          <div class="play-form-col">
+            <h4>Add / Remove Col</h4>
+            <button id="add-col">Add Column</button>
+            <br>
+            <button id="rem-col">Remove Column</button>
+            <br>
+            <button id="rand-col">Randomize Heights</button>
+            <br>
+            <button id="reset-col">Reset Heights</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="play-wrap" class="helpers">
+
+        <div id="play-outer" bow>
+          <div id="play-row" flex="">
+            <div class="play-col height-5" col="3">
+              <label>col=</label>
+              <select class="play-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+            </div>
+            <div class="play-col height-2" col="3">
+              <label>col=</label>
+              <select class="play-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+            </div>
+            <div class="play-col height-3" col="3">
+              <label>col=</label>
+              <select class="play-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+		</div> <!-- /#playround -->
+
+    <div id="summary" style="margin-top: 40px;">
+      <h3>Features</h3>
+      <div bow>
+        <div flex="center">
+          <div col="12" col-med="8">
+            <dl>
+              <dt>Flexbox Features</dt>
+								<dd>Mobile First</dd>
+                <dd>And some handy vertical features</dd>
+								<dd>Full feature set<sup style="color:rgba(0,0,0,0.5);font-size:75%;"> * almost..</sup><br>
+								<small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/attr" target="_blank">Since this sustem is attribute based, order/grow/shrink are not yet supported</a></small>
+								</dd>
+              <dt>Attribute Based</dt>
+                <dd>No classes at all</dd>
+                <dd>Separate layout logic</dd>
+								<dd>Declarative styles<br><small>(flex="center middle")</small></dd>
+                <dd>Easy overrides</dd>
+              <dt>Fully Customizable</dt>
+                <dd>Columns &amp; Gutter</dd>
+								<dd>Breakpoints<br><small>As many as you like<br>Name them whatever you like<br>(flex="vertical" flex-grape="row" flex-shovel="middle")<br>(col="12" col-grape="6" col-shovel="4" col-water="9")</small></dd>
+                <dd>Breakpoint Names</dd>
+              <dt>SASS Based</dt>
+                <dd>Use default source</dd>
+								<dd>Or include in your own build<br><small>Customize number of columns, breakpoints and breakpoint names</small></dd>
+								<dd>Handy SASS media query mixins</dd>
+
+            </dl>
+          </div>
+        </div>
+      </div>
+      <h3>Helpful Links</h3>
+      <div bow>
+        <div flex="center">
+          <div col="12" col-med="5" style="padding:20px;">
+            <ul id="links">
+              <li><a class="gaevt" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" data-label="csstricks">CSS-Tricks' Guide to Flexbox</a></li>
+              <li><a class="gaevt" href="https://joshuadoshua.github.io/bowflexgrid/docs/" target="_blank" data-label="sassdoc">View the SASS-Docs</a></li>
+              <li><a class="gaevt" href="https://github.com/JoshuaDoshua/bowflexgrid#readme" target="_blank" data-label="docs">README file on GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div><!--/#summary-->
+
+
+
+    <section id="default" class="helpers">
+      <h2>Default Flex</h2>
+
+			<header>
+				<p>wrap elements in a top-aligned row, distributing them to the edges</p>
+			</header>
+
+      <div bow>
+        <div flex>
+          <div class="sample wow zoomIn">Sample</div>
+          <div class="sample wow zoomIn">Sample</div>
+          <div class="sample wow zoomIn">Sample</div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex>
+          <div class="sample wow zoomIn">Sample</div>
+          <div class="sample wow zoomIn">Sample</div>
+          <div class="sample wow zoomIn">Sample</div>
+          <div class="sample wow zoomIn">Sample</div>
+          <div class="sample wow zoomIn">Sample</div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex>
+          <div class="sample wow zoomIn pad">Padded</div>
+          <div class="sample wow zoomIn pad">Padded</div>
+          <div class="sample wow zoomIn pad">Padded</div>
+          <div class="sample wow zoomIn pad">Padded</div>
+          <div class="sample wow zoomIn pad">Padded</div>
+          <div class="sample wow zoomIn pad">Padded</div>
+        </div>
+      </div>
+    </section><!--/#default-->
+
+	<div id="fluid" class="helpers">
+      <h2>Fluid Wrappers</h2>
+
+			<header>
+				<p>push wrapper to width of parent, ignoring max-width rule</p>
+			</header>
+
+      <div bow>
+        <div flex="fluid">
+          <div class="sample wow zoomIn">DIV</div>
+          <div class="sample wow zoomIn">DIV</div>
+          <div class="sample wow zoomIn">DIV</div>
+        </div>
+      </div>
+
+      <div bow="fluid">
+        <div flex>
+          <div class="sample wow zoomIn">DIV</div>
+          <div class="sample wow zoomIn">DIV</div>
+          <div class="sample wow zoomIn">DIV</div>
+          <div class="sample wow zoomIn">DIV</div>
+          <div class="sample wow zoomIn">DIV</div>
+        </div>
+      </div>
+
+      <div bow="fluid">
+        <div flex="fluid">
+          <div class="sample wow zoomIn pad">Padded</div>
+          <div class="sample wow zoomIn pad">Padded</div>
+          <div class="sample wow zoomIn pad">Padded</div>
+          <div class="sample wow zoomIn pad">Padded</div>
+          <div class="sample wow zoomIn pad">Padded</div>
+          <div class="sample wow zoomIn pad">Padded</div>
+        </div>
+      </div>
+  	</div><!--/#fluid-->
+
+    <h2>Columns</h2>
+
+    <div id="even" class="helpers">
+
+			<header>
+				<h3>Even</h3>
+			</header>
+
+      <div bow>
+        <div flex>
+          <div class="wow zoomIn" col="1"></div>
+          <div class="wow zoomIn" col="1"></div>
+          <div class="wow zoomIn" col="1"></div>
+          <div class="wow zoomIn" col="1"></div>
+          <div class="wow zoomIn" col="1"></div>
+          <div class="wow zoomIn" col="1"></div>
+          <div class="wow zoomIn" col="1"></div>
+          <div class="wow zoomIn" col="1"></div>
+          <div class="wow zoomIn" col="1"></div>
+          <div class="wow zoomIn" col="1"></div>
+          <div class="wow zoomIn" col="1"></div>
+          <div class="wow zoomIn" col="1"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex>
+          <div class="wow zoomIn" col="2"></div>
+          <div class="wow zoomIn" col="2"></div>
+          <div class="wow zoomIn" col="2"></div>
+          <div class="wow zoomIn" col="2"></div>
+          <div class="wow zoomIn" col="2"></div>
+          <div class="wow zoomIn" col="2"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex>
+          <div class="wow zoomIn" col="3"></div>
+          <div class="wow zoomIn" col="3"></div>
+          <div class="wow zoomIn" col="3"></div>
+          <div class="wow zoomIn" col="3"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex>
+          <div class="wow zoomIn" col="4"></div>
+          <div class="wow zoomIn" col="4"></div>
+          <div class="wow zoomIn" col="4"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex>
+          <div class="wow zoomIn" col="6"></div>
+          <div class="wow zoomIn" col="6"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex>
+          <div class="wow zoomIn" col="12"></div>
+        </div>
+      </div>
+    </div><!--/.end-->
+
+    <div id="compliment" class="helpers">
+
+			<header>
+				<h3>Complimentary</h3>
+			</header>
+
+      <div bow>
+        <div flex>
+          <div class="wow slideInLeft" col="1"></div>
+          <div class="wow slideInRight" col="11"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex>
+          <div class="wow slideInLeft" col="2"></div>
+          <div class="wow slideInRight" col="10"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex>
+          <div class="wow slideInLeft" col="3"></div>
+          <div class="wow slideInRight" col="9"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex>
+          <div class="wow slideInLeft" col="4"></div>
+          <div class="wow slideInRight" col="8"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex>
+          <div class="wow slideInLeft" col="5"></div>
+          <div class="wow slideInRight" col="7"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex>
+          <div class="wow slideInLeft" col="6"></div>
+          <div class="wow slideInRight" col="6"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex>
+          <div class="wow slideInLeft" col="7"></div>
+          <div class="wow slideInRight" col="5"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex>
+          <div class="wow slideInLeft" col="8"></div>
+          <div class="wow slideInRight" col="4"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex>
+          <div class="wow slideInLeft" col="9"></div>
+          <div class="wow slideInRight" col="3"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex>
+          <div class="wow slideInLeft" col="10"></div>
+          <div class="wow slideInRight" col="2"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex>
+          <div class="wow slideInLeft" col="11"></div>
+          <div class="wow slideInRight" col="1"></div>
+        </div>
+      </div>
+    </div><!--/#compliment-->
+
+		<h2>Override</h2>
+
+		<div id="fill" class="helpers">
+
+			<header>
+				<h3>Fill</h3>
+				<p>ignore column gutters</p>
+			</header>
+
+			<div bow>
+				<div flex="fill">
+					<div class="wow fadeIn" col="4"></div>
+					<div class="wow fadeIn" col="4"></div>
+					<div class="wow fadeIn" col="4"></div>
+				</div>
+			</div>
+
+		</div><!--/#fill-->
+
+		<div id="container" class="helpers">
+
+			<header>
+				<h3>Container</h3>
+				<p>just use the traditional container, ignore flex</p>
+			</header>
+
+			<div bow>
+				<div flex="container">
+					<div class="wow fadeIn" col="4"></div>
+					<div class="wow fadeIn" col="4"></div>
+					<div class="wow fadeIn" col="4"></div>
+				</div>
+			</div>
+		</div><!--/#container-->
+
+    <h2>Horizontal Alignment</h2>
+
+    <div id="start" class="helpers">
+
+			<header>
+				<h3>Left Align</h3>
+			</header>
+
+      <div bow>
+        <div flex="start">
+          <div class="wow slideInRight" col="10"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="start">
+          <div class="wow slideInRight" col="5"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="start">
+          <div class="wow slideInRight" col="2"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="start">
+          <div class="wow slideInRight" col="3"></div>
+          <div class="wow slideInRight" col="5"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="start">
+          <div class="wow slideInRight" col="7"></div>
+          <div class="wow slideInRight" col="2"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="start">
+          <div class="wow slideInRight" col="2"></div>
+          <div class="wow slideInRight" col="6"></div>
+          <div class="wow slideInRight" col="3"></div>
+        </div>
+      </div>
+    </div><!--/#start-->
+
+    <div id="center" class="helpers">
+
+			<header>
+				<h3>Center Align</h3>
+			</header>
+
+      <div bow>
+        <div flex="center">
+          <div class="wow zoomIn" col="10"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="center">
+          <div class="wow zoomIn" col="6"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="center">
+          <div class="wow zoomIn" col="3"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="center">
+          <div class="wow zoomIn" col="7"></div>
+          <div class="wow zoomIn" col="2"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="center">
+          <div class="wow zoomIn" col="2"></div>
+          <div class="wow zoomIn" col="6"></div>
+          <div class="wow zoomIn" col="3"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="around" class="helpers">
+
+			<header>
+				<h3>Space Around</h3>
+				<p>ignores gutter</p>
+			</header>
+
+      <div bow>
+        <div flex="around">
+          <div class="wow rubberBand" col="4"></div>
+          <div class="wow rubberBand" col="3"></div>
+          <div class="wow rubberBand" col="4"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex="around">
+          <div class="wow rubberBand" col="3"></div>
+          <div class="wow rubberBand" col="2"></div>
+          <div class="wow rubberBand" col="3"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex="around">
+          <div class="wow rubberBand" col="5"></div>
+          <div class="wow rubberBand" col="5"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex="around">
+          <div class="wow rubberBand" col="2"></div>
+          <div class="wow rubberBand" col="2"></div>
+          <div class="wow rubberBand" col="2"></div>
+          <div class="wow rubberBand" col="2"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex="around">
+          <div class="wow rubberBand" col="6"></div>
+          <div class="wow rubberBand" col="6"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex="around">
+          <div class="wow rubberBand" col="1"></div>
+          <div class="wow rubberBand" col="2"></div>
+          <div class="wow rubberBand" col="3"></div>
+          <div class="wow rubberBand" col="2"></div>
+          <div class="wow rubberBand" col="1"></div>
+        </div>
+      </div>
+    </div><!--/#around-->
+
+    <div id="between" class="helpers">
+
+			<header>
+				<h3>Space Between</h3>
+				<p>ignores gutter</p>
+			</header>
+
+      <div bow>
+        <div flex="between">
+          <div class="wow slideInLeft" col="5"></div>
+          <div class="wow slideInRight" col="5"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex="between">
+          <div class="wow slideInLeft" col="4"></div>
+          <div class="wow zoomIn" col="3"></div>
+          <div class="wow slideInRight" col="4"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex="between">
+          <div class="wow slideInLeft" col="2"></div>
+          <div class="wow zoomIn" col="2"></div>
+          <div class="wow zoomIn" col="2"></div>
+          <div class="wow slideInRight" col="2"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex="between">
+          <div class="wow slideInLeft" col="2"></div>
+          <div class="wow zoomIn" col="4"></div>
+          <div class="wow slideInRight" col="3"></div>
+        </div>
+      </div>
+    </div><!--/#between-->
+
+    <div id="end" class="helpers">
+
+			<header>
+				<h3>Right Align</h3>
+			</header>
+
+      <div bow>
+        <div flex="end">
+          <div class="wow slideInLeft" col="10"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="end">
+          <div class="wow slideInLeft" col="5"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="end">
+          <div class="wow slideInLeft" col="2"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="end">
+          <div class="wow slideInLeft" col="3"></div>
+          <div class="wow slideInLeft" col="5"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="end">
+          <div class="wow slideInLeft" col="7"></div>
+          <div class="wow slideInLeft" col="2"></div>
+        </div>
+      </div>
+      <div bow>
+        <div flex="end">
+          <div class="wow slideInLeft" col="2"></div>
+          <div class="wow slideInLeft" col="6"></div>
+          <div class="wow slideInLeft" col="3"></div>
+        </div>
+      </div>
+    </div><!--/#end-->
+
+    <h2>Vertical Alignment</h2>
+
+    <div id="top" class="helpers">
+
+			<header>
+				<h3>Top</h3>
+			</header>
+
+      <div bow>
+        <div flex="top">
+          <div class="vert-1 wow slideInUp" col="2"></div>
+          <div class="vert-2 wow slideInUp" col="2"></div>
+          <div class="vert-3 wow slideInUp" col="2"></div>
+          <div class="vert-2 wow slideInUp" col="2"></div>
+          <div class="vert-4 wow slideInUp" col="2"></div>
+        </div>
+      </div>
+    </div><!--/#top-->
+
+    <div id="middle" class="helpers">
+
+			<header>
+				<h3>Middle</h3>
+			</header>
+
+      <div bow>
+        <div flex="middle">
+          <div class="vert-1 wow zoomIn" col="2"></div>
+          <div class="vert-2 wow zoomIn" col="2"></div>
+          <div class="vert-3 wow zoomIn" col="2"></div>
+          <div class="vert-2 wow zoomIn" col="2"></div>
+          <div class="vert-4 wow zoomIn" col="2"></div>
+        </div>
+      </div>
+    </div><!--/#middle-->
+
+    <div id="bottom" class="helpers">
+
+			<header>
+				<h3>Bottom</h3>
+			</header>
+
+      <div bow>
+        <div flex="bottom">
+          <div class="vert-1 wow slideInDown" col="2"></div>
+          <div class="vert-2 wow slideInDown" col="2"></div>
+          <div class="vert-3 wow slideInDown" col="2"></div>
+          <div class="vert-2 wow slideInDown" col="2"></div>
+          <div class="vert-4 wow slideInDown" col="2"></div>
+        </div>
+      </div>
+    </div><!--/#bottom-->
+
+    <div id="stretch" class="helpers">
+
+			<header>
+				<h3>Stretch</h3>
+			</header>
+
+      <div bow>
+        <div flex="stretch">
+          <div class="vert-1 wow zoomIn" col="2"></div>
+          <div class="vert-2 wow zoomIn" col="2"></div>
+          <div class="vert-3 wow zoomIn" col="2"></div>
+          <div class="vert-2 wow zoomIn" col="2"></div>
+          <div class="vert-4 wow zoomIn" col="2"></div>
+        </div>
+      </div>
+    </div><!--/#stretch-->
+
+    <div id="baseline" class="helpers">
+
+			<header>
+				<h3>Baseline</h3>
+			</header>
+
+      <div bow>
+        <div flex="baseline">
+          <div class="vert-1 wow flipInX" col="2">baseline</div>
+          <div class="vert-2 wow flipInX" col="2">baseline</div>
+          <div class="vert-3 wow flipInX" col="2">baseline</div>
+          <div class="vert-2 wow flipInX" col="2">baseline</div>
+          <div class="vert-4 wow flipInX" col="2">baseline</div>
+        </div>
+      </div>
+    </div><!--/#baseline-->
+
+    <h2>Column Overrides</h2>
+
+    <div id="self-top" class="helpers">
+
+			<header>
+				<h3>Self Top</h3>
+			</header>
+
+      <div bow>
+        <div flex="bottom">
+          <div class="vert-1 wow slideInUp" col="2"></div>
+          <div class="vert-2 wow slideInUp" col="2"></div>
+          <div class="vert-3 wow slideInUp" col="2"></div>
+          <div class="vert-2 wow slideInUp" col="2"></div>
+          <div class="vert-4 wow slideInDown" col="2 top"></div>
+        </div>
+      </div>
+    </div><!--/#self-top-->
+
+    <div id="self-middle" class="helpers">
+
+			<header>
+				<h3>Self Middle</h3>
+			</header>
+
+      <div bow>
+        <div flex="top">
+          <div class="vert-1 wow slideInUp" col="2"></div>
+          <div class="vert-2 wow slideInUp" col="2"></div>
+          <div class="vert-3 wow slideInUp" col="2"></div>
+          <div class="vert-2 wow slideInUp" col="2"></div>
+          <div class="vert-4 wow zoomIn" col="2 middle"></div>
+        </div>
+      </div>
+    </div><!--/#self-middle-->
+
+    <div id="self-bottom" class="helpers">
+
+			<header>
+				<h3>Self Bottom</h3>
+			</header>
+
+      <div bow>
+        <div flex="top">
+          <div class="vert-1 wow slideInDown" col="2"></div>
+          <div class="vert-2 wow slideInDown" col="2"></div>
+          <div class="vert-3 wow slideInDown" col="2"></div>
+          <div class="vert-2 wow slideInDown" col="2"></div>
+          <div class="vert-4 wow slideInUp" col="2 bottom"></div>
+        </div>
+      </div>
+    </div><!--/#self-middle-->
+
+    <div id="self-stretch" class="helpers">
+
+			<header>
+				<h3>Self Stretch</h3>
+			</header>
+
+      <div bow>
+        <div flex="top">
+          <div class="vert-1 wow zoomIn" col="2"></div>
+          <div class="vert-2 wow zoomIn" col="2"></div>
+          <div class="vert-3 wow zoomIn" col="2"></div>
+          <div class="vert-2 wow zoomIn" col="2"></div>
+          <div class="vert-4 wow zoomIn" col="2 stretch"></div>
+        </div>
+      </div>
+    </div><!--/#self-middle-->
+
+    <div id="self-baseline" class="helpers">
+
+			<header>
+				<h3>Self Baseline</h3>
+			</header>
+
+      <div bow>
+        <div flex="middle">
+          <div class="vert-1 wow zoomIn" col="2">baseline</div>
+          <div class="vert-2 wow zoomIn" col="2">baseline</div>
+          <div class="vert-3 wow zoomIn" col="2">baseline</div>
+          <div class="vert-2 wow zoomIn" col="2">baseline</div>
+          <div class="vert-4 wow flipInX" col="2 baseline">baseline</div>
+        </div>
+      </div>
+    </div><!--/#baseline-->
+
+    <h2>Flow / Direction</h2>
+
+    <div id="vertical" class="helpers">
+
+			<header>
+				<h3>Vertical</h3>
+			</header>
+
+      <div bow>
+        <div flex="vertical">
+          <div col="4">1</div>
+          <div col="8">2</div>
+          <div col="6">3</div>
+          <div col="10">4</div>
+        </div>
+      </div>
+    </div><!--/#vertical-->
+
+    <div id="verticalrev" class="helpers">
+
+			<header>
+				<h3>Vertical Reverse</h3>
+			</header>
+
+      <div bow>
+        <div flex="vertrev">
+          <div col="4">1</div>
+          <div col="8">2</div>
+          <div col="6">3</div>
+          <div col="10">4</div>
+        </div>
+      </div>
+    </div><!--/#verticalrev-->
+
+    <h2>Wrapping Rows</h2>
+
+    <div id="wrap" class="helpers">
+
+			<header>
+				<h3>Wrap</h3>
+			</header>
+
+      <div bow>
+        <div flex="wrap">
+          <div col="6"></div>
+          <div col="6"></div>
+          <div col="4"></div>
+          <div col="4"></div>
+          <div col="4"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex="wrap">
+          <div col="2"></div>
+          <div col="2"></div>
+          <div col="2"></div>
+          <div col="2"></div>
+          <div col="2"></div>
+          <div col="3"></div>
+          <div col="3"></div>
+          <div col="3"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="wraprev" class="helpers">
+
+			<header>
+				<h3>Wrap Reverse</h3>
+			</header>
+
+      <div bow>
+        <div flex="wraprev">
+          <div col="6">1</div>
+          <div col="6">2</div>
+          <div col="4">3</div>
+          <div col="4">4</div>
+          <div col="4">5</div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex="wraprev">
+          <div col="1">1</div>
+          <div col="2">2</div>
+          <div col="3">3</div>
+          <div col="4">4</div>
+          <div col="5">5</div>
+          <div col="6">6</div>
+          <div col="7">7</div>
+          <div col="8">8</div>
+          <div col="9">9</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="nowrap" class="helpers">
+
+			<header>
+				<h3>Nowrap</h3>
+			</header>
+
+      <div bow>
+        <div flex="nowrap">
+          <div col="6"></div>
+          <div col="6"></div>
+          <div col="4"></div>
+          <div col="4"></div>
+          <div col="4"></div>
+        </div>
+      </div>
+
+      <div bow>
+        <div flex="nowrap">
+          <div col="1"></div>
+          <div col="2"></div>
+          <div col="3"></div>
+          <div col="4"></div>
+          <div col="5"></div>
+          <div col="6"></div>
+          <div col="7"></div>
+          <div col="8"></div>
+          <div col="9"></div>
+          <div col="10"></div>
+          <div col="11"></div>
+          <div col="12"></div>
+        </div>
+      </div>
+    </div><!--/#nowrap-->
+
+    <div id="responsive" class="helpers">
+      <h2>Responsive</h2>
+
+      <div id="responsive-col" bow>
+        <div flex>
+          <div col="12" col-med="4" col-lrg="3"></div>
+          <div col="12" col-med="4" col-lrg="3"></div>
+          <div col="12" col-med="4" col-lrg="3"></div>
+          <div col="12" col-med="4" col-lrg="3"></div>
+        </div>
+      </div>
+
+      <div id="responsive-row" bow>
+        <div flex="vertical center middle" flex-med="row">
+          <div col="1"></div>
+          <div col="2"></div>
+          <div col="3"></div>
+          <div col="4"></div>
+        </div>
+      </div>
+    </div><!--/#responsive-->
+
+
+    <a class="gaevt" href="https://github.com/JoshuaDoshua/bowflexgrid" data-label="fork"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-74103893-1', 'auto');
+	ga('send', 'pageview');
+
+	jQuery(document).ready(function($) {
+
+		$('.smooth').on('click', function(e) {
+			e.preventDefault();
+			$('html,body').stop().animate({
+				scrollTop: $(this.hash).offset().top
+			}, 5000);
+		});
+
+		var $playForm = $('#play-form');
+		var $playWrap = $('#play-wrap');
+		var $playOuter = $('#play-outer');
+		var $playRow = $('#play-row');
+		var $playSelect = $('.play-select');
+
+		$playForm.on('change', function() {
+			var data = $(this).serializeArray();
+
+			var bow = "";
+			if (data[0].name === "bowfluid") {
+				data.shift();
+				bow = "fluid";
+			}
+
+			var flex = "";
+			for (var i = 0, len = data.length; i < len; i++) {
+				flex += data[i].value + " ";
+			}
+			$playOuter.attr('bow', bow);
+				$playRow.attr('flex', flex.trim());
+				ga('send','event','playground','click','change');
+			});
+			$playForm.on('submit', function(e) {
+				return false;
+			});
+
+			$playSelect.on('change', function(e) {
+				$(this).closest('.play-col').attr('col', this.value);
+				ga('send','event','playground','change','size');
+			});
+
+			var $playCol = $('.play-col').first().clone(true);
+			$('#rem-col').click(function(e) {
+				e.preventDefault();
+				if ($('.play-col').length > 1) {
+					$playRow.find('div').last().remove();
+					ga('send','event','playground','click','remove');
+				}
+			});
+			$('#add-col').click(function(e) {
+				e.preventDefault();
+				$playRow.append($playCol.clone(true));
+				ga('send','event','playground','click','add');
+			});
+			$('#rand-col').click(function(e) {
+				e.preventDefault();
+				$('.play-col').each(function() {
+					var ht = Math.floor(Math.random() * (140 - 60 + 1)) + 60;
+					var min = 1;
+					var max = 7;
+					var ht = Math.floor(Math.random() * (max - min)) + min;
+					$(this).removeClass().addClass('play-col height-' + ht);
+					ga('send','event','playground','click','randomize');
+				});
+			});
+			$('#reset-col').click(function(e) {
+				e.preventDefault();
+				$('.play-col').removeClass().addClass('play-col');
+				ga('send','event','playground','click','reset');
+			});
+			$('.gaevt').click(function() {
+				ga('send','event','link','click',$(this).attr('data-label'));
+			});
+
+	});
+</script>
+
+  </body>
+</html>

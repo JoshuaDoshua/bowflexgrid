@@ -1,0 +1,192 @@
+////
+/// @group BowFlexGrid
+////
+
+[bow],
+[flex],
+[col] { box-sizing: border-box; }
+
+/// @content CSS rules inside the media query
+/// @param {str} $bp - Size value of media query
+/// @param {str} $direction [min] - min or max query
+/// @example
+///  respond(med) { @content }
+///  respond(map-get($bps, med)) { @content }
+///  respond($someSize, min) { @content }
+///  respond(1140px, max) { @content }
+@mixin respond($bp, $direction: min) {
+	@if map-has-key($bps, $bp) {
+		@media screen and ( $direction+-width: #{map-get($bps, $bp)} ) { @content; }
+	}
+
+	@else {
+		@media screen and ( $direction+-width: #{$bp} ) { @content; }
+	}
+}
+
+/// @content CSS Rules inside the media query
+/// @param {str} $min - the minimum value
+/// @param {str} $max - the maximum value
+/// @example
+///  respondBetween(med, lrg) { @content }
+///  respondBetween(map-get($bps, med), map-get($bps, lrg)) { @content }
+///  respondBetween($someSize, $anotherSize) { @content }
+///  respondBetween(300px, 768px) { @content }
+@mixin respondBetween($min,$max) {
+	@if (map-has-key($bps, $min) and map-has-key($bps, $max)) {
+		@media screen and (min-width: #{map-get($bps, $min)}) and (max-width: #{map-get($bps,$max)}) { @content; }
+	}
+
+	@else {
+		@media screen and (min-width: #{$min}) and (max-width: #{$max}) { @content; }
+	}
+}
+
+// create a set of row rules for a given size
+// @private
+@mixin flex-grid-size($size: '', $cols: 12, $fullColWidth: 11.666%, $colWidth: 8.333%, $gutter: 1.667%) {
+
+	// just a container
+	[flex#{$size}~="container"]		{ display: block; }
+
+	// direction
+	[flex#{$size}~="row"]					{ flex-direction: row; }
+	[flex#{$size}~="rowrev"]			{ flex-direction: row-reverse; }
+	[flex#{$size}~="vertical"]		{ flex-direction: column; }
+	[flex#{$size}~="vertrev"]			{ flex-direction: column-reverse; }
+
+	// wrap
+	[flex#{$size}~="wrap"]				{ flex-wrap: wrap; }
+	[flex#{$size}~="nowrap"]			{ flex-wrap: nowrap; }
+	[flex#{$size}~="wraprev"] 		{ flex-wrap: wrap-reverse; }
+
+	// horizontal alignment
+	[flex#{$size}~="center"] 			{ justify-content: center; }
+	[flex#{$size}~="between"] 		{ justify-content: space-between; }
+	[flex#{$size}~="around"] 			{ justify-content: space-around; }
+	[flex#{$size}~="start"] 			{ justify-content: flex-start; }
+	[flex#{$size}~="end"] 				{ justify-content: flex-end; }
+
+	// only do margin on certain aligns
+	[flex#{$size}~="start"],
+	[flex#{$size}~="center"],
+	[flex#{$size}~="end"] {
+
+		[col] {
+			margin-left: $gutter;
+			&:first-of-type { margin-left: 0; }
+		}
+
+		[col~="first"] { margin-left: 0 }
+
+	}
+
+	[flex#{$size}~="fill"] [col] { margin-left: 0; margin-right: 0; }
+
+	[flex#{$size}~="rowrev"] [col] {
+		&:first-of-type { margin-left: $gutter; }
+		&:last-of-type { margin-left: 0; }
+	}
+
+	[flex#{$size}~="vertical"] [col] { margin-left: 0; margin-right: 0; }
+
+
+	// @TODO handle flush/gutters better, either add gutter or remove gutter
+	//				need two different column widths
+	// [data-flex#{$size}~="flush"] [data-col] { margin-right: 0; }
+
+	// vertical alignment
+	[flex#{$size}~="top"] 				{ align-items: flex-start; }
+	[flex#{$size}~="middle"] 			{ align-items: center; }
+	[flex#{$size}~="bottom"] 			{ align-items: flex-end; }
+	[flex#{$size}~="stretch"] 		{ align-items: stretch; }
+	[flex#{$size}~="baseline"] 		{ align-items: baseline; }
+
+	// @TODO: Does not include the "align-content" rules
+
+	// columns
+	// alignments
+	[col#{$size}~="top"]					{ align-self: flex-start; }
+	[col#{$size}~="middle"] 			{ align-self: center; }
+	[col#{$size}~="bottom"] 			{ align-self: flex-end; }
+	[col#{$size}~="stretch"] 			{ align-self: stretch; }
+	[col#{$size}~="baseline"] 		{ align-self: baseline; }
+
+	// sizes
+	$i: $cols;
+
+	[col#{$size}="0"] { display: none; }
+
+	@while $i > 0 {
+
+		// column
+		[col#{$size}~="#{$i}"] {
+			flex-basis: ($colWidth * $i) + ($gutter * ($i - 1));
+
+			[flex~="fill"] & { flex-basis: ($fullColWidth * $i); }
+
+			[flex#{$size}~="vertical"] &,
+			[flex#{$size}~="vertrev"] & {
+				width: ($colWidth * $i) + ($gutter * ($i - 1));
+			}
+		}
+
+		$i: $i - 1;
+	}
+}
+
+/// @content Create the grid rules
+/// @param {array} $bps - Array of breakpoints with key values
+/// @param {int} $columns [12] - number of columns in your grid
+/// @param {int} $gutter [20px] - space between each column (use 0 for flush)
+/// @param {str} $main [1140px] - the main content wrapper breakpoint
+/// @param {str} $outer [1600px] - the outer content wrapper breakpoint
+@mixin bowflex-grid($bps, $cols:12, $gutter:20px, $main:1140px, $outer:1600px) {
+
+	$colWidth: percentage((($main - (($cols - 1) * $gutter)) / $cols) / $main);
+	$fullColWidth: percentage(1/$cols);
+	$gutterPerc: percentage($gutter/$main);
+
+	[bow] {
+	  display: block;
+	  width: 100%;
+	  max-width: $outer;
+
+	  @include respond($main + ($gutter * 2)) {
+	    margin-left: auto;
+	    margin-right: auto;
+	  }
+	}
+
+	[flex] {
+		width: 100%;
+		display: flex;
+
+		flex: 0 1 auto;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		@include respond($main) {
+			max-width: $main;
+
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	[bow~="fluid"],
+	[flex~="fluid"] { max-width: 100%; }
+
+	// null - default, mobile first
+	@include flex-grid-size('', $cols, $fullColWidth, $colWidth, $gutterPerc);
+
+	// create a set of rules for each breakpoint
+	// include a dash to prefix the data-flex"-name"
+	@each $name, $size in $bps {
+		@include respond($name) {
+			@include flex-grid-size("-#{$name}", $cols, $fullColWidth, $colWidth, $gutterPerc);
+		}
+	}
+}

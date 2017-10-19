@@ -19,7 +19,7 @@ gulp.task('default', () => {
 })
 
 gulp.task('docs', () => {
-	gulp.src('./src/**/*.{sass,scss{')
+	gulp.src('./src/**/*.{sass,scss}')
 		.pipe(require('sassdoc')({
 			dest: 'docs/',
 			groups: {
@@ -31,5 +31,5 @@ gulp.task('docs', () => {
 })
 
 gulp.task('watch', () => {
-	gulp.src('./src/**/*', ['default'])
+	gulp.watch('./src/**/*', ['default'])
 })

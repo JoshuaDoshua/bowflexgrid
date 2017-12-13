@@ -13,28 +13,20 @@
 $columns: 12;
 
 ///  Margin between columns (start/center/end)
-$gutter: 20px;
+$gutter: 1em;
+$mobilePadding: 5%;
+$mobilePadding: 1em;
 
 /// @content Associative array of nicknames => breakpoints
 /// @example
 ///  <div flex="vertical" flex-sml="row wrap" flex-med="nowrap">
 ///  <div col="12" col-sml="6" col-med="4" col-lrg="3" col-xlg="2">
 $bps: (
-	sml: 400px,
-	med: 768px,
-	lrg: 1200px,
-	xlg: 1600px
+	sml: 505px, // < large phone / small tablet
+	med: 768px, // common tablet
+	lrg: 1024px, // large tablet / small desktop
+	xlg: 1400px // large desktop >
 );
 
-/// The main container breakpoint
-///
-/// *can be overridden with (div flex="flush")
-$main: map-get($bps, lrg);
-
-/// The outer container width
-///
-/// *can be overridden with (div bow="flush")
-$outer: map-get($bps, xlg);
-
 // create the grid
-@include bowflex-grid($bps, $columns, $gutter, $main, $outer);
+@include bowflex-grid($bps, $columns, $gutter, $mobilePadding, lrg, xlg);

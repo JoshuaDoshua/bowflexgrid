@@ -238,7 +238,7 @@ a:hover { color: darkslategray; }
 }
 
 
-[flex] .play-form-col { padding: 20px 30px; }
+[flex] .play-form-col { padding: 20px 10px; }
 
 .play-col.height-1 { min-height: 60px; padding-top: 20px; }
 .play-col.height-2 { min-height: 80px; padding-top: 10px; }
@@ -271,23 +271,23 @@ button:hover { background: lightblue; }
 
     <div id="play">
       <div bow>
-        <form id="play-form" flex="middle around stretch">
+        <form id="play-form" flex="nowrap middle around stretch">
 					<div class="play-form-col">
 						<h4>Fluid</h4>
 						<label><input type="checkbox" name="bowfluid" value="foo"> Outer</label>
 						<label><input type="checkbox" name="flexfluid" value="fluid"> Inner</label>
+						<label><input type="checkbox" name="flexcontainer" value="container"> Container</label>
 						<br>
 						<hr>
 						<br>
 						<h4>Children</h4>
 						<label><input type="checkbox" name="flexfill" value="fill"> Fill</label>
-						<label><input type="checkbox" name="flexcontainer" value="container"> Container</label>
 					</div>
 					<div class="play-form-col">
             <h4>Direction</h4>
             <label><input type="radio" name="direction" value="row" checked> Row</label>
-            <label><input type="radio" name="direction" value="rowrev"> Row Reverse</label>
             <label><input type="radio" name="direction" value="vertical"> Vertical</label>
+            <label><input type="radio" name="direction" value="rowrev"> Row Reverse</label>
             <label><input type="radio" name="direction" value="vertrev"> Vertical Reverse</label>
             <!--label><input type="checkbox" name="flush" value="flush"> Flush</label-->
           </div>
@@ -303,9 +303,9 @@ button:hover { background: lightblue; }
             <h4>Horizontal</h4>
             <label><input type="radio" name="horizontal" value="start"> Start</label>
             <label><input type="radio" name="horizontal" value="center"> Center</label>
+            <label><input type="radio" name="horizontal" value="end"> End</label>
             <label><input type="radio" name="horizontal" value="around"> Around</label>
             <label><input type="radio" name="horizontal" value="between" checked> Between</label>
-            <label><input type="radio" name="horizontal" value="end"> End</label>
           </div>
 
           <div class="play-form-col">

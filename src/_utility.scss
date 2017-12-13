@@ -1,0 +1,54 @@
+////
+/// @group BowFlexUtility
+////
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+	@if type-of($number) == 'number' and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+	@return $number;
+}
+
+/// @content Retrieve a breakpoint from the $bps array
+/// @param {str} $key - Array key
+/// @example
+/// bp(lrg)
+@function bp($key) {
+	@if map-has-key($bps, $key) {
+		@return map-get($bps, $key)
+	}
+
+	@return $key;
+}
+
+/// @content CSS rules inside the media query
+/// @param {str} $bp - Size value of media query
+/// @param {str} $direction [min] - min or max query
+/// @example
+///  respond(med) { @content }
+///  respond(map-get($bps, med)) { @content }
+///  respond($someSize, min) { @content }
+///  respond(1140px, max) { @content }
+@mixin respond($bp, $direction: min) {
+	@media screen and
+		($direction+-width: #{bp($bp)})
+	{ @content; }
+}
+
+/// @content CSS Rules inside the media query
+/// @param {str} $min [med] - the minimum value
+/// @param {str} $max [lrg] - the maximum value
+/// @example
+///  respondBetween(med, lrg) { @content }
+///  respondBetween(map-get($bps, med), map-get($bps, lrg)) { @content }
+///  respondBetween($someSize, $anotherSize) { @content }
+///  respondBetween(300px, 768px) { @content }
+@mixin respondBetween($min: med, $max: lrg) {
+	@media screen
+		and (min-width: #{bp($min)})
+		and (max-width: #{bp($max)}) 
+	{ @content; }
+}

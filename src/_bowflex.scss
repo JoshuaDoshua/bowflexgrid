@@ -79,29 +79,30 @@
 	// direction
 	[flex#{$size}~="row"]					{ flex-direction: row; }
 	[flex#{$size}~="rowrev"]			{ flex-direction: row-reverse; }
-	[flex#{$size}~="vertical"]		{ flex-direction: column; }
+	[flex#{$size}~="vert"]				{ flex-direction: column; }
 	[flex#{$size}~="vertrev"]			{ flex-direction: column-reverse; }
 	// wrap
 	[flex#{$size}~="wrap"]				{ flex-wrap: wrap; }
 	[flex#{$size}~="nowrap"]			{ flex-wrap: nowrap; }
 	[flex#{$size}~="wraprev"] 		{ flex-wrap: wrap-reverse; }
 	// horizontal alignment
+	[flex#{$size}~="left"]				{ justify-content: flex-start; }
 	[flex#{$size}~="center"] 			{ justify-content: center; }
+	[flex#{$size}~="right"] 			{ justify-content: flex-end; }
 	[flex#{$size}~="between"] 		{ justify-content: space-between; }
 	[flex#{$size}~="around"] 			{ justify-content: space-around; }
-	[flex#{$size}~="start"] 			{ justify-content: flex-start; }
-	[flex#{$size}~="end"] 				{ justify-content: flex-end; }
 
-	// only do margin on certain aligns
-	// TODO
-	// [flex#{$size}~="start"],
-	// [flex#{$size}~="center"],
-	// [flex#{$size}~="end"] {
-	// 	[col] {
-	// 		margin-left: $gutter;
-	// 		&:first-of-type { margin-left: 0; }
-	// 	}
-	// }
+	// TODO MOVE TO COLUMN DECLARATION
+	// horizontal alignment gutters
+	[flex#{$size}~="left"] [col],
+	[flex#{$size}~="center"] [col] {
+		margin-left: $gutter;
+		&:first-child { margin-left: 0; }
+	}
+	[flex#{$size}~="right"] [col] {
+		margin-right: $gutter;
+		&:last-child { margin-left: 0; }
+	}
 
 	// TODO
 	// [flex#{$size}~="fill"] [col] { margin-left: 0; margin-right: 0; }
@@ -151,7 +152,7 @@
 			&[col~="fluid"] { flex-basis: #{percentage($i / $cols)}; }
 
 			// natural vertical spacing
-			[flex#{$size}~="vertical"] &,
+			[flex#{$size}~="vert"] &,
 			[flex#{$size}~="vertrev"] & {
 				width: #{percentage($i / $cols)};
 			}

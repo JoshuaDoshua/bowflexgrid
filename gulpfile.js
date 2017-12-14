@@ -1,35 +1,71 @@
 var gulp = require('gulp')
-var notify = require('gulp-notify')
+var $ = require('gulp-load-plugins')()
 require('gulp-stats')(gulp)
+
+var onError = (err) => {
+	$.notify.onError({
+		title: 'Gulp error in ' + err.plugin,
+		message: 'Check console for more information'
+	})(err)
+	$.util.log($.util.colors.red(err.message))
+}
 
 var processors = [
 	require('autoprefixer')({
-		browsers: 'last 2 versions'
+		browsers: '> 2%'
 	}),
 	require('cssnano')()
 ]
 
-gulp.task('default', () => {
+gulp.task('grid', () => {
 	gulp.src('./src/bowflex.scss')
-		.pipe(require('gulp-sass')())
-		.pipe(require('gulp-postcss')(processors))
-		.pipe(require('gulp-rename')('bowflex.min.css'))
+		.pipe($.plumber({errorHandler: onError}))
+		.pipe($.debug({showCount: false}))
+		.pipe($.sass())
+		.pipe($.postcss(processors))
+		.pipe($.rename('bowflex.min.css'))
 		.pipe(gulp.dest('./dist'))
-		.pipe(notify('Bowflex System Updated'))
+		.pipe($.debug({showCount: false}))
+		.pipe($.notify('BowFlex System Updated'))
 })
 
 gulp.task('docs', () => {
 	gulp.src('./src/**/*.{sass,scss}')
+		.pipe($.plumber({errorHandler: onError}))
 		.pipe(require('sassdoc')({
-			dest: 'docs/',
-			groups: {
-				slug: "Title",
-				helpers: "Helpers"
-			}
+			kest: './docs/',
+			groups: { slug: "Title", helpers: "Helpers" }
 		}))
-		.pipe(notify('Bowflex Docs Updated'))
+		.pipe($.notify('BowFlex Docs Updated'))
 })
 
+gulp.task('demo:styles', () => {
+	return gulp.src('./demo/_demo.scss')
+		.pipe($.plumber({errorHandler: onError}))
+		.pipe($.debug({showCount: false}))
+		.pipe($.postcss(processors))
+		.pipe($.rename('demo.min.css'))
+		.pipe(gulp.dest('./demo/'))
+		.pipe($.debug({showCount: false}))
+		.pipe($.notify('Demo Styles Updated'))
+})
+
+gulp.task('demo:pug', () => {
+	gulp.src('./demo/index.pug')
+		.pipe($.plumber({errorHandler: onError}))
+		.pipe($.debug({showCount: false}))
+		.pipe($.rename('index.html'))
+		.pipe($.pug())
+		.pipe(gulp.dest('./demo'))
+		.pipe($.debug({showCount: false}))
+		.pipe($.notify('Demo Template Updated'))
+})
+
+gulp.task('demo', ['demo:styles','demo:pug'])
+gulp.task('default', ['grid','docs'])
+
 gulp.task('watch', () => {
-	gulp.watch('./src/**/*', ['default'])
+	gulp.watch('./src/**/*.{sass,scss}', ['grid'])
+	gulp.watch('./demo/_demo.scss', ['demo:styles'])
+	gulp.watch('./demo/index.pug', ['demo:pug'])
 })

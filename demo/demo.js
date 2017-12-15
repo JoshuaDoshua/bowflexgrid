@@ -1,3 +1,6 @@
 jQuery(document).ready(function($) {
-	console.log('loaded');
+	var wow = new WOW();
+	wow.init({
+		offset: '500px'
+	});
 });

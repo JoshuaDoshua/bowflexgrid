@@ -29,6 +29,11 @@ html(lang='en')
 			integrity='sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ='
 		  crossorigin='anonymous'
 		)
+
+		script(
+			src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js'
+			type='text/javascript'
+		)
 		script(
 			src='demo.js'
 			type='text/javascript'
@@ -95,25 +100,25 @@ html(lang='en')
 				div(flex)
 					- var n = 0
 					while n < 6
-						.b.wow.zommIn(col='2')
+						.b.wow.zoomIn(col='2')
 						- n++
 			div(bow)
 				div(flex)
 					- var n = 0
 					while n < 4
-						.b.wow.zommIn(col='3')
+						.b.wow.zoomIn(col='3')
 						- n++
 			div(bow)
 				div(flex)
 					- var n = 0
 					while n < 3
-						.b.wow.zommIn(col='4')
+						.b.wow.zoomIn(col='4')
 						- n++
 			div(bow)
 				div(flex)
 					- var n = 0
 					while n < 2
-						.b.wow.zommIn(col='6')
+						.b.wow.zoomIn(col='6')
 						- n++
 
 		section#compliment.helpers
@@ -168,12 +173,18 @@ html(lang='en')
 			div(bow)
 				div(flex)
 					.b.wow.slideInLeft(col='9')
-					.b.wow.slideInLeft(col='3')
+					.b.wow.slideInRight(col='3')
 			div(bow)
 				div(flex)
 					.b.wow.slideInLeft(col='4')
 					.b.wow.zoomIn(col='4')
 					.b.wow.slideInRight(col='4')
+			div(bow)
+				div(flex)
+					.b.wow.slideInLeft(col='3')
+					.b.wow.zoomIn(col='3')
+					.b.wow.zoomIn(col='3')
+					.b.wow.slideInRight(col='3')
 			div(bow)
 				div(flex)
 					.b.wow.slideInLeft(col='3')
@@ -196,6 +207,10 @@ html(lang='en')
 					.b.wow.slideInRight(col='3')
 					.b.wow.slideInRight(col='3')
 					.b.wow.slideInRight(col='3')
+			div(bow)
+				div(flex='left')
+					.b.wow.slideInRight(col='6')
+					.b.wow.slideInRight(col='6')
 
 		section#center.helpers.atts
 			h3 Center Align
@@ -237,13 +252,13 @@ html(lang='en')
 			h3 Space Between
 			div(bow)
 				div(flex='between')
-					.b.wow.slideInLeft(col='2')
-					.b.wow.slideInRight(col='8')
+					.b.wow.fadeInRight(col='3')
+					.b.wow.zoomIn(col='3')
+					.b.wow.fadeInLeft(col='3')
 			div(bow)
 				div(flex='between')
-					.b.wow.slideInLeft(col='3')
-					.b.wow.zoomIn(col='3')
-					.b.wow.slideInRight(col='3')
+					.b.wow.fadeInRight(col='2')
+					.b.wow.fadeInLeft(col='8')
 
 		h2 Vertical Alignment
 
@@ -260,10 +275,10 @@ html(lang='en')
 			h3 Middle
 			div(bow)
 				div(flex='middle')
-					.b.wow.zoomIn(col='3')
-					.b.wow.zoomIn(col='3')
-					.b.wow.zoomIn(col='3')
-					.b.wow.zoomIn(col='3')
+					.b.wow.flipInX(col='3')
+					.b.wow.flipInX(col='3')
+					.b.wow.flipInX(col='3')
+					.b.wow.flipInX(col='3')
 
 		section#bottom.helpers.atts
 			h3 Bottom
@@ -278,19 +293,19 @@ html(lang='en')
 			h3 Stretch
 			div(bow)
 				div(flex='stretch')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3')
+					.b.wow.bounceIn(col='3')
+					.b.wow.bounceIn(col='3')
+					.b.wow.bounceIn(col='3')
+					.b.wow.bounceIn(col='3')
 
 		section#baseline.helpers.atts
 			h3 Baseline
 			div(bow)
 				div(flex='baseline')
-					.b.wow.slideInDown(col='3') 1
-					.b.wow.slideInDown(col='3') 2
-					.b.wow.slideInDown(col='3') 3
-					.b.wow.slideInDown(col='3') 4
+					.b.wow.flipInX(col='3') 1
+					.b.wow.flipInX(col='3') 2
+					.b.wow.flipInX(col='3') 3
+					.b.wow.flipInX(col='3') 4
 
 		h2 Column Overrides
 
@@ -300,7 +315,7 @@ html(lang='en')
 				div(flex='bottom')
 					.b.wow.slideInDown(col='3')
 					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3 middle') *
+					.b.wow.slideInUp.alt(col='3 top') *
 					.b.wow.slideInDown(col='3')
 
 		section#self-middle.helpers.atts
@@ -309,35 +324,35 @@ html(lang='en')
 				div(flex='bottom')
 					.b.wow.slideInDown(col='3')
 					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3 middle') *
+					.b.wow.flipInX.alt(col='3 middle') *
 					.b.wow.slideInDown(col='3')
 
 		section#self-bottom.helpers.atts
 			h3 Self Bottom
 			div(bow)
 				div(flex='top')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3 bottom') *
-					.b.wow.slideInDown(col='3')
+					.b.wow.slideInUp(col='3')
+					.b.wow.slideInUp(col='3')
+					.b.wow.slideInDown.alt(col='3 bottom') *
+					.b.wow.slideInUp(col='3')
 
 		section#self-stretch.helpers.atts
 			h3 Self Stretch
 			div(bow)
 				div(flex='top')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3 stretch') *
-					.b.wow.slideInDown(col='3')
+					.b.wow.slideInUp(col='3')
+					.b.wow.slideInUp(col='3')
+					.b.wow.bounceIn.alt(col='3 stretch') *
+					.b.wow.slideInUp(col='3')
 
 		section#self-baseline.helpers.atts
 			h3 Self Baseline
 			div(bow)
 				div(flex='middle')
-					.b.wow.slideInDown(col='3') 1
-					.b.wow.slideInDown(col='3') 2
-					.b.wow.slideInDown(col='3 baseline') 3*
-					.b.wow.slideInDown(col='3') 4
+					.b.wow.flipInX(col='3') 1
+					.b.wow.flipInX(col='3') 2
+					.b.wow.flipInX.alt(col='3 baseline') 3
+					.b.wow.flipInX(col='3') 4
 
 		h2 Rows
 
@@ -345,19 +360,19 @@ html(lang='en')
 			h3 Row (Default)
 			div(bow)
 				div(flex='row')
-					.b.wow.slideInDown(col='3') 1
-					.b.wow.slideInDown(col='3') 2
-					.b.wow.slideInDown(col='3') 3
-					.b.wow.slideInDown(col='3') 4
+					.b.wow.slideInRight(col='3') 1
+					.b.wow.slideInRight(col='3') 2
+					.b.wow.slideInRight(col='3') 3
+					.b.wow.slideInRight(col='3') 4
 
 		section#rowrev.helpers.atts
 			h3 Row-Reverse
 			div(bow)
 				div(flex='rowrev')
-					.b.wow.slideInDown(col='3') 1
-					.b.wow.slideInDown(col='3') 2
-					.b.wow.slideInDown(col='3') 3
-					.b.wow.slideInDown(col='3') 4
+					.b.wow.slideInLeft(col='3') 1
+					.b.wow.slideInLeft(col='3') 2
+					.b.wow.slideInLeft(col='3') 3
+					.b.wow.slideInLeft(col='3') 4
 
 		h2 Columns
 
@@ -365,10 +380,10 @@ html(lang='en')
 			h3 Vertical
 			div(bow)
 				div(flex='vert')
-					.b.wow.slideInUp(col='10') 1
-					.b.wow.slideInUp(col='8') 2
-					.b.wow.slideInUp(col='6') 3
-					.b.wow.slideInUp(col='4') 4
+					.b.wow.slideInDown(col='10') 1
+					.b.wow.slideInDown(col='8') 2
+					.b.wow.slideInDown(col='6') 3
+					.b.wow.slideInDown(col='4') 4
 
 		section#vertrev.helpers.atts
 			h3 Vertical Reverse
@@ -383,10 +398,10 @@ html(lang='en')
 			h3 Vertical Center
 			div(bow)
 				div(flex='vert center')
-					.b.wow.slideInUp(col='10') 1
-					.b.wow.slideInUp(col='8') 2
-					.b.wow.slideInUp(col='6') 3
-					.b.wow.slideInUp(col='4') 4
+					.b.wow.zoomIn(col='10') 1
+					.b.wow.zoomIn(col='8') 2
+					.b.wow.zoomIn(col='6') 3
+					.b.wow.zoomIn(col='4') 4
 
 		section#vert-right.helpers.atts
 			h3 Vertical Right
@@ -397,50 +412,89 @@ html(lang='en')
 					.b.wow.slideInUp(col='6') 3
 					.b.wow.slideInUp(col='4') 4
 
+		section#vert-self-left.helpers.atts
+			h3 Vertical Self Left
+			div(bow)
+				div(flex='vert right')
+					.b.wow.slideInUp(col='10') 1
+					.b.wow.slideInUp(col='8') 2
+					.b.wow.slideInUp.alt(col='6 left') 3
+					.b.wow.slideInUp(col='4') 4
+
+		section#vert-self-center.helpers.atts
+			h3 Vertical Self Center
+			div(bow)
+				div(flex='vert right')
+					.b.wow.slideInUp(col='10') 1
+					.b.wow.slideInUp(col='8') 2
+					.b.wow.slideInUp.alt(col='6 center') 3
+					.b.wow.slideInUp(col='4') 4
+					
+		section#vert-self-right.helpers.atts
+			h3 Vertical Self Right
+			div(bow)
+				div(flex='vert left')
+					.b.wow.slideInUp(col='10') 1
+					.b.wow.slideInUp(col='8') 2
+					.b.wow.slideInUp.alt(col='6 right') 3
+					.b.wow.slideInUp(col='4') 4
+
 		h2 Wrapping Rows
 
 		section#wrap.helpers.atts
 			h3 Wrap
 			div(bow)
 				div(flex='wrap')
+					.b.wow.fadeInRight(col='4') 1
+					.b.wow.fadeInRight(col='8') 2
+					.b.wow.fadeInRight(col='7', data-wow-delay="500ms") 3
+					.b.wow.fadeInRight(col='5', data-wow-delay="500ms") 4
+
+		section#wrap-margin.helpers.atts
+			h3 Wrap Margins
+			div(bow)
+				div(flex='wrap left')
 					.b.wow.zoomIn(col='6') 1
 					.b.wow.zoomIn(col='6') 2
 					.b.wow.zoomIn(col='7') 3
 					.b.wow.zoomIn(col='3') 4
-
-			h3 Responsive Wrap*
-			div(bow)
-				div(flex='left' flex-sml='wrap')
+				div(flex='wrap left')
 					.b.wow.zoomIn(col='6') 1
 					.b.wow.zoomIn(col='6') 2
-					.b.wow.zoomIn(col='7 first') 3
+					.b.wow.zoomIn.alt(col='7 flush') 3
 					.b.wow.zoomIn(col='3') 4
-
-			h3 Responsive WrapRev*
-			div(bow)
-				div(flex='right')
-					.b.wow.zoomIn(col='6') 1
-					.b.wow.zoomIn(col='6 last') 2
-					.b.wow.zoomIn(col='7') 3
-					.b.wow.zoomIn(col='3 last') 4
 
 		section#wraprev.helpers.atts
 			h3 Wrap Reverse
 			div(bow)
 				div(flex='wraprev')
-					.b.wow.zoomIn(col='6') 1
-					.b.wow.zoomIn(col='6') 2
-					.b.wow.zoomIn(col='7') 3
-					.b.wow.zoomIn(col='3') 4
+					.b.wow.fadeInRight(col='4') 1
+					.b.wow.fadeInRight(col='8') 2
+					.b.wow.fadeInLeft(col='7', data-wow-delay="500ms") 3
+					.b.wow.fadeInLeft(col='5', data-wow-delay="500ms") 4
+
+		section#wraprev-margin.helpers.atts
+			h3 Wrap Reverse Margins
+			div(bow)
+				div(flex='right')
+					.b.wow.fadeInLeft(col='6') 1
+					.b.wow.fadeInLeft(col='6') 2
+					.b.wow.fadeInLeft(col='7', data-wow-delay="500ms") 3
+					.b.wow.fadeInLeft(col='3', data-wow-delay="500ms") 4
+				div(flex='right')
+					.b.wow.fadeInLeft(col='6') 1
+					.b.wow.fadeInLeft.alt(col='6 last') 2
+					.b.wow.fadeInLeft(col='7', data-wow-delay="500ms") 3
+					.b.wow.fadeInLeft.alt(col='3 last', data-wow-delay="500ms") 4
 
 		section#nowrap.helpers.atts
 			h3 No Wrap
 			div(bow)
 				div(flex='nowrap')
-					.b.wow.zoomIn(col='5')
-					.b.wow.zoomIn(col='3')
-					.b.wow.zoomIn(col='11')
-					.b.wow.zoomIn(col='4')
+					.b.wow.bounceIn(col='5')
+					.b.wow.bounceIn(col='3')
+					.b.wow.bounceIn(col='11')
+					.b.wow.bounceIn(col='4')
 
 		h2 Fill
 
@@ -448,44 +502,93 @@ html(lang='en')
 			h3 Fill Cols
 			div(bow)
 				div(flex='fill')
-					.b.wow.zoonIn(col='4')
-					.b.wow.zoonIn.alt(col='4')
-					.b.wow.zoonIn(col='4')
+					.b.wow.bounceIn(col='4')
+					.b.wow.bounceIn.alt(col='4')
+					.b.wow.bounceIn(col='4')
+			div(bow)
+				div(flex='fill')
+					.b.wow.bounceIn(col='2')
+					.b.wow.bounceIn.alt(col='2')
+					.b.wow.bounceIn(col='2')
+					.b.wow.bounceIn.alt(col='2')
+					.b.wow.bounceIn(col='2')
+					.b.wow.bounceIn.alt(col='2')
+			div(bow)
+				div(flex='fill')
+					.b.wow.bounceIn(col='6')
+					.b.wow.bounceIn.alt(col='4')
 
 		section#fill-cols.helpers
 			h3 Fill Single Col
 			div(bow)
 				div(flex)
-					.b.wow.zoonIn(col='2')
-					.b.wow.zoonIn(col='2 fill') *
-					.b.wow.zoonIn(col='2')
-					.b.wow.zoonIn(col='2')
-					.b.wow.zoonIn(col='2 fill') *
-					.b.wow.zoonIn(col='2')
+					.b.wow.zoomIn(col='2')
+					.b.wow.zoomIn(col='2')
+					.b.wow.zoomIn(col='2')
+					.b.wow.zoomIn(col='2')
+					.b.wow.zoomIn(col='2')
+					.b.wow.zoomIn(col='2')
 				div(flex)
-					.b.wow.zoonIn(col='2')
-					.b.wow.zoonIn(col='2')
-					.b.wow.zoonIn(col='2')
-					.b.wow.zoonIn(col='2')
-					.b.wow.zoonIn(col='2')
-					.b.wow.zoonIn(col='2')
+					.b.wow.zoomIn(col='2')
+					.b.wow.bounceIn.alt(col='2 fill') *
+					.b.wow.zoomIn(col='2')
+					.b.wow.zoomIn(col='2')
+					.b.wow.bounceIn.alt(col='2 fill') *
+					.b.wow.zoomIn(col='2')
 			div(bow)
 				div(flex)
-					.b.wow.zoonIn(col='9 fill') *
-					.b.wow.zoonIn(col='3')
+					.b.wow.zoomIn(col='9')
+					.b.wow.zoomIn(col='3')
 				div(flex)
-					.b.wow.zoonIn(col='9')
-					.b.wow.zoonIn(col='3')
+					.b.wow.bounceIn.alt(col='9 fill') *
+					.b.wow.zoomIn(col='3')
 			div(bow)
 				div.atts(flex='left')
-					.b.wow.zoonIn(col='3')
-					.b.wow.zoonIn.alt(col='4 fill') *
-					.b.wow.zoonIn(col='3')
-				div(flex)
-					.b.wow.zoonIn(col='3')
-					.b.wow.zoonIn(col='4')
-					.b.wow.zoonIn(col='3')
+					.b.wow.zoomIn(col='3')
+					.b.wow.zoomIn(col='4')
+					.b.wow.zoomIn(col='3')
+				div.atts(flex='left')
+					.b.wow.zoomIn(col='3')
+					.b.wow.bounceIn.alt(col='4 fill') *
+					.b.wow.zoomIn(col='3')
+			div(bow)
+				div.atts(flex='right')
+					.b.wow.zoomIn(col='3')
+					.b.wow.zoomIn(col='4')
+					.b.wow.zoomIn(col='3')
+				div.atts(flex='right')
+					.b.wow.zoomIn(col='3')
+					.b.wow.bounceIn.alt(col='4 fill') *
+					.b.wow.zoomIn(col='3')
+			div(bow)
+				div.atts(flex='between')
+					.b.wow.zoomIn(col='3')
+					.b.wow.zoomIn(col='4')
+					.b.wow.zoomIn(col='3')
+				div.atts(flex='between')
+					.b.wow.zoomIn(col='3')
+					.b.wow.bounceIn.alt(col='4 fill') *
+					.b.wow.zoomIn(col='3')
 
 		h2 Responsive
+
+		section#responsive.helpers
+			h3 Responsive Flex
+			div(bow)#responsive-flex
+				div(flex='around' flex-sml='center' flex-med='between' flex-lrg='left')
+					.b.wow.zoomIn(col='3')
+					.b.wow.zoomIn(col='3')
+					.b.wow.zoomIn(col='3')
+
+			h3 Responsive Cols
+			div(bow)#responsive-cols
+				div(flex)
+					.b.wow.zoomIn(col='12' col-sml='5' col-med='8' col-lrg='5' col-xlg='10')
+					.b.wow.zoomIn(col='12' col-sml='4' col-med='4' col-lrg='7' col-xlg='2')
+				div(flex)
+					.b.wow.zoomIn(col='12' col-sml='6' col-med='3')
+					.b.wow.zoomIn(col='12' col-sml='6' col-med='3')
+					.b.wow.zoomIn(col='12' col-sml='6' col-med='3')
+					.b.wow.zoomIn(col='12' col-sml='6' col-med='3')
 
 		h2#play Playground

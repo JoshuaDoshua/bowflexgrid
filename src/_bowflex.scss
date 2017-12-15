@@ -46,6 +46,7 @@
 		justify-content: space-between;
 		align-items: flex-start;
 
+		// TODO ADD FLUSH RULES
 		padding-left: #{$mobilePadding};
 		padding-right: #{$mobilePadding};
 		@include respond($main) {
@@ -114,6 +115,11 @@
 	[col#{$size}~="bottom"] 			{ align-self: flex-end; }
 	[col#{$size}~="stretch"] 			{ align-self: stretch; }
 	[col#{$size}~="baseline"] 		{ align-self: baseline; }
+	[flex#{$size}~="vert"]				{
+		[col#{$size}~="left"]				{ align-self: flex-start; }
+		[col#{$size}~="center"]			{ align-self: center; }
+		[col#{$size}~="right"]			{ align-self: flex-end; }
+	}
 
 	// sizes
 	[col#{$size}="0"] { display: none; }
@@ -133,6 +139,10 @@
 			}
 
 			// gutters
+			// TODO fix full width gutter
+			// TODO this only does margin rules for flex-lrg col-lrg
+			//      not for flex-lrg col
+			// needs to be moved up
 			[flex#{$size}~="left"] &,
 			[flex#{$size}~="center"] & {
 				margin-left: $gutter;
@@ -149,7 +159,7 @@
 			// see wrap 6 6 7 3
 
 			// override for wraps
-			&[col~="first"] { margin-left: 0; }
+			&[col~="flush"] { margin-left: 0; }
 			&[col~="last"] { margin-right: 0; }
 
 			// natural vertical spacing

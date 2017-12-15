@@ -67,5 +67,5 @@ gulp.task('default', ['grid','docs'])
 gulp.task('watch', () => {
 	gulp.watch('./src/**/*.{sass,scss}', ['grid'])
 	gulp.watch('./demo/_demo.scss', ['demo:styles'])
-	gulp.watch('./demo/index.pug', ['demo:pug'])
+	gulp.watch('./demo/_index.pug', ['demo:pug'])
 })

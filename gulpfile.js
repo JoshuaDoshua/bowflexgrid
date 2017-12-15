@@ -33,25 +33,25 @@ gulp.task('docs', () => {
 	gulp.src('./src/**/*.{sass,scss}')
 		.pipe($.plumber({errorHandler: onError}))
 		.pipe(require('sassdoc')({
-			kest: './docs/',
+			dest: './docs/',
 			groups: { slug: "Title", helpers: "Helpers" }
 		}))
 		.pipe($.notify('BowFlex Docs Updated'))
 })
 
 gulp.task('demo:styles', () => {
-	return gulp.src('./demo/_demo.scss')
+	gulp.src('demo/_demo.scss')
 		.pipe($.plumber({errorHandler: onError}))
 		.pipe($.debug({showCount: false}))
 		.pipe($.postcss(processors))
 		.pipe($.rename('demo.min.css'))
-		.pipe(gulp.dest('./demo/'))
+		.pipe(gulp.dest('./demo'))
 		.pipe($.debug({showCount: false}))
 		.pipe($.notify('Demo Styles Updated'))
 })
 
 gulp.task('demo:pug', () => {
-	gulp.src('./demo/index.pug')
+	gulp.src('demo/_index.pug')
 		.pipe($.plumber({errorHandler: onError}))
 		.pipe($.debug({showCount: false}))
 		.pipe($.rename('index.html'))

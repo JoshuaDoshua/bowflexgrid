@@ -76,15 +76,11 @@
 	// just a container, without flex rules
 	[flex#{$size}~="container"]		{ display: block; }
 
-	// direction
-	[flex#{$size}~="row"]					{ flex-direction: row; }
-	[flex#{$size}~="rowrev"]			{ flex-direction: row-reverse; }
-	[flex#{$size}~="vert"]				{ flex-direction: column; }
-	[flex#{$size}~="vertrev"]			{ flex-direction: column-reverse; }
 	// wrap
 	[flex#{$size}~="wrap"]				{ flex-wrap: wrap; }
 	[flex#{$size}~="nowrap"]			{ flex-wrap: nowrap; }
 	[flex#{$size}~="wraprev"] 		{ flex-wrap: wrap-reverse; }
+
 	// horizontal alignment
 	[flex#{$size}~="left"]				{ justify-content: flex-start; }
 	[flex#{$size}~="center"] 			{ justify-content: center; }
@@ -92,27 +88,15 @@
 	[flex#{$size}~="between"] 		{ justify-content: space-between; }
 	[flex#{$size}~="around"] 			{ justify-content: space-around; }
 
-	// TODO MOVE TO COLUMN DECLARATION
-	// horizontal alignment gutters
-	[flex#{$size}~="left"] [col],
-	[flex#{$size}~="center"] [col] {
-		margin-left: $gutter;
-		&:first-child { margin-left: 0; }
-	}
-	[flex#{$size}~="right"] [col] {
-		margin-right: $gutter;
-		&:last-child { margin-left: 0; }
-	}
+	// direction
+	[flex#{$size}~="row"]					{ flex-direction: row; }
+	[flex#{$size}~="rowrev"]			{ flex-direction: row-reverse; }
 
-	// TODO
-	// [flex#{$size}~="fill"] [col] { margin-left: 0; margin-right: 0; }
-	// [flex#{$size}~="rowrev"] [col] {
-	// 	&:first-of-type { margin-left: $gutter; }
-	// 	&:last-of-type { margin-left: 0; }
-	// }
-	// [flex#{$size}~="vertical"] [col] { margin-left: 0; margin-right: 0; }
+	[flex#{$size}~="vert"]				{ flex-direction: column;
+		&[flex#{$size}~="center"]		{ align-items: center; }
+		&[flex#{$size}~="right"]		{ align-items: flex-end; } }
 
-	// [data-flex#{$size}~="flush"] [data-col] { margin-right: 0; }
+	[flex#{$size}~="vertrev"]			{ flex-direction: column-reverse; }
 
 	// vertical alignment
 	[flex#{$size}~="top"] 				{ align-items: flex-start; }
@@ -121,7 +105,7 @@
 	[flex#{$size}~="stretch"] 		{ align-items: stretch; }
 	[flex#{$size}~="baseline"] 		{ align-items: baseline; }
 
-	// @TODO: Does not include the "align-content" rules
+	// TODO: Does not include the "align-content" rules
 
 	// columns
 	// alignments
@@ -133,6 +117,7 @@
 
 	// sizes
 	[col#{$size}="0"] { display: none; }
+
 	$i: $cols;
 	@while $i > 0 {
 		// column
@@ -147,14 +132,41 @@
 				flex-basis: 100%;
 			}
 
-			// dont do gutter if fluid
-			// use on first column in row
-			&[col~="fluid"] { flex-basis: #{percentage($i / $cols)}; }
+			// gutters
+			[flex#{$size}~="left"] &,
+			[flex#{$size}~="center"] & {
+				margin-left: $gutter;
+				&:first-child { margin-left: 0; }
+			}
+			// alt gutter
+			[flex#{$size}~="right"] & {
+				margin-right: $gutter;
+				&:last-child { margin-left: 0; }
+			}
+			
+			// TODO add flush to override
+			// calc ?
+			// see wrap 6 6 7 3
+
+			// override for wraps
+			&[col~="first"] { margin-left: 0; }
+			&[col~="last"] { margin-right: 0; }
 
 			// natural vertical spacing
 			[flex#{$size}~="vert"] &,
 			[flex#{$size}~="vertrev"] & {
 				width: #{percentage($i / $cols)};
+				margin-left: 0;
+				margin-right: 0;
+			}
+
+			// dont do gutter if fluid
+			// use on first column in row
+			[flex~="fill"] &,
+			&[col~="fill"] {
+				flex-basis: #{percentage($i / $cols)};
+				margin-left: 0;
+				margin-right: 0;
 			}
 
 		}

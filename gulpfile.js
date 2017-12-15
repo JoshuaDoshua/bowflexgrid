@@ -1,5 +1,5 @@
 var gulp = require('gulp')
-var $ = require('gulp-load-plugins')()
+var $ = require('gulp-load-plugins')({camelize: true})
 require('gulp-stats')(gulp)
 
 var onError = (err) => {
@@ -20,13 +20,16 @@ var processors = [
 gulp.task('grid', () => {
 	gulp.src('./src/bowflex.scss')
 		.pipe($.plumber({errorHandler: onError}))
-		.pipe($.debug({showCount: false}))
+		.pipe($.debug({title: 'src: ', showCount: false}))
 		.pipe($.sass())
 		.pipe($.postcss(processors))
 		.pipe($.rename('bowflex.min.css'))
 		.pipe(gulp.dest('./dist'))
-		.pipe($.debug({showCount: false}))
-		.pipe($.notify('BowFlex System Updated'))
+		.pipe($.debug({title: 'dest: ', showCount: false}))
+		.pipe($.notify({
+			message: 'BowFlex System Updated',
+			onLast: true
+		}))
 })
 
 gulp.task('docs', () => {
@@ -39,33 +42,37 @@ gulp.task('docs', () => {
 		.pipe($.notify('BowFlex Docs Updated'))
 })
 
-gulp.task('demo:styles', () => {
-	gulp.src('demo/_demo.scss')
+gulp.task('guide:styles', () => {
+	return gulp.src('./guide/guide.scss')
 		.pipe($.plumber({errorHandler: onError}))
-		.pipe($.debug({showCount: false}))
+		.pipe($.debug({title: 'src: ', showCount: false}))
+		.pipe($.sass())
 		.pipe($.postcss(processors))
-		.pipe($.rename('demo.min.css'))
-		.pipe(gulp.dest('./demo'))
-		.pipe($.debug({showCount: false}))
-		.pipe($.notify('Demo Styles Updated'))
+		.pipe($.rename('guide.min.css'))
+		.pipe(gulp.dest('./guide'))
+		.pipe($.debug({title: 'dest: ', showCount: false}))
+		.pipe($.notify({
+			message: 'Demo Styles Updated',
+			onLast: true
+		}))
 })
 
-gulp.task('demo:pug', () => {
-	gulp.src('demo/_index.pug')
+gulp.task('guide:pug', () => {
+	gulp.src('./guide/index.pug')
 		.pipe($.plumber({errorHandler: onError}))
-		.pipe($.debug({showCount: false}))
+		.pipe($.debug({title: 'src: ', showCount: false}))
 		.pipe($.rename('index.html'))
 		.pipe($.pug())
-		.pipe(gulp.dest('./demo'))
-		.pipe($.debug({showCount: false}))
+		.pipe(gulp.dest('./guide'))
+		.pipe($.debug({title: 'dest: ', showCount: false}))
 		.pipe($.notify('Demo Template Updated'))
 })
 
-gulp.task('demo', ['demo:styles','demo:pug'])
+gulp.task('guide', ['guide:styles','guide:pug'])
 gulp.task('default', ['grid','docs'])
 
 gulp.task('watch', () => {
 	gulp.watch('./src/**/*.{sass,scss}', ['grid'])
-	gulp.watch('./demo/_demo.scss', ['demo:styles'])
-	gulp.watch('./demo/_index.pug', ['demo:pug'])
+	gulp.watch('./guide/guide.scss', ['guide:styles'])
+	gulp.watch('./guide/index.pug', ['guide:pug'])
 })

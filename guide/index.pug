@@ -19,7 +19,7 @@ html(lang='en')
 			type='text/css'
 		)
 		link(
-			href='demo.min.css',
+			href='guide.min.css',
 			rel='stylesheet',
 			type='text/css'
 		)
@@ -35,7 +35,7 @@ html(lang='en')
 			type='text/javascript'
 		)
 		script(
-			src='demo.js'
+			src='guide.js'
 			type='text/javascript'
 		)
 		
@@ -92,21 +92,9 @@ html(lang='en')
 			h3 Even
 			div(bow)
 				div(flex)
-					- var n = 0;
-					while n < 12
-						.b.wow.zoomIn(col='1')
-						- n++
-			div(bow)
-				div(flex)
 					- var n = 0
-					while n < 6
-						.b.wow.zoomIn(col='2')
-						- n++
-			div(bow)
-				div(flex)
-					- var n = 0
-					while n < 4
-						.b.wow.zoomIn(col='3')
+					while n < 2
+						.b.wow.zoomIn(col='6')
 						- n++
 			div(bow)
 				div(flex)
@@ -117,8 +105,20 @@ html(lang='en')
 			div(bow)
 				div(flex)
 					- var n = 0
-					while n < 2
-						.b.wow.zoomIn(col='6')
+					while n < 4
+						.b.wow.zoomIn(col='3')
+						- n++
+			div(bow)
+				div(flex)
+					- var n = 0
+					while n < 6
+						.b.wow.zoomIn(col='2')
+						- n++
+			div(bow)
+				div(flex)
+					- var n = 0;
+					while n < 12
+						.b.wow.zoomIn(col='1')
 						- n++
 
 		section#compliment.helpers
@@ -380,7 +380,7 @@ html(lang='en')
 			h3 Vertical
 			div(bow)
 				div(flex='vert')
-					.b.wow.slideInDown(col='10') 1
+					.b.wow.slideInTop(col='10') 1
 					.b.wow.slideInDown(col='8') 2
 					.b.wow.slideInDown(col='6') 3
 					.b.wow.slideInDown(col='4') 4
@@ -407,37 +407,37 @@ html(lang='en')
 			h3 Vertical Right
 			div(bow)
 				div(flex='vert right')
-					.b.wow.slideInUp(col='10') 1
-					.b.wow.slideInUp(col='8') 2
-					.b.wow.slideInUp(col='6') 3
-					.b.wow.slideInUp(col='4') 4
+					.b.wow.slideInDown(col='10') 1
+					.b.wow.slideInDown(col='8') 2
+					.b.wow.slideInDown(col='6') 3
+					.b.wow.slideInDown(col='4') 4
 
 		section#vert-self-left.helpers.atts
 			h3 Vertical Self Left
 			div(bow)
 				div(flex='vert right')
-					.b.wow.slideInUp(col='10') 1
-					.b.wow.slideInUp(col='8') 2
-					.b.wow.slideInUp.alt(col='6 left') 3
-					.b.wow.slideInUp(col='4') 4
+					.b.wow.slideInDown(col='10') 1
+					.b.wow.slideInDown(col='8') 2
+					.b.wow.slideInDown.alt(col='6 left') 3
+					.b.wow.slideInDown(col='4') 4
 
 		section#vert-self-center.helpers.atts
 			h3 Vertical Self Center
 			div(bow)
 				div(flex='vert right')
-					.b.wow.slideInUp(col='10') 1
-					.b.wow.slideInUp(col='8') 2
-					.b.wow.slideInUp.alt(col='6 center') 3
-					.b.wow.slideInUp(col='4') 4
+					.b.wow.slideInDown(col='10') 1
+					.b.wow.slideInDown(col='8') 2
+					.b.wow.slideInDown.alt(col='6 center') 3
+					.b.wow.slideInDown(col='4') 4
 					
 		section#vert-self-right.helpers.atts
 			h3 Vertical Self Right
 			div(bow)
 				div(flex='vert left')
-					.b.wow.slideInUp(col='10') 1
-					.b.wow.slideInUp(col='8') 2
-					.b.wow.slideInUp.alt(col='6 right') 3
-					.b.wow.slideInUp(col='4') 4
+					.b.wow.slideInDown(col='10') 1
+					.b.wow.slideInDown(col='8') 2
+					.b.wow.slideInDown.alt(col='6 right') 3
+					.b.wow.slideInDown(col='4') 4
 
 		h2 Wrapping Rows
 
@@ -483,9 +483,9 @@ html(lang='en')
 					.b.wow.fadeInLeft(col='3', data-wow-delay="500ms") 4
 				div(flex='right')
 					.b.wow.fadeInLeft(col='6') 1
-					.b.wow.fadeInLeft.alt(col='6 last') 2
+					.b.wow.fadeInLeft.alt(col='6 flush') 2
 					.b.wow.fadeInLeft(col='7', data-wow-delay="500ms") 3
-					.b.wow.fadeInLeft.alt(col='3 last', data-wow-delay="500ms") 4
+					.b.wow.fadeInLeft.alt(col='3 flush', data-wow-delay="500ms") 4
 
 		section#nowrap.helpers.atts
 			h3 No Wrap
@@ -520,21 +520,6 @@ html(lang='en')
 
 		section#fill-cols.helpers
 			h3 Fill Single Col
-			div(bow)
-				div(flex)
-					.b.wow.zoomIn(col='2')
-					.b.wow.zoomIn(col='2')
-					.b.wow.zoomIn(col='2')
-					.b.wow.zoomIn(col='2')
-					.b.wow.zoomIn(col='2')
-					.b.wow.zoomIn(col='2')
-				div(flex)
-					.b.wow.zoomIn(col='2')
-					.b.wow.bounceIn.alt(col='2 fill') *
-					.b.wow.zoomIn(col='2')
-					.b.wow.zoomIn(col='2')
-					.b.wow.bounceIn.alt(col='2 fill') *
-					.b.wow.zoomIn(col='2')
 			div(bow)
 				div(flex)
 					.b.wow.zoomIn(col='9')
@@ -575,10 +560,10 @@ html(lang='en')
 		section#responsive.helpers
 			h3 Responsive Flex
 			div(bow)#responsive-flex
-				div(flex='around' flex-sml='center' flex-med='between' flex-lrg='left')
-					.b.wow.zoomIn(col='3')
-					.b.wow.zoomIn(col='3')
-					.b.wow.zoomIn(col='3')
+				div(flex='around' flex-sml='center' flex-med='between' flex-lrg='left' flex-xlg='right')
+					.b.wow.zoomIn(col='1')
+					.b.wow.zoomIn(col='1')
+					.b.wow.zoomIn(col='1')
 
 			h3 Responsive Cols
 			div(bow)#responsive-cols
@@ -586,9 +571,40 @@ html(lang='en')
 					.b.wow.zoomIn(col='12' col-sml='5' col-med='8' col-lrg='5' col-xlg='10')
 					.b.wow.zoomIn(col='12' col-sml='4' col-med='4' col-lrg='7' col-xlg='2')
 				div(flex)
-					.b.wow.zoomIn(col='12' col-sml='6' col-med='3')
-					.b.wow.zoomIn(col='12' col-sml='6' col-med='3')
-					.b.wow.zoomIn(col='12' col-sml='6' col-med='3')
-					.b.wow.zoomIn(col='12' col-sml='6' col-med='3')
+					.b.wow.zoomIn(col='12' col-sml='6' col-med='3' col-lrg='6' col-xlg='3')
+					.b.wow.zoomIn(col='12' col-sml='6' col-med='3' col-lrg='6' col-xlg='3')
+					.b.wow.zoomIn(col='12' col-sml='6' col-med='3' col-lrg='6' col-xlg='3')
+					.b.wow.zoomIn(col='12' col-sml='6' col-med='3' col-lrg='6' col-xlg='3')
+
+			h3 Hiding a Col
+			div(bow)#responsive-hide-up
+				div(flex)
+					.b.wow.zoomIn(col='12')
+					.b.wow.zoomIn(col='0' col-sml='12')
+					.b.wow.zoomIn(col='0' col-med='12')
+					.b.wow.zoomIn(col='0' col-lrg='12')
+					.b.wow.zoomIn(col='0' col-xlg='12')
+			div(bow)#responsive-hide-down
+				div(flex)
+					.b.wow.zoomIn(col='12')
+					.b.wow.zoomIn(col='12' col-sml='0')
+					.b.wow.zoomIn(col='12' col-med='0')
+					.b.wow.zoomIn(col='12' col-lrg='0')
+					.b.wow.zoomIn(col='12' col-xlg='0')
+			div(bow)#responsive-hide-between
+				div(flex)
+					.b.wow.zoomIn(col='12')
+					.b.wow.zoomIn(col='0' col-sml='12' col-med='0')
+					.b.wow.zoomIn(col='0' col-med='12' col-lrg='0')
+					.b.wow.zoomIn(col='0' col-lrg='12' col-xlg='0')
+
+		h2 Overrides
+
+		section#overrids.helpers
+			h3 Self
+			h3 Flush Containers
+			h3 Flush Cols
+			h3 Fill Containers
+			h3 Fill Cols
 
 		h2#play Playground

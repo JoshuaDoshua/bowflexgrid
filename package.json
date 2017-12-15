@@ -20,22 +20,23 @@
   },
   "homepage": "http://joshuadoshua.github.io/bowflexgrid/",
   "devDependencies": {
-    "autoprefixer": "^7.1.5",
-    "cssnano": "^3.5.1",
+    "autoprefixer": "^7.2.3",
+    "cssnano": "^3.10.0",
     "gulp": "^3.9.1",
     "gulp-debug": "^3.1.0",
+    "gulp-debug-streams": "^3.0.0",
     "gulp-load-plugins": "^1.5.0",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^7.0.0",
     "gulp-pug": "^3.3.0",
-    "gulp-pug2": "0.0.2",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-stats": "^0.0.4",
+    "gulp-tap": "^1.0.1",
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
-    "sassdoc": "^2.3.0"
+    "sassdoc": "^2.5.0"
   },
   "dependencies": {}
 }

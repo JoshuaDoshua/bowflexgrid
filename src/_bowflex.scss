@@ -2,9 +2,7 @@
 
 @import "utility";
 
-////
 /// @group BowFlexGrid
-////
 
 [bow],
 [flex],
@@ -83,11 +81,18 @@
 	[flex#{$size}~="wraprev"] 		{ flex-wrap: wrap-reverse; }
 
 	// horizontal alignment
-	[flex#{$size}~="left"]				{ justify-content: flex-start; }
-	[flex#{$size}~="center"] 			{ justify-content: center; }
-	[flex#{$size}~="right"] 			{ justify-content: flex-end; }
 	[flex#{$size}~="between"] 		{ justify-content: space-between; }
 	[flex#{$size}~="around"] 			{ justify-content: space-around; }
+	[flex#{$size}~="left"]				{ justify-content: flex-start; }
+	[flex#{$size}~="center"] 			{ justify-content: center; }
+	// horizontal alignment left gutters
+	[flex#{$size}~="left"],
+	[flex#{$size}~="center"] {
+		[col] { margin-left: $gutter; &:first-child { margin-left: 0; } }
+	}
+	[flex#{$size}~="right"] 			{ justify-content: flex-end; 
+		// horizontal alignment right gutters
+		[col] { margin-right: $gutter; &:last-child {margin-right: 0;} } }
 
 	// direction
 	[flex#{$size}~="row"]					{ flex-direction: row; }
@@ -138,30 +143,6 @@
 				flex-basis: 100%;
 			}
 
-			// gutters
-			// TODO fix full width gutter
-			// TODO this only does margin rules for flex-lrg col-lrg
-			//      not for flex-lrg col
-			// needs to be moved up
-			[flex#{$size}~="left"] &,
-			[flex#{$size}~="center"] & {
-				margin-left: $gutter;
-				&:first-child { margin-left: 0; }
-			}
-			// alt gutter
-			[flex#{$size}~="right"] & {
-				margin-right: $gutter;
-				&:last-child { margin-left: 0; }
-			}
-			
-			// TODO add flush to override
-			// calc ?
-			// see wrap 6 6 7 3
-
-			// override for wraps
-			&[col~="flush"] { margin-left: 0; }
-			&[col~="last"] { margin-right: 0; }
-
 			// natural vertical spacing
 			[flex#{$size}~="vert"] &,
 			[flex#{$size}~="vertrev"] & {
@@ -169,6 +150,9 @@
 				margin-left: 0;
 				margin-right: 0;
 			}
+
+			// overrides
+			&[col~="flush"] { margin-left: 0; margin-right: 0;  }
 
 			// dont do gutter if fluid
 			// use on first column in row

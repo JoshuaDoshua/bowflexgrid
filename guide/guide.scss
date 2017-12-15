@@ -1,0 +1,211 @@
+@import "../src/_utility.scss";
+
+$space: 20px;
+
+$bps: (
+	sml: 505px, // < large phone / small tablet
+	med: 768px, // common tablet
+	lrg: 1024px, // large tablet / small desktop
+	xlg: 1400px // large desktop >
+);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all ease 450ms;
+}
+
+body {
+  font-family: "Source Code Pro", "monospace";
+  text-align: center;
+  margin-bottom: 50vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+  p { color: red; }
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Lato', 'sans-serif';
+  text-transform: uppercase;
+  font-weight:300;
+}
+
+h1 {
+  margin: $space auto;
+}
+h2 {
+  margin: #{$space * 2} auto;
+  padding: #{$space * 3} 0;
+  background: powderblue;
+}
+h3 {
+  padding: #{$space * 1.5};
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  margin: #{$space * 2} auto;
+}
+
+[flex] { overflow: hidden; }
+.b {
+  background: powderblue;
+  padding: 1em;
+  line-height: 0;
+
+  #nowrap &:nth-child(even),
+  &.alt { background: paleturquoise; }
+}
+
+.helpers {
+  [bow], [flex] { padding-top: 30px; }
+  [bow], [col] { margin-bottom: $space; }
+  [bow] {
+    margin-top: $space;
+    margin-bottom: $space;
+    padding-bottom: $space;
+    &:hover {
+      opacity: 1;
+      background: rgba(0,0,0,0.05); 
+      [flex] { background: rgba(0,0,0,0.05); }
+      [col] { color: transparent; }
+			&::after,
+      [flex]::after, [col]::after { opacity: 1; }
+    }
+  }
+  [bow], [flex], [col] {
+    position: relative;
+    &::after {
+      display: block;
+      position: absolute;
+      top: 6px;
+      left: 4px;
+      opacity: 0;
+      font-size: 12px;
+      width: 100%;
+      pointer-events: none;
+      color: black;
+    }
+  }
+  [bow]::after { content: '<div bow>'; }
+  [flex]::after { content: '<div flex>'; }
+  [col]::after {
+    content: '<div col="'attr(col)'">'; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+	[col="1"]::after { content: 'col=1'; }
+  &.atts [flex]::after,
+  .atts[flex]::after { content: '<div flex="'attr(flex)'">'; }
+}
+
+// vertical / self alingments
+[col]:nth-child(1) {
+  #top &, #self-top &,
+  #middle &, #self-middle &,
+  #bottom &, #self-bottom &,
+  #stretch &, #self-stretch &,
+  #baseline &, #self-baseline & { height: 120px; }
+}
+[col]:nth-child(2) {
+  #top &, #self-top &,
+  #middle &, #self-middle &,
+  #bottom &, #self-bottom &,
+  #stretch &, #self-stretch &,
+  #baseline &, #self-baseline & { height: 80px; }
+}
+[col]:nth-child(3) {
+  #top &, #self-top &,
+  #middle &, #self-middle &,
+  #bottom &, #self-bottom &,
+  #stretch &, #self-stretch &,
+  #baseline &, #self-baseline & { height: 40px; }
+}
+[col]:nth-child(4) {
+  #top &, #self-top &,
+  #middle &, #self-middle &,
+  #bottom &, #self-bottom &,
+  #stretch &, #self-stretch &,
+  #baseline &, #self-baseline & { height: 100px; }
+}
+
+#responsive {
+  [bow], [flex] { background: rgba(0,0,0,0.05); }
+  [bow]::after,
+  [flex]::after,
+  [col]:not(.default)::after { opacity: 1; }
+
+  &-flex [flex]::after {
+    content: '<div flex="'attr(flex)'">';
+    @include respond(sml) { content: '<div flex-sml="'attr(flex-sml)'">'; }
+    @include respond(med) { content: '<div flex-med="'attr(flex-med)'">'; }
+    @include respond(lrg) { content: '<div flex-lrg="'attr(flex-lrg)'">'; }
+    @include respond(xlg) { content: '<div flex-xlg="'attr(flex-xlg)'">'; }
+  }
+  &-cols [col]::after {
+    content: '<div col="'attr(col)'">';
+    @include respond(sml) { content: '<div col-sml="'attr(col-sml)'">'; }
+    @include respond(med) { content: '<div col-med="'attr(col-med)'">'; }
+    @include respond(lrg) { content: '<div col-lrg="'attr(col-lrg)'">'; }
+    @include respond(xlg) { content: '<div col-xlg="'attr(col-xlg)'">'; }
+  }
+	&-hide {
+		&-up {
+			[col] { background: transparent; border: 1px dashed gray; opacity: 0.25; }
+			[col="12"] { background: powderblue; border: none; opacity: 1; }
+			[col-sml] {
+				&::after { content: '<div col="'attr(col)'" col-sml="'attr(col-sml)'">'; }
+				@include respond(sml) { background: powderblue; border: none; opacity: 1; }
+			}
+			[col-med] {
+				&::after { content: '<div col="'attr(col)'" col-med="'attr(col-med)'">'; }
+				@include respond(med) { background: powderblue; border: none; opacity: 1; }
+			}
+			[col-lrg] {
+				&::after { content: '<div col="'attr(col)'" col-lrg="'attr(col-lrg)'">'; }
+				@include respond(lrg) { background: powderblue; border: none; opacity: 1; }
+			}
+			[col-xlg] {
+				&::after { content: '<div col="'attr(col)'" col-xlg="'attr(col-xlg)'">'; }
+				@include respond(xlg) { background: powderblue; border: none; opacity: 1; }
+			}
+		}
+		&-down {
+			[col] { background: transparent; border: 1px dashed gray; opacity: 0.25; }
+			[col]:first-of-type { background: powderblue; border: none; opacity: 1; }
+			[col-sml] {
+				&::after { content: '<div col="'attr(col)'" col-sml="'attr(col-sml)'">'; }
+				@include respond(sml,max) { background: powderblue; border: none; opacity: 1; }
+			}
+			[col-med] {
+				&::after { content: '<div col="'attr(col)'" col-med="'attr(col-med)'">'; }
+				@include respond(med,max) { background: powderblue; border: none; opacity: 1; }
+			}
+			[col-lrg] {
+				&::after { content: '<div col="'attr(col)'" col-lrg="'attr(col-lrg)'">'; }
+				@include respond(lrg,max) { background: powderblue; border: none; opacity: 1; }
+			}
+			[col-xlg] {
+				&::after { content: '<div col="'attr(col)'" col-xlg="'attr(col-xlg)'">'; }
+				@include respond(xlg,max) { background: powderblue; border: none; opacity: 1; }
+			}
+		}
+		&-between {
+			[col] { background: transparent; border: 1px dashed gray; opacity: 0.25; }
+			[col="12"] { background: powderblue; border: none; opacity: 1; }
+			[col-sml][col-med] {
+				&::after { content: '<div col="'attr(col)'" col-sml="'attr(col-sml)'" col-med="'attr(col-med)'">'; }
+				@include respondBetween(sml,med) { background: powderblue; border: none; opacity: 1; }
+			}
+			[col-med][col-lrg] {
+				&::after { content: '<div col="'attr(col)'" col-med="'attr(col-med)'" col-lrg="'attr(col-lrg)'">'; }
+				@include respondBetween(med,lrg) { background: powderblue; border: none; opacity: 1; }
+			}
+			[col-lrg][col-xlg] {
+				&::after { content: '<div col="'attr(col)'" col-lrg="'attr(col-lrg)'" col-xlg="'attr(col-xlg)'">'; }
+				@include respondBetween(lrg,xlg) { background: powderblue; border: none; opacity: 1; }
+			}
+		}
+	}
+	[col] { display: block !important; width: 100% !important; }
+}

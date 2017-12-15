@@ -293,3 +293,68 @@ flex-basis: 100%;
 ---
 
 **Pull requests for bugs and enhancements welcome!**
+
+
+
+# GUIDE OUTLINE
+
+## Default
+
+## Columns
+
+### Common
+### Even
+### Complimentary
+
+## Direction
+### Row
+### Row Reverse
+### Wrap
+### Wrap Reverse
+### No Wrap
+### Column
+### Column Reverse
+
+## Horizontal Alignment
+### Left
+### Center
+### Right
+### Around
+### Between
+
+## Horizontal Column Alignment
+### Left
+### Center
+### Right
+
+## Vertical Alignment
+### Top
+### Middle
+### Bottom
+### Stretch
+### Baseline
+
+## Column Alignments
+### Self Top
+### Self Middle
+### Self Bottom
+### Self Stretch
+### Self Baseline
+### Column Self Left
+### Column Self Center
+### Column Self Right
+
+## Gutter Overrides
+### Flush Row
+### Flush Column
+### Fill Row
+### Fill Column
+### Wrap Margins (? same as flush?)
+### Wrap Reverse Margins
+
+## Responsive
+### Flex
+### Col
+### Hidden
+
+

@@ -3,10 +3,10 @@
 $space: 20px;
 
 $bps: (
-	sml: 505px, // < large phone / small tablet
-	med: 768px, // common tablet
-	lrg: 1024px, // large tablet / small desktop
-	xlg: 1400px // large desktop >
+sml: 505px, // < large phone / small tablet
+med: 768px, // common tablet
+lrg: 1024px, // large tablet / small desktop
+xlg: 1400px // large desktop >
 );
 
 * {
@@ -65,7 +65,7 @@ h3 {
     padding-bottom: $space;
     &:hover {
       opacity: 1;
-      background: rgba(0,0,0,0.05); 
+      background: rgba(0,0,0,0.05);
       [flex] { background: rgba(0,0,0,0.05); }
       [col] { color: transparent; }
       &::after,
@@ -90,7 +90,7 @@ h3 {
   [bow]::after { content: '<div bow>'; }
   [flex]::after { content: '<div flex>'; }
   [col]::after {
-    content: '<div col="'attr(col)'">'; 
+    content: '<div col="'attr(col)'">';
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -114,7 +114,7 @@ $selfs: (1,120,40),
     #stretch &, #self-stretch &,
     #baseline &, #self-baseline & { min-height: #{$min}px; }
     #baseline & {
-      padding-top: #{$pad}px; 
+      padding-top: #{$pad}px;
       &::before { height: #{$pad}px; }
     }
 
@@ -154,63 +154,63 @@ $selfs: (1,120,40),
     @include respond(lrg) { content: '<div col-lrg="'attr(col-lrg)'">'; }
     @include respond(xlg) { content: '<div col-xlg="'attr(col-xlg)'">'; }
   }
-	&-hide {
-		&-up {
-			[col] { background: transparent; border: 1px dashed gray; opacity: 0.25; }
-			[col="12"] { background: powderblue; border: none; opacity: 1; }
-			[col-sml] {
-				&::after { content: '<div col="'attr(col)'" col-sml="'attr(col-sml)'">'; }
-				@include respond(sml) { background: powderblue; border: none; opacity: 1; }
-			}
-			[col-med] {
-				&::after { content: '<div col="'attr(col)'" col-med="'attr(col-med)'">'; }
-				@include respond(med) { background: powderblue; border: none; opacity: 1; }
-			}
-			[col-lrg] {
-				&::after { content: '<div col="'attr(col)'" col-lrg="'attr(col-lrg)'">'; }
-				@include respond(lrg) { background: powderblue; border: none; opacity: 1; }
-			}
-			[col-xlg] {
-				&::after { content: '<div col="'attr(col)'" col-xlg="'attr(col-xlg)'">'; }
-				@include respond(xlg) { background: powderblue; border: none; opacity: 1; }
-			}
-		}
-		&-down {
-			[col] { background: transparent; border: 1px dashed gray; opacity: 0.25; }
-			[col]:first-of-type { background: powderblue; border: none; opacity: 1; }
-			[col-sml] {
-				&::after { content: '<div col="'attr(col)'" col-sml="'attr(col-sml)'">'; }
-				@include respond(sml,max) { background: powderblue; border: none; opacity: 1; }
-			}
-			[col-med] {
-				&::after { content: '<div col="'attr(col)'" col-med="'attr(col-med)'">'; }
-				@include respond(med,max) { background: powderblue; border: none; opacity: 1; }
-			}
-			[col-lrg] {
-				&::after { content: '<div col="'attr(col)'" col-lrg="'attr(col-lrg)'">'; }
-				@include respond(lrg,max) { background: powderblue; border: none; opacity: 1; }
-			}
-			[col-xlg] {
-				&::after { content: '<div col="'attr(col)'" col-xlg="'attr(col-xlg)'">'; }
-				@include respond(xlg,max) { background: powderblue; border: none; opacity: 1; }
-			}
-		}
-		&-between {
-			[col] { background: transparent; border: 1px dashed gray; opacity: 0.25; }
-			[col="12"] { background: powderblue; border: none; opacity: 1; }
-			[col-sml][col-med] {
-				&::after { content: '<div col="'attr(col)'" col-sml="'attr(col-sml)'" col-med="'attr(col-med)'">'; }
-				@include respondBetween(sml,med) { background: powderblue; border: none; opacity: 1; }
-			}
-			[col-med][col-lrg] {
-				&::after { content: '<div col="'attr(col)'" col-med="'attr(col-med)'" col-lrg="'attr(col-lrg)'">'; }
-				@include respondBetween(med,lrg) { background: powderblue; border: none; opacity: 1; }
-			}
-			[col-lrg][col-xlg] {
-				&::after { content: '<div col="'attr(col)'" col-lrg="'attr(col-lrg)'" col-xlg="'attr(col-xlg)'">'; }
-				@include respondBetween(lrg,xlg) { background: powderblue; border: none; opacity: 1; }
-			}
-		}
-	}
-	[col] { display: block !important; width: 100% !important; }
+  &-hide {
+    &-up {
+      [col] { background: transparent; border: 1px dashed gray; opacity: 0.25; }
+      [col="12"] { background: powderblue; border: none; opacity: 1; }
+      [col-sml] {
+	&::after { content: '<div col="'attr(col)'" col-sml="'attr(col-sml)'">'; }
+	@include respond(sml) { background: powderblue; border: none; opacity: 1; }
+      }
+      [col-med] {
+	&::after { content: '<div col="'attr(col)'" col-med="'attr(col-med)'">'; }
+	@include respond(med) { background: powderblue; border: none; opacity: 1; }
+      }
+      [col-lrg] {
+	&::after { content: '<div col="'attr(col)'" col-lrg="'attr(col-lrg)'">'; }
+	@include respond(lrg) { background: powderblue; border: none; opacity: 1; }
+      }
+      [col-xlg] {
+	&::after { content: '<div col="'attr(col)'" col-xlg="'attr(col-xlg)'">'; }
+	@include respond(xlg) { background: powderblue; border: none; opacity: 1; }
+      }
+    }
+    &-down {
+      [col] { background: transparent; border: 1px dashed gray; opacity: 0.25; }
+      [col]:first-of-type { background: powderblue; border: none; opacity: 1; }
+      [col-sml] {
+	&::after { content: '<div col="'attr(col)'" col-sml="'attr(col-sml)'">'; }
+	@include respond(sml,max) { background: powderblue; border: none; opacity: 1; }
+      }
+      [col-med] {
+	&::after { content: '<div col="'attr(col)'" col-med="'attr(col-med)'">'; }
+	@include respond(med,max) { background: powderblue; border: none; opacity: 1; }
+      }
+      [col-lrg] {
+	&::after { content: '<div col="'attr(col)'" col-lrg="'attr(col-lrg)'">'; }
+	@include respond(lrg,max) { background: powderblue; border: none; opacity: 1; }
+      }
+      [col-xlg] {
+	&::after { content: '<div col="'attr(col)'" col-xlg="'attr(col-xlg)'">'; }
+	@include respond(xlg,max) { background: powderblue; border: none; opacity: 1; }
+      }
+    }
+    &-between {
+      [col] { background: transparent; border: 1px dashed gray; opacity: 0.25; }
+      [col="12"] { background: powderblue; border: none; opacity: 1; }
+      [col-sml][col-med] {
+	&::after { content: '<div col="'attr(col)'" col-sml="'attr(col-sml)'" col-med="'attr(col-med)'">'; }
+	@include respondBetween(sml,med) { background: powderblue; border: none; opacity: 1; }
+      }
+      [col-med][col-lrg] {
+	&::after { content: '<div col="'attr(col)'" col-med="'attr(col-med)'" col-lrg="'attr(col-lrg)'">'; }
+	@include respondBetween(med,lrg) { background: powderblue; border: none; opacity: 1; }
+      }
+      [col-lrg][col-xlg] {
+	&::after { content: '<div col="'attr(col)'" col-lrg="'attr(col-lrg)'" col-xlg="'attr(col-xlg)'">'; }
+	@include respondBetween(lrg,xlg) { background: powderblue; border: none; opacity: 1; }
+      }
+    }
+  }
+  [col] { display: block !important; width: 100% !important; }
 }

@@ -88,8 +88,7 @@ html(lang='en')
 
 		h2 Columns 
 
-		section#even.helpers
-			h3 Even
+		section#cols.helpers
 			div(bow)
 				div(flex)
 					- var n = 0
@@ -120,9 +119,6 @@ html(lang='en')
 					while n < 12
 						.b.wow.zoomIn(col='1')
 						- n++
-
-		section#compliment.helpers
-			h3 Complimentary
 			div(bow)
 				div(flex)
 					.b.wow.slideInLeft(col='1')
@@ -167,9 +163,6 @@ html(lang='en')
 				div(flex)
 					.b.wow.slideInLeft(col='11')
 					.b.wow.slideInRight(col='1')
-
-		section#common.helpers
-			h3 Common 
 			div(bow)
 				div(flex)
 					.b.wow.slideInLeft(col='9')
@@ -191,7 +184,7 @@ html(lang='en')
 					.b.wow.zoomIn(col='6')
 					.b.wow.slideInRight(col='3')
 
-		h2 Horizontal Alignment
+		h2 Justify-Content
 
 		section#left.helpers.atts
 			h3 Left Align
@@ -260,101 +253,111 @@ html(lang='en')
 					.b.wow.fadeInRight(col='2')
 					.b.wow.fadeInLeft(col='8')
 
-		h2 Vertical Alignment
+		h2 Align-Items
 
 		section#top.helpers.atts
 			h3 Top
 			div(bow)
 				div(flex='top')
-					.b.wow.slideInUp(col='3')
-					.b.wow.slideInUp(col='3')
-					.b.wow.slideInUp(col='3')
-					.b.wow.slideInUp(col='3')
+					.b.wow.slideInUp(col='2') 120
+					.b.wow.slideInUp(col='2') 40
+					.b.wow.slideInUp(col='2') 200
+					.b.wow.slideInUp(col='2') 80
+					.b.wow.slideInUp(col='2') 140
 
 		section#middle.helpers.atts
 			h3 Middle
 			div(bow)
 				div(flex='middle')
-					.b.wow.flipInX(col='3')
-					.b.wow.flipInX(col='3')
-					.b.wow.flipInX(col='3')
-					.b.wow.flipInX(col='3')
+					.b.wow.flipInX(col='2') 120
+					.b.wow.flipInX(col='2') 40
+					.b.wow.flipInX(col='2') 200
+					.b.wow.flipInX(col='2') 80
+					.b.wow.flipInX(col='2') 140
 
 		section#bottom.helpers.atts
 			h3 Bottom
 			div(bow)
 				div(flex='bottom')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3')
+					.b.wow.slideInDown(col='2') 120
+					.b.wow.slideInDown(col='2') 40
+					.b.wow.slideInDown(col='2') 200
+					.b.wow.slideInDown(col='2') 80
+					.b.wow.slideInDown(col='2') 140
 
 		section#stretch.helpers.atts
 			h3 Stretch
 			div(bow)
 				div(flex='stretch')
-					.b.wow.bounceIn(col='3')
-					.b.wow.bounceIn(col='3')
-					.b.wow.bounceIn(col='3')
-					.b.wow.bounceIn(col='3')
+					.b.wow.bounceIn(col='2') 120
+					.b.wow.bounceIn(col='2') 40
+					.b.wow.bounceIn(col='2') 200
+					.b.wow.bounceIn(col='2') 80
+					.b.wow.bounceIn(col='2') 140
 
 		section#baseline.helpers.atts
 			h3 Baseline
 			div(bow)
 				div(flex='baseline')
-					.b.wow.flipInX(col='3') 1
-					.b.wow.flipInX(col='3') 2
-					.b.wow.flipInX(col='3') 3
-					.b.wow.flipInX(col='3') 4
+					.b.wow.flipInX(col='2') 120
+					.b.wow.flipInX(col='2') 40
+					.b.wow.flipInX(col='2') 200
+					.b.wow.flipInX(col='2') 80
+					.b.wow.flipInX(col='2') 140
 
-		h2 Column Overrides
+		h2 Align-Self
 
 		section#self-top.helpers.atts
 			h3 Self Top
 			div(bow)
 				div(flex='bottom')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInUp.alt(col='3 top') *
-					.b.wow.slideInDown(col='3')
+					.b.wow.slideInDown(col='2') 120
+					.b.wow.slideInUp.alt(col='2 top') 40
+					.b.wow.slideInDown(col='2') 200
+					.b.wow.slideInDown(col='2') 80
+					.b.wow.slideInDown(col='2') 140
 
 		section#self-middle.helpers.atts
 			h3 Self Middle
 			div(bow)
 				div(flex='bottom')
-					.b.wow.slideInDown(col='3')
-					.b.wow.slideInDown(col='3')
-					.b.wow.flipInX.alt(col='3 middle') *
-					.b.wow.slideInDown(col='3')
+					.b.wow.slideInDown(col='2') 120
+					.b.wow.slideInDown.alt(col='2 middle') 40
+					.b.wow.slideInDown(col='2') 200
+					.b.wow.slideInDown(col='2') 80
+					.b.wow.slideInDown(col='2') 140
 
 		section#self-bottom.helpers.atts
 			h3 Self Bottom
 			div(bow)
 				div(flex='top')
-					.b.wow.slideInUp(col='3')
-					.b.wow.slideInUp(col='3')
-					.b.wow.slideInDown.alt(col='3 bottom') *
-					.b.wow.slideInUp(col='3')
+					.b.wow.slideInUp(col='2') 120
+					.b.wow.slideInUp.alt(col='2 bottom') 40
+					.b.wow.slideInUp(col='2') 200
+					.b.wow.slideInUp(col='2') 80
+					.b.wow.slideInUp(col='2') 140
 
 		section#self-stretch.helpers.atts
 			h3 Self Stretch
 			div(bow)
 				div(flex='top')
-					.b.wow.slideInUp(col='3')
-					.b.wow.slideInUp(col='3')
-					.b.wow.bounceIn.alt(col='3 stretch') *
-					.b.wow.slideInUp(col='3')
+					.b.wow.slideInUp(col='2') 120
+					.b.wow.slideInUp.alt(col='2 stretch') 40
+					.b.wow.slideInUp(col='2') 200
+					.b.wow.slideInUp(col='2') 80
+					.b.wow.slideInUp(col='2') 140
 
 		section#self-baseline.helpers.atts
 			h3 Self Baseline
 			div(bow)
 				div(flex='middle')
-					.b.wow.flipInX(col='3') 1
-					.b.wow.flipInX(col='3') 2
-					.b.wow.flipInX.alt(col='3 baseline') 3
-					.b.wow.flipInX(col='3') 4
+					.b.wow.flipInX(col='2') 120
+					.b.wow.flipInX.alt(col='2 baseline') 40
+					.b.wow.flipInX(col='2') 200
+					.b.wow.flipInX(col='2') 80
+					.b.wow.flipInX(col='2') 140
 
-		h2 Rows
+		h2 Flex-Direction
 
 		section#row.helpers.atts
 			h3 Row (Default)
@@ -374,8 +377,6 @@ html(lang='en')
 					.b.wow.slideInLeft(col='3') 3
 					.b.wow.slideInLeft(col='3') 4
 
-		h2 Columns
-
 		section#vert.helpers.atts
 			h3 Vertical
 			div(bow)
@@ -393,6 +394,8 @@ html(lang='en')
 					.b.wow.slideInUp(col='8') 2
 					.b.wow.slideInUp(col='6') 3
 					.b.wow.slideInUp(col='4') 4
+
+		h2 Flex-Direction / Justify-Content
 
 		section#vert-center.helpers.atts
 			h3 Vertical Center
@@ -439,7 +442,7 @@ html(lang='en')
 					.b.wow.slideInDown.alt(col='6 right') 3
 					.b.wow.slideInDown(col='4') 4
 
-		h2 Wrapping Rows
+		h2 Flex-Wrap
 
 		section#wrap.helpers.atts
 			h3 Wrap
@@ -496,7 +499,7 @@ html(lang='en')
 					.b.wow.bounceIn(col='11')
 					.b.wow.bounceIn(col='4')
 
-		h2 Fill
+		h2 Custom Overrides
 
 		section#fill-row.helpers.atts
 			h3 Fill Cols
@@ -514,9 +517,10 @@ html(lang='en')
 					.b.wow.bounceIn(col='2')
 					.b.wow.bounceIn.alt(col='2')
 			div(bow)
-				div(flex='fill')
-					.b.wow.bounceIn(col='6')
-					.b.wow.bounceIn.alt(col='4')
+				div(flex='left fill')
+					.b.wow.bounceIn(col='3')
+					.b.wow.bounceIn.alt(col='6')
+					.b.wow.bounceIn(col='2')
 
 		section#fill-cols.helpers
 			h3 Fill Single Col
@@ -555,7 +559,7 @@ html(lang='en')
 					.b.wow.bounceIn.alt(col='4 fill') *
 					.b.wow.zoomIn(col='3')
 
-		h2 Responsive
+		h2 Responsive Attributes
 
 		section#responsive.helpers
 			h3 Responsive Flex

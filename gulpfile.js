@@ -65,7 +65,10 @@ gulp.task('guide:pug', () => {
 		.pipe($.pug())
 		.pipe(gulp.dest('./guide'))
 		.pipe($.debug({title: 'dest: ', showCount: false}))
-		.pipe($.notify('Demo Template Updated'))
+		.pipe($.notify({
+			message: 'Guide Template Updated',
+			onLast: true
+		}))
 })
 
 gulp.task('guide', ['guide:styles','guide:pug'])

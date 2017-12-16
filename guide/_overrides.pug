@@ -1,0 +1,59 @@
+h2 Overrides
+
+section#fill-row.helpers.atts
+	h3 Fill Cols
+	div(bow)
+		div(flex='fill')
+			.b.wow.bounceIn(col='4')
+			.b.wow.bounceIn.alt(col='4')
+			.b.wow.bounceIn(col='4')
+	div(bow)
+		div(flex='fill')
+			.b.wow.bounceIn(col='2')
+			.b.wow.bounceIn.alt(col='2')
+			.b.wow.bounceIn(col='2')
+			.b.wow.bounceIn.alt(col='2')
+			.b.wow.bounceIn(col='2')
+			.b.wow.bounceIn.alt(col='2')
+	div(bow)
+		div(flex='left fill')
+			.b.wow.bounceIn(col='3')
+			.b.wow.bounceIn.alt(col='6')
+			.b.wow.bounceIn(col='2')
+
+section#fill-cols.helpers
+	h3 Fill Single Col
+	div(bow)
+		div(flex)
+			.b.wow.zoomIn(col='9')
+			.b.wow.zoomIn(col='3')
+		div(flex)
+			.b.wow.bounceIn.alt(col='9 fill') *
+			.b.wow.zoomIn(col='3')
+	div(bow)
+		div.atts(flex='left')
+			.b.wow.zoomIn(col='3')
+			.b.wow.zoomIn(col='4')
+			.b.wow.zoomIn(col='3')
+		div.atts(flex='left')
+			.b.wow.zoomIn(col='3')
+			.b.wow.bounceIn.alt(col='4 fill') *
+			.b.wow.zoomIn(col='3')
+	div(bow)
+		div.atts(flex='right')
+			.b.wow.zoomIn(col='3')
+			.b.wow.zoomIn(col='4')
+			.b.wow.zoomIn(col='3')
+		div.atts(flex='right')
+			.b.wow.zoomIn(col='3')
+			.b.wow.bounceIn.alt(col='4 fill') *
+			.b.wow.zoomIn(col='3')
+	div(bow)
+		div.atts(flex='between')
+			.b.wow.zoomIn(col='3')
+			.b.wow.zoomIn(col='4')
+			.b.wow.zoomIn(col='3')
+		div.atts(flex='between')
+			.b.wow.zoomIn(col='3')
+			.b.wow.bounceIn.alt(col='4 fill') *
+			.b.wow.zoomIn(col='3')

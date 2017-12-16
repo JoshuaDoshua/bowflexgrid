@@ -1,0 +1,43 @@
+h2 Responsive Attributes
+
+section#responsive.helpers
+	h3 Responsive Flex
+	div(bow)#responsive-flex
+		div(flex='around' flex-sml='center' flex-med='between' flex-lrg='left' flex-xlg='right')
+			.b.wow.zoomIn(col='1')
+			.b.wow.zoomIn(col='1')
+			.b.wow.zoomIn(col='1')
+
+	h3 Responsive Cols
+	div(bow)#responsive-cols
+		div(flex)
+			.b.wow.zoomIn(col='12' col-sml='5' col-med='8' col-lrg='5' col-xlg='10')
+			.b.wow.zoomIn(col='12' col-sml='4' col-med='4' col-lrg='7' col-xlg='2')
+		div(flex)
+			.b.wow.zoomIn(col='12' col-sml='6' col-med='3' col-lrg='6' col-xlg='3')
+			.b.wow.zoomIn(col='12' col-sml='6' col-med='3' col-lrg='6' col-xlg='3')
+			.b.wow.zoomIn(col='12' col-sml='6' col-med='3' col-lrg='6' col-xlg='3')
+			.b.wow.zoomIn(col='12' col-sml='6' col-med='3' col-lrg='6' col-xlg='3')
+
+	h3 Hiding a Col
+	div(bow)#responsive-hide-up
+		div(flex)
+			.b.wow.zoomIn(col='12')
+			.b.wow.zoomIn(col='0' col-sml='12')
+			.b.wow.zoomIn(col='0' col-med='12')
+			.b.wow.zoomIn(col='0' col-lrg='12')
+			.b.wow.zoomIn(col='0' col-xlg='12')
+	div(bow)#responsive-hide-down
+		div(flex)
+			.b.wow.zoomIn(col='12')
+			.b.wow.zoomIn(col='12' col-sml='0')
+			.b.wow.zoomIn(col='12' col-med='0')
+			.b.wow.zoomIn(col='12' col-lrg='0')
+			.b.wow.zoomIn(col='12' col-xlg='0')
+	div(bow)#responsive-hide-between
+		div(flex)
+			.b.wow.zoomIn(col='12')
+			.b.wow.zoomIn(col='0' col-sml='12' col-med='0')
+			.b.wow.zoomIn(col='0' col-med='12' col-lrg='0')
+			.b.wow.zoomIn(col='0' col-lrg='12' col-xlg='0')
+

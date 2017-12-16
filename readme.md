@@ -322,19 +322,19 @@ flex-basis: 100%;
 ### Around
 ### Between
 
-## Horizontal Column Alignment
+## Justify Content
 ### Left
 ### Center
 ### Right
 
-## Vertical Alignment
+## Align Items
 ### Top
 ### Middle
 ### Bottom
 ### Stretch
 ### Baseline
 
-## Column Alignments
+## Align Self
 ### Self Top
 ### Self Middle
 ### Self Bottom

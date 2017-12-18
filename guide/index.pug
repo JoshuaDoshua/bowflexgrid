@@ -41,24 +41,25 @@ html(lang='en')
 		
 	body
 
-		include _intro.pug
-		include _default.pug
 		include _columns.pug
 		include _justify-content.pug
+		include _flex-direction.pug
+		include _flex-wrap.pug
 		include _align-items.pug
 		include _align-self.pug
-		include _flex-direction.pug
-		include _column-justify-content.pug
-		include _flex-wrap.pug
 		include _responsive.pug
-		include _overrides.pug
-		include _other.pug
+		include _fluid.pug
+		include _flush.pug
+		include _fill.pug
 		include _playground.pug
 
-		h2 todo
-		section#overrids.helpers
-			h3 Self
-			h3 Flush Containers
-			h3 Flush Cols
-			h3 Fill Containers
-			h3 Fill Cols
+		br
+		br
+		hr
+		br
+		br
+
+		include _intro.pug
+		include _default.pug
+
+		p TODO add offsets

@@ -1,3 +1,18 @@
 h2 BowFlex Grid
 
 p intro
+
+section#example.helpers
+	div(bow)
+		div(flex='around middle' flex-med='between')
+			.b(col='5' col-med='4') Website
+			.b(col='2' col-med='0')
+				i.fa.fa-bars
+			.b(col='0' col-med='8')
+				- var n = 0
+				while n < 5
+					a(href='#') LINK
+					- n++
+
+
+

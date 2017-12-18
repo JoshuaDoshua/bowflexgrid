@@ -16,11 +16,10 @@
 /// @param {str} $outer [1600px] - the outer content wrapper breakpoint
 @mixin bowflex-grid($bps, $cols: 12, $gutter: 20px, $mobilePadding: 5%, $main: lrg, $outer: xlg) {
 
-	// calculate percentage based on
-	// # of cols and main container
-	$fullWidth: strip-unit(bp($main));
-	$colWidth: $cols / $fullWidth;
-	$colPerc: percentage($colWidth);
+	$main: bp($main);
+
+	$baseWidth: percentage((($main - (($cols - 1) * $gutter)) / $cols) / $main);
+	$gutter: percentage($gutter / $main);
 
 	[bow],
 	[flex] {
@@ -57,60 +56,83 @@
 	[flex~="fluid"] { max-width: 100%; }
 
 	// null - default, mobile first
-	@include flex-grid-size('', $cols, $colPerc, $gutter);
+	@include flex-grid-size('', $cols, $baseWidth, $gutter);
 
 	// create a set of rules for each breakpoint
 	// include a dash to prefix the flex"-key" & col-"key"
 	@each $key, $size in $bps {
 		@include respond($key) {
-			@include flex-grid-size("-#{$key}", $cols, $colPerc, $gutter);
+			@include flex-grid-size("-#{$key}", $cols, $baseWidth, $gutter);
 		}
 	}
 }
 
 // create a set of row rules for a given size
 // @private
-@mixin flex-grid-size($size, $cols, $colPerc, $gutter) {
+@mixin flex-grid-size($size, $cols, $baseWidth, $gutter) {
 
 	// just a container, without flex rules
 	[flex#{$size}~="container"]		{ display: block; }
 
-	// wrap
+	// flex-wrap
 	[flex#{$size}~="wrap"]				{ flex-wrap: wrap; }
 	[flex#{$size}~="nowrap"]			{ flex-wrap: nowrap; }
 	[flex#{$size}~="wraprev"] 		{ flex-wrap: wrap-reverse; }
 
-	// horizontal alignment
+	// justify-content
 	[flex#{$size}~="between"] 		{ justify-content: space-between; }
 	[flex#{$size}~="around"] 			{ justify-content: space-around; }
 	[flex#{$size}~="left"]				{ justify-content: flex-start; }
 	[flex#{$size}~="center"] 			{ justify-content: center; }
-	// horizontal alignment left gutters
-	[flex#{$size}~="left"],
-	[flex#{$size}~="center"] {
-		[col] { margin-left: $gutter; &:first-child { margin-left: 0; } }
-	}
-	[flex#{$size}~="right"] 			{ justify-content: flex-end; 
-		// horizontal alignment right gutters
-		[col] { margin-left: $gutter; &:last-child {margin-right: 0;} }
-	}
+	[flex#{$size}~="right"] 			{ justify-content: flex-end; }
 
-	// direction
+	// flex-direction
 	[flex#{$size}~="row"]					{ flex-direction: row; }
 	[flex#{$size}~="rowrev"]			{ flex-direction: row-reverse; }
-
-	[flex#{$size}~="vert"]				{ flex-direction: column;
-		&[flex#{$size}~="center"]		{ align-items: center; }
-		&[flex#{$size}~="right"]		{ align-items: flex-end; } }
-
+	[flex#{$size}~="vert"]				{ flex-direction: column; }
 	[flex#{$size}~="vertrev"]			{ flex-direction: column-reverse; }
 
-	// vertical alignment
+	// align-items
 	[flex#{$size}~="top"] 				{ align-items: flex-start; }
 	[flex#{$size}~="middle"] 			{ align-items: center; }
 	[flex#{$size}~="bottom"] 			{ align-items: flex-end; }
 	[flex#{$size}~="stretch"] 		{ align-items: stretch; }
 	[flex#{$size}~="baseline"] 		{ align-items: baseline; }
+	[flex#{$size}~="vert"],
+	[flex#{$size}~="vertrev"] {
+		&[flex#{$size}~="left"]			{ align-items: flex-start; }
+		&[flex#{$size}~="center"]		{ align-items: center; }
+		&[flex#{$size}~="right"]		{ align-items: flex-end; }
+	}
+
+	// gutter stuff
+	[flex#{$size}~="left"] [col],
+	[flex#{$size}~="center"] [col]{
+		margin-left: $gutter;
+		&:first-child { margin-left: 0; }
+	}
+	[flex#{$size}~="right"] [col] {
+		margin-left: 0;
+		margin-right: $gutter;
+		&:last-child { margin-right: 0; }
+	}
+	[flex#{$size}~="vert"][flex#{$size}~="left"] [col],
+	[flex#{$size}~="vertrev"][flex#{$size}~="left"] [col] {
+		margin-left: 0;
+	}
+	[flex#{$size}~="vert"][flex#{$size}~="center"] [col],
+	[flex#{$size}~="vertrev"][flex#{$size}~="center"] [col] {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	[flex#{$size}~="vert"][flex#{$size}~="right"] [col],
+	[flex#{$size}~="vertrev"][flex#{$size}~="right"] [col] {
+		margin-right: 0;
+	}
+	[flex#{$size}~="flush"] [col] {
+		margin-left: 0;
+		margin-right: 0;
+	}
 
 	// TODO: Does not include the "align-content" rules
 
@@ -132,38 +154,27 @@
 
 	$i: $cols;
 	@while $i > 0 {
+		// percentage($i / $cols) - for reference
+
+		$width: ($baseWidth * $i) + ($gutter * ($i - 1));
+
 		// column
 		[col#{$size}~="#{$i}"] {
-			// override any size="0"
-			display: block;
+			display: block; // override col=0
+			flex-basis: $width;
 
-			// calculate width
-			@if ($i < $cols) {
-				flex-basis: calc(#{percentage($i / $cols)} - #{$gutter});
-			} @else {
-				flex-basis: 100%;
+			// natural feeling columns
+			[flex~="vert"] &,
+			[flex~="vertrev"] & { width: $width; }
+
+			[flex#{$size}~="fill"] &,
+			&[col#{$size}~="fill"] {
+				flex-basis: percentage($i / $cols);
 			}
-
-			// natural vertical spacing
-			[flex#{$size}~="vert"] &,
-			[flex#{$size}~="vertrev"] & {
-				width: #{percentage($i / $cols)};
+			&[col#{$size}~="flush"] {
 				margin-left: 0;
 				margin-right: 0;
 			}
-
-			// overrides
-			&[col~="flush"] { margin-left: 0; margin-right: 0;  }
-
-			// dont do gutter if fluid
-			// use on first column in row
-			[flex~="fill"] &,
-			&[col~="fill"] {
-				flex-basis: #{percentage($i / $cols)};
-				margin-left: 0;
-				margin-right: 0;
-			}
-
 		}
 
 		$i: $i - 1;

@@ -1,1 +1,72 @@
 h2 Playground
+
+p TODO add resizable to the play cols
+p TODO add self opttions to play cols
+p TODO add ability to change breakpoints
+p TODO add grid (toggable) overlay to site
+
+br
+br
+br
+
+section#play-tools
+	div(bow)
+		div(flex)
+			#play-direction.play-tools-col
+				h4 Direction
+				select(name='direction')
+					option(value='row') Row
+					option(value='rowrev') Row Reverse
+					option(value='vert') Column
+					option(value='vertrev') Column Reverse
+			#play-wrap.play-tools-col
+				h4 Wrap
+				select(name='wrap')
+					option(value='wrap') Row
+					option(value='wraprev') Wrap Reverse
+					option(value='nowrap') No Wrap
+			#play-justify.play-tools-col
+				h4 Justify
+				select(name='justify')
+					option(value='between') Between
+					option(value='left') Left
+					option(value='center') Center
+					option(value='right') Right
+					option(value='around') Around
+			#play-align.play-tools-col
+				h4 Align
+				select(name='align')
+					option(value='top') Top
+					option(value='middle') Middle
+					option(value='bottom') Bottom
+					option(value='stretch') Stretch
+					option(value='baseline') Baseline
+			#play-fluid.play-tools-col
+				h4 Fluid
+				label#play-bow-fluid
+					input(type='checkbox' name='bow' value='fluid')
+					| Bow
+				label#play-flex-fluid
+					input(type='checkbox' value='fluid')
+					| Flex
+			#play-flush-fill.play-tools-col
+				h4 Overrides
+				label
+					input(type='checkbox' name='flush' value='flush')
+					| Flush
+				label
+					input(type='checkbox' name='fill' value='fill')
+					| Fill
+
+section#play.helpers.atts
+	div#play-bow(bow='')
+		div#play-flex(flex='row wrap between top')
+			- var n = 0
+			while n < 4
+				.b.play-col(col='1')
+					select
+						- var m = 1
+						while m < 13
+							option(value=m)=m
+							- m++
+				- n++

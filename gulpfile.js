@@ -21,7 +21,7 @@ gulp.task('grid', () => {
 	gulp.src('./src/bowflex.scss')
 		.pipe($.plumber({errorHandler: onError}))
 		.pipe($.debug({title: 'src: ', showCount: false}))
-		.pipe($.sass())
+		.pipe($.sass({errLogToConsole: true}))
 		.pipe($.postcss(processors))
 		.pipe($.rename('bowflex.min.css'))
 		.pipe(gulp.dest('./dist'))
@@ -30,6 +30,11 @@ gulp.task('grid', () => {
 			message: 'BowFlex System Updated',
 			onLast: true
 		}))
+})
+
+gulp.task('report', () => {
+	gulp.src('./dist/**/*.css')
+		.pipe($.sizereport())
 })
 
 gulp.task('docs', () => {
@@ -72,10 +77,10 @@ gulp.task('guide:pug', () => {
 })
 
 gulp.task('guide', ['guide:styles','guide:pug'])
-gulp.task('default', ['grid','docs'])
+gulp.task('default', ['grid','report'])
 
 gulp.task('watch', () => {
 	gulp.watch('./src/**/*.{sass,scss}', ['grid'])
 	gulp.watch('./guide/guide.scss', ['guide:styles'])
-	gulp.watch('./guide/index.pug', ['guide:pug'])
+	gulp.watch('./guide/**/*.pug', ['guide:pug'])
 })

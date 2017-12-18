@@ -85,6 +85,8 @@ h3 {
       width: 100%;
       pointer-events: none;
       color: black;
+			white-space: nowrap;
+			text-align: center;
     }
   }
   [bow]::after { content: '<div bow>'; }
@@ -213,4 +215,23 @@ $selfs: (1,120,40),
     }
   }
   [col] { display: block !important; width: 100% !important; }
+}
+
+#play {
+	[bow], [flex] { background: rgba(0,0,0,0.05); }
+	[bow]::after,
+	[flex]::after { opacity: 1; }
+	[col]::after { opacity: 0 !important; }
+
+	[col] {
+		resize: vertical;
+		opacity: 1 !important;
+		color: black !important;
+		&:nth-child(even) { min-height: 80px; }
+
+		label {
+			display: block;
+			font-size: 12px;
+		}
+	}
 }

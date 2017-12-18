@@ -92,7 +92,8 @@
 	}
 	[flex#{$size}~="right"] 			{ justify-content: flex-end; 
 		// horizontal alignment right gutters
-		[col] { margin-right: $gutter; &:last-child {margin-right: 0;} } }
+		[col] { margin-left: $gutter; &:last-child {margin-right: 0;} }
+	}
 
 	// direction
 	[flex#{$size}~="row"]					{ flex-direction: row; }

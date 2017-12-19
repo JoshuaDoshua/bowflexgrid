@@ -296,9 +296,9 @@ If key is defined in `$bps`, return the value. Otherwise return `$key`
 
 ## TODO
 
-- [ ] adjust .atts class to be on element only
-- [ ] update guide id's to be more explicit
-- [ ] finish playground
+- [ ] rewrite media query to be to/from
+- [ ] rework playground's javascript/selectors
+- [ref](https://github.com/sass-mq/sass-mq/blob/master/_mq.scss)
 - [ ] check wow bounceIn vs rubberBand
 - [ ] check stretch vs middle
 - [ ] write intro for guide

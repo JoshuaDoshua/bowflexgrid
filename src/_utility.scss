@@ -11,6 +11,16 @@
 	@return $key;
 }
 
+/**
+
+respond($from,$to,$type,$other)
+respondTo($to,$type,$other)
+respondFrom($from,$type,$other)
+
+@mixin respondFrom($from
+
+*/
+
 /// @content CSS rules inside the media query
 /// @group utility
 /// @param {str} $bp - Size value of media query

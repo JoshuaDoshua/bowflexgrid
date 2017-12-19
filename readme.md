@@ -196,13 +196,13 @@ $bps: (
 
 #### Size
 ```html
-<div col[-size]="[0-12]">
+<div col(-size)="[0-12]">
 ```
 > Setting to `0` will hide the column at that breakpoint
 
 #### Align-Self
 ```html
-<div col[-size]="[top|middle|bottom|stretch|baseline]">
+<div col(-size)="[top|middle|bottom|stretch|baseline]">
 ```
 
 ### Overrides
@@ -215,19 +215,19 @@ $bps: (
 
 #### Flush
 ```html
-<div flex[-size]="flush"></div>
+<div flex(-size)="flush"></div>
 ```
 ```html
-<div col[-size]="flush"></div>
+<div col(-size)="flush"></div>
 ```
 > Remove the `margin-left` and `margin-right` for all/individual col(s)
 
 #### Fill
 ```html
-<div flex[-size]="fill"></div>
+<div flex(-size)="fill"></div>
 ```
 ```html
-<div col[-size]="fill"></div>
+<div col(-size)="fill"></div>
 ```
 > Ignore the gutter in the col-width calculation for all/individual col(s)
 

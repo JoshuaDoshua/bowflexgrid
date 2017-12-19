@@ -1,19 +1,8 @@
-/// @group BowFlexUtility
-
-/// Remove the unit of a length
-/// @param {Number} $number - Number to remove unit from
-/// @return {Number} - Unitless number
-@function stripUnit($number) {
-	@if type-of($number) == 'number' and not unitless($number) {
-		@return $number / ($number * 0 + 1);
-	}
-	@return $number;
-}
-
-/// @content Retrieve a breakpoint from the $bps array
+/// Retrieve a breakpoint from the $bps array
+/// @group utility
 /// @param {str} $key - Array key
 /// @example
-/// bp(lrg)
+///	 bp(lrg)
 @function bp($key) {
 	@if map-has-key($bps, $key) {
 		@return map-get($bps, $key)
@@ -23,6 +12,7 @@
 }
 
 /// @content CSS rules inside the media query
+/// @group utility
 /// @param {str} $bp - Size value of media query
 /// @param {str} $direction [min] - min or max query
 /// @example
@@ -37,6 +27,7 @@
 }
 
 /// @content CSS Rules inside the media query
+/// @group utility
 /// @param {str} $min [med] - the minimum value
 /// @param {str} $max [lrg] - the maximum value
 /// @example

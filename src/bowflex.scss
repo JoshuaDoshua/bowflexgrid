@@ -1,5 +1,3 @@
-/// @group BowFlexGrid
-
 /*
 /// This is the base file for the dist BowFlexGrid
 /// Customizing: just copy this file, edit, and include in your build
@@ -8,13 +6,19 @@
 @import "_bowflex";
 
 /// Number of colunms in your layout
+/// @group grid-system
+/// @access public
 $columns: 12;
 
-///  Margin between columns (start/center/end)
+/// Margin between columns (start/center/end)
+/// @group grid-system
+/// @access public
 $gutter: 20px;
 $mobilePadding: 5%;
 
-/// @content Associative array of nicknames => breakpoints
+/// Associative array of nicknames => breakpoints
+/// @group grid-system
+/// @access public
 /// @example
 ///  <div flex="vertical" flex-sml="row wrap" flex-med="nowrap">
 ///  <div col="12" col-sml="6" col-med="4" col-lrg="3" col-xlg="2">

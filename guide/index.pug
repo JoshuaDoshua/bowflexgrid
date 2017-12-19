@@ -14,12 +14,12 @@ html(lang='en')
 			type='text/css'
 		)
 		link(
-			href='../dist/bowflex.min.css',
+			href='dist/bowflex.min.css',
 			rel='stylesheet',
 			type='text/css'
 		)
 		link(
-			href='guide.min.css',
+			href='guide/guide.min.css',
 			rel='stylesheet',
 			type='text/css'
 		)
@@ -35,12 +35,13 @@ html(lang='en')
 			type='text/javascript'
 		)
 		script(
-			src='guide.js'
+			src='guide/guide.js'
 			type='text/javascript'
 		)
 		
 	body
 
+		include _intro.pug
 		include _columns.pug
 		include _justify-content.pug
 		include _flex-direction.pug
@@ -49,17 +50,17 @@ html(lang='en')
 		include _align-self.pug
 		include _responsive.pug
 		include _fluid.pug
+		include _container.pug
 		include _flush.pug
 		include _fill.pug
 		include _playground.pug
 
-		br
-		br
-		hr
-		br
-		br
-
-		include _intro.pug
-		include _default.pug
-
-		p TODO add offsets
+		a.gaevt(
+			href='https://github.com/JoshuaDoshua/bowflexgrid/'
+			data-label='fork'
+			)
+			img(
+				style='position:fixed;top:0;right:0;border:0;'
+				src='https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67'
+				data-canonical-src='https://s3.amazonaws.com/github.com/ribbons/fork_me_right_gray_6d6d6d.png'
+			)

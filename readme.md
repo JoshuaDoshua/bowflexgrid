@@ -4,9 +4,33 @@
 
 BowFlex Grid is a customizable attribute-based grid system built with the flexbox model. 
 
-#### Why attributes?
 
-I have always found grid-systems, like Bootstrap, that use long-winded classes to get in the way of coding.
+## Features
+
+- Full FlexBox feature set (almost)
+	- order/grow/shrink aren't as necessary with a grid system
+	- align-content rules are superfluous as well and not included
+- SASS (scss) Based
+	- include in your own build
+- Completely Customizable
+	- define any number of breakpoints
+	- nickname them anything you like
+- Attribute based
+	- separate grid logic
+	- no more messy classes
+- Intuitive declarations
+	- `flex-start` === `flex='left'`
+	- `justify-content: center; align-items: center` === `flex='center middle'`
+- Handy, simple media query mixines
+- Mobile first
+
+
+## Helpful Links
+
+- [Checkout all the features in action](https://joshuadoshua.github.io/bowflexgrid)
+- [View the Sass-Docs](https://joshuadoshua.github.io/bowflexgrid/docs/)
+- [CSS-Tricks FlexBox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Learn about FlexBox with FlexBox Froggy](http://flexboxfroggy.com/)
 
 ## Installation
 
@@ -31,16 +55,8 @@ Include the following in a `_layout.scss` file:
 ```scss
 @import "path/to/node_modules/bowflexgrid/src/_bowflex.scss"
 
-// number of columns in grid
-$columns: 12;
-
-// spacing between columns
-$gutter: 20px;
-
-// padding-left/right below "lrg" breakpoing
-$mobilePadding: 5%;
-
 // key/size of breakpoints
+// global
 $bps: (
 	sml: 505px,
 	med: 768px,
@@ -49,12 +65,27 @@ $bps: (
 );
 
 // build the grid
-@include bowflex-grid($bps, $columns, $gutter, $mobilePadding, lrg, xlg);
+@include bowflex-grid($bps, $cols: 12, $gutter: 20px, $mobilePadding: 5%, $main: lrg, $outer: xlg);
 ```
-> Each `$bps` key will be used in the attributes to respond to breakpoints.
 
-> !NOTE: be sure to include `autoprefixer` in your sass build
+`$bps` - associative array of breakpoints, each key used to declare breakpoints
 
+`$cols` - number of columns in grid
+ 
+`$gutter` - spacing between columns
+ 
+`$mobilePadding` - padding-left/right below the main breakpoint
+ 
+`$main` - $bps key for main content wrapper,
+
+`$outer` - $bps key for outer content wrapper
+
+> :grey_exclamation: Be sure to include `autoprefixer` in your sass build
+>
+> Default uses sass & postcss[autoprefixer(> 2% browsers),cssnano]
+>
+> checkout the `gulpfile.js` grid task for full build process
+ 
 ## Usage
 
 #### Basic
@@ -68,7 +99,7 @@ $bps: (
 </div>
 ```
 
-#### Using Breakpoints
+#### With Breakpoints
 ```html
 <div bow>
 	<div flex="nowrap between middle" flex-med="wrap bottom">
@@ -78,27 +109,62 @@ $bps: (
 </div>
 ```
 
+### Default Bow/Flex Rules
+```css
+[bow] {
+	display: block;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1400px; /** $bps[xlg] */
+}
+[flex] {
+	display: flex;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1024px; /** $bps[lrg] */
+
+	flex: 0 1 auto;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+	
+	padding-left:  5%;  /** $mobilePadding */
+	padding-right: 5%; /** $mobilePadding */
+}
+@media screen and (min-width: 1024px) {
+	[flex] {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+```
+
+> Feel free to look around at `src/_bowflex.scss` to see how all of the rules work. It's pretty simple!
+
 ### Row Options
 
 #### Flex-Direction
 ```html
-<div flex[-size]="[row|rowrev|vert|vertrev]">
+<div flex(-size)="[row|rowrev|vert|vertrev]">
 ```
 > Using `vert` to avoid confusion with the grid col definitions
 
 #### Flex-Wrap
 ```html
-<div flex[-size]="[wrap|nowrap|wraprev]">
+<div flex(-size)="[wrap|nowrap|wraprev]">
 ```
 
 #### Justify-Content
 ```html
-<div flex[-size]="[left|center|right|between|around]">
+<div flex(-size)="[left|center|right|between|around]">
 ```
 
 #### Align-Items
 ```html
-<div flex[-size]="[top|middle|bottom|stretch|baseline]">
+<div flex(-size)="[top|middle|bottom|stretch|baseline]">
 ```
 
 #### Wrapper-Width Row
@@ -140,6 +206,12 @@ $bps: (
 ```
 
 ### Overrides
+
+#### Container
+```html
+<div flex="container"></div>
+```
+> Use `flex` as a simple container, without default flex rules
 
 #### Flush
 ```html
@@ -198,7 +270,7 @@ This produces:
 
 This package employs some handy mixins, depending on the `$bps` array, that  you can use throughout your project to maintain consistency among breakpoints.
 
-```scss
+```css
 @include respond($bp, $minOrMax) { [content] }
 ```
 
@@ -206,7 +278,7 @@ This package employs some handy mixins, depending on the `$bps` array, that  you
 
 `$minOrMax` : "min" (default) or "max" media query
 
-```scss
+```css
 @include respondBetween($min, $max) { [content] }
 ```
 
@@ -214,7 +286,7 @@ This package employs some handy mixins, depending on the `$bps` array, that  you
 
 `$max` : either the key in thr `$bps` array or a specific value
 
-```scss
+```css
 @include bp($key)
 ```
 
@@ -222,3 +294,11 @@ This package employs some handy mixins, depending on the `$bps` array, that  you
 
 If key is defined in `$bps`, return the value. Otherwise return `$key`
 
+## TODO
+
+- [ ] adjust .atts class to be on element only
+- [ ] update guide id's to be more explicit
+- [ ] finish playground
+- [ ] check wow bounceIn vs rubberBand
+- [ ] check stretch vs middle
+- [ ] write intro for guide

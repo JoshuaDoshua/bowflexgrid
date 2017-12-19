@@ -42,7 +42,11 @@ gulp.task('docs', () => {
 		.pipe($.plumber({errorHandler: onError}))
 		.pipe(require('sassdoc')({
 			dest: './docs/',
-			groups: { slug: "Title", helpers: "Helpers" }
+			groups: { 
+				"grid-system": 'Grid System',
+				utility: 'Utility'
+			}
+			//groups: { slug: "Title", helpers: "Helpers" }
 		}))
 		.pipe($.notify('BowFlex Docs Updated'))
 })
@@ -68,7 +72,7 @@ gulp.task('guide:pug', () => {
 		.pipe($.debug({title: 'src: ', showCount: false}))
 		.pipe($.rename('index.html'))
 		.pipe($.pug())
-		.pipe(gulp.dest('./guide'))
+		.pipe(gulp.dest('./'))
 		.pipe($.debug({title: 'dest: ', showCount: false}))
 		.pipe($.notify({
 			message: 'Guide Template Updated',

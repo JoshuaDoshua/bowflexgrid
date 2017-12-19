@@ -1,25 +1,26 @@
-// TODO , rework how gutters work to be more elegant
+@import "_utility";
 
-@import "utility";
-
-/// @group BowFlexGrid
-
-[bow],
-[flex],
-[col] { box-sizing: border-box; }
-
-/// @content Create the grid rules
-/// @param {array} $bps - Array of breakpoints with key values
+/// @content Create the grid system rules
+/// @group grid-system
+/// @access public
+/// @param {array} $bps - Array of breakpoints with key: values
 /// @param {int} $columns [12] - number of columns in your grid
-/// @param {int} $gutter [20px] - space between each column (use 0 for flush)
-/// @param {str} $main [1140px] - the main content wrapper breakpoint
-/// @param {str} $outer [1600px] - the outer content wrapper breakpoint
+/// @param {int} $gutter [20px] - space between each column
+/// @param {str} $main [lrg] - the main content wrapper breakpoint $bps key
+/// @param {str} $outer [xlg] - the outer content wrapper breakpoint $bps key
+/// @require $columns
 @mixin bowflex-grid($bps, $cols: 12, $gutter: 20px, $mobilePadding: 5%, $main: lrg, $outer: xlg) {
 
 	$main: bp($main);
+	$outer: bp($outer);
 
 	$baseWidth: percentage((($main - (($cols - 1) * $gutter)) / $cols) / $main);
 	$gutter: percentage($gutter / $main);
+
+	[bow],
+	[flex],
+	[col] { box-sizing: border-box; }
+
 
 	[bow],
 	[flex] {
@@ -30,12 +31,12 @@
 
 	[bow] {
 		display: block;
-	  max-width: #{bp($outer)};
+	  max-width: $outer;
 	}
 
 	[flex] {
 		display: flex;
-		max-width: #{bp($main)};
+		max-width: $main;
 
 		flex: 0 1 auto;
 		flex-direction: row;
@@ -50,6 +51,8 @@
 			padding-left: 0;
 			padding-right: 0;
 		}
+
+		&[flex~="container"] { display: block; }
 	}
 
 	[bow~="fluid"],
@@ -67,8 +70,9 @@
 	}
 }
 
-// create a set of row rules for a given size
-// @private
+/// Create a set of row rules for a given size
+/// @group grid-system
+/// @access private
 @mixin flex-grid-size($size, $cols, $baseWidth, $gutter) {
 
 	// just a container, without flex rules

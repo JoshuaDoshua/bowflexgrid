@@ -268,7 +268,7 @@ This produces:
 
 ## Mixins
 
-This package employs some handy mixins, depending on the `$bps` array, that  you can use throughout your project to maintain consistency among breakpoints.
+This package defines some handy mixins, depending on the `$bps` array, that you can use throughout your project to maintain consistency among breakpoints.
 
 ```css
 @include respond($bp, $minOrMax) { [content] }

@@ -1,12 +1,21 @@
 section#playground.helpers.atts
 	div#play-bow(bow='')
 		div#play-flex(flex='row wrap between top')
-			- var n = 0
-			while n < 4
-				.b.play-col(col='1')
+			- var n = 1
+			while n < 5
+				.b.play-col(col=n)
 					select
 						- var m = 1
 						while m < 13
-							option(value=m)=m
+							if m == n
+								option(value=m, selected)=m
+							else
+								option(value=m)=m
 							- m++
+					label
+						input(type='checkbox',value='flush')
+						span Flush
+					label
+						input(type='checkbox',value='fill')
+						span Fill
 				- n++

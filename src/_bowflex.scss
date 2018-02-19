@@ -111,7 +111,7 @@
 
 	// gutter stuff
 	[flex#{$size}~="left"] [col],
-	[flex#{$size}~="center"] [col]{
+	[flex#{$size}~="center"] [col] {
 		margin-left: $gutter;
 		&:first-child { margin-left: 0; }
 	}
@@ -119,6 +119,15 @@
 		margin-left: 0;
 		margin-right: $gutter;
 		&:last-child { margin-right: 0; }
+	}
+	[flex#{$size}~="rowrev"][flex#{$size}~="left"]:not([flex#{$size}~="flush"]) [col],
+	[flex#{$size}~="rowrev"][flex#{$size}~="center"] [col] {
+		&:first-child { margin-left: $gutter; }
+		&:last-child { margin-left: 0; }
+	}
+	[flex#{$size}~="rowrev"][flex#{$size}~="right"]:not([flex#{$size}~="flush"]) [col] {
+		&:last-child { margin-right: $gutter; }
+		&:first-child { margin-right: 0; }
 	}
 	[flex#{$size}~="vert"][flex#{$size}~="left"] [col],
 	[flex#{$size}~="vertrev"][flex#{$size}~="left"] [col] {
@@ -134,8 +143,12 @@
 		margin-right: 0;
 	}
 	[flex#{$size}~="flush"] [col] {
-		margin-left: 0;
-		margin-right: 0;
+		&,
+		&:first-child,
+		&:last-child {
+			margin-left: 0;
+			margin-right: 0;
+		}
 	}
 
 	// TODO: Does not include the "align-content" rules

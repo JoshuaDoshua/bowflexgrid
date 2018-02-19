@@ -1,18 +1,50 @@
 h2 BowFlex Grid
 
-p intro
-
-section#example.helpers
+section#intro
 	div(bow)
-		div(flex='around middle' flex-med='between')
-			.b(col='5' col-med='4') Website
-			.b(col='2' col-med='0')
-				i.fa.fa-bars
-			.b(col='0' col-med='8')
-				- var n = 0
-				while n < 5
-					a(href='#') LINK
-					- n++
-
-
-
+		div(flex='around')
+			div(col='4')
+				h4 About
+				ul
+					li FlexBox grid system
+					li Attribute based
+					li Mobile first
+					li SASS Mixins
+					li 
+						a(href='//github.com/joshuadoshua/bowflexgrid#readme' target='_blank') Customizable
+					li
+						| Full FlexBox capabilities&nbsp;
+						small **almost
+					li Built to handle Horizontal layout
+		div(flex='around')
+			div(col='4')
+				h4 Use default build if...
+				ul
+					li 12 Columns
+					li Basic Breakpoints
+					li 505 :: 768 :: 1024 :: 1400
+					li >2% browser support
+			div(col='4')
+				h4 Use custom build if...
+				ul
+					li <> 12 Columns
+					li Custom breakpoints
+					li Custom named breakpoints
+					li Advanced browser support
+			div(col='8')
+				h4 How to use Guide
+				ul
+					li Hovering over elements below will show the HTML
+					li 
+						a(href='#playground') Play around with options here
+			div(col='5')
+				h4 Flexbox Resources
+				ul
+					li
+						a(href='https://css-tricks.com/snippets/css/a-guide-to-flexbox/' target='_blank') CSS-Tricks Guide
+					li
+						a(href='https://joshuadoshua.github.io/bowflexgrid/docs/') SASS-Docs
+					li
+						a(href='https://github.com/JoshuaDoshua/bowflexgrid#readme') ReadMe on GitHub
+					li
+						a(href='http://flexboxfroggy.com/' target='_blank') Flexbox Froggy

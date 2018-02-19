@@ -2,62 +2,72 @@ h2 Playground
 
 section#play-tools
 	div(bow)
-		div(flex='center')
-			#play-direction.play-tools-col(col='3')
-				h4 Direction
-				select(name='direction')
-					option(value='row') Row
-					option(value='rowrev') Row Reverse
-					option(value='vert') Column
-					option(value='vertrev') Column Reverse
-			#play-wrap.play-tools-col(col='3')
-				h4 Wrap
-				select(name='wrap')
-					option(value='wrap') Row
-					option(value='wraprev') Wrap Reverse
-					option(value='nowrap') No Wrap
-			#play-justify.play-tools-col(col='3')
-				h4 Justify
-				select(name='justify')
-					option(value='between') Between
-					option(value='left') Left
-					option(value='center') Center
-					option(value='right') Right
-					option(value='around') Around
-			#play-align.play-tools-col(col='3')
-				h4 Align
-				select(name='align')
-					option(value='top') Top
-					option(value='middle') Middle
-					option(value='bottom') Bottom
-					option(value='stretch') Stretch
-					option(value='baseline') Baseline
-			#play-fluid.play-tools-col(col='2')
-				h4 Fluid
-				label#play-bow-fluid
-					input(type='checkbox' name='bow' value='fluid')
-					| Bow
-				label#play-flex-fluid
-					input(type='checkbox' value='fluid')
-					| Flex
-			#play-flush-fill.play-tools-col(col='2')
-				h4 Overrides
-				label
-					input(type='checkbox' name='flush' value='flush')
-					| Flush
-				label
-					input(type='checkbox' name='fill' value='fill')
-					| Fill
-			#play-col-add.play-tools-col(col='2')
-				h4 Columns
-				div(flex='nowrap')
-					button.play-btn#add(col='6')
-						| +
-					button.play-btn#remove(col='6')
-						| -
-			#play-col-tools.play-tools-col(col='2')
-				h4 Resize
-				div(flex='center')
-				button.play-btn#resize
-					| Toggle
+		div(flex='container')
+			table
+				tr
+					th Direction
+					td
+						select(name='direction')
+							option(value='') -
+							option(value='row') Row
+							option(value='rowrev') Row Reverse
+							option(value='vert') Column
+							option(value='vertrev') Column Reverse
+					th Wrap
+					td
+						select(name='wrap')
+							option(value='') -
+							option(value='wrap') Wrap
+							option(value='wraprev') Wrap Reverse
+							option(value='nowrap') No Wrap
+				tr
+					th Justify
+					td
+						select(name='justify')
+							option(value='') -
+							option(value='between') Between
+							option(value='left') Left
+							option(value='center') Center
+							option(value='right') Right
+							option(value='around') Around
+					th Align
+					td
+						select(name='align')
+							option(value='') -
+							option(value='top') Top
+							option(value='middle') Middle
+							option(value='bottom') Bottom
+							option(value='stretch') Stretch
+							option(value='baseline') Baseline
+				tr
+					th Fluid
+						td
+							label#play-bow-fluid
+								input(type='checkbox' name='bow' value='fluid')
+								| Bow
+							label#play-flex-fluid
+								input(type='checkbox' value='fluid')
+								| Flex
+					th Overrides
+					td 
+						label.play-flush-fill
+							input(type='checkbox' name='flush' value='flush')
+							| Flush
+						label.play-flush-fill
+							input(type='checkbox' name='fill' value='fill')
+							| Fill
+				tr
+					th Columns
+					td
+						button.play-btn#add(col='6')
+							| &plus;
+						button.play-btn#remove(col='6')
+							| &ndash;
+					th Heights
+					td
+						button.play-btn#randomize
+							| Random
+						button.play-btn#reset
+							| Reset
+
 

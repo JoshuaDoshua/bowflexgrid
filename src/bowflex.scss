@@ -20,7 +20,7 @@ $mobilePadding: 5%;
 /// @group grid-system
 /// @access public
 /// @example
-///  <div flex="vertical" flex-sml="row wrap" flex-med="nowrap">
+///  <div flex="vert" flex-sml="row wrap" flex-med="nowrap">
 ///  <div col="12" col-sml="6" col-med="4" col-lrg="3" col-xlg="2">
 $bps: (
 	sml: 505px, // < large phone / small tablet

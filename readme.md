@@ -8,19 +8,21 @@ BowFlex Grid is a customizable attribute-based grid system built with the flexbo
 ## Features
 
 - Full FlexBox feature set (almost)
-	- order/grow/shrink aren't as necessary with a grid system
-	- align-content rules are superfluous as well and not included
+	- order/grow/shrink won't be supported until css `attr` works beyond pseudo elements
+	- align-content rules are superfluous as well and not included unless someone can present a good case
+	- both can be easily overriden for special-cases
 - SASS (scss) Based
 	- include in your own build
 - Completely Customizable
 	- define any number of breakpoints
 	- nickname them anything you like
 - Attribute based
-	- separate grid logic
-	- no more messy classes
+	- separate grid logic from classes
+	- organized and readable HTML
 - Intuitive declarations
-	- `flex-start` === `flex='left'`
-	- `justify-content: center; align-items: center` === `flex='center middle'`
+	- `justify-content: flex-start` becomes `flex='left'`
+	- `align-items: center` becomes `flex='middle'`
+	- `justify-content: center; align-items: center` becomes `flex='center middle'`
 - Handy, simple media query mixines
 - Mobile first
 
@@ -134,7 +136,7 @@ $bps: (
 	padding-left:  5%;  /** $mobilePadding */
 	padding-right: 5%; /** $mobilePadding */
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) { /** $bps(lrg) */
 	[flex] {
 		padding-left: 0;
 		padding-right: 0;
@@ -297,8 +299,6 @@ If key is defined in `$bps`, return the value. Otherwise return `$key`
 ## TODO
 
 - [ ] rewrite media query to be to/from
-- [ ] rework playground's javascript/selectors
 - [ref](https://github.com/sass-mq/sass-mq/blob/master/_mq.scss)
 - [ ] check wow bounceIn vs rubberBand
 - [ ] check stretch vs middle
-- [ ] write intro for guide

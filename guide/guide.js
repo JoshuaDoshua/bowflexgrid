@@ -24,77 +24,70 @@ jQuery(document).ready(function($) {
 	var $playBow = $('#play-bow');
 	var $playFlex = $('#play-flex');
 
-	var $selects = $playTools.find('select').selectmenu({
-		change: function(evt,ui) {
+	var $selects = $playTools.find('select').on('change', function(evt) {
 			flexRules[evt.target.name] = evt.target.value;
 			updateFlex();
-		}
 	});
-	var $addCol = $playTools.find('#add');
-	var $removeCol = $playTools.find('#remove');
-	var $handles = $playCols.find('.ui-resizable-handle').hide();
-	$playTools.find('#resize').on('click', function(e) {
-		e.preventDefault();
-		var $this = $(this);
-		$this.toggleClass('active');
-		$handles.toggle();
-		$playTools
-			.find('select,input[type="checkbox"],#add,#remove')
-			.prop('disabled', function(i,v) {
-				return !v;
-		});
-		if ($this.hasClass('active')) {
-			$selects.selectmenu('disable');
-			$('.play-col').resizable({
-				handles: 's',
-				minHeight: '50px',
-				maxHeight: '200px'
-			});
-		} else {
-			$selects.selectmenu('enable');
-			$('.play-col').resizable('destroy');
-		}
-	});
-	$addCol.on('click', function(e) {
+	$playTools.find('#add').on('click', function(e) {
 		e.preventDefault();
 		var clone = $('.play-col').last().clone(true);
 		var size = clone.attr('col');
 		clone.find('select').val(size);
 		clone.appendTo($('#play-flex'));
 	});
-	$removeCol.on('click', function(e) {
+	$playTools.find('#remove').on('click', function(e) {
 		e.preventDefault();
 		$('.play-col').last().remove();
 	});
+	$playTools.find('#randomize').on('click', function(e) {
+		e.preventDefault();
+		$play.find('.play-col').each(function(index, item) {
+			$(item).find('hr').remove();
+			// min 1, max 6
+			//var num = Math.floor(Math.random() * (max - min + 1)) + min;
+			var num = Math.floor(Math.random() * 20) + 1;
+			for (var i = 0; i < num; i++) {
+				$(item).append('<hr/>');
+			}
+		});
+	});
+	$playTools.find('#reset').on('click', function(e) {
+		e.preventDefault();
+		$play.find('.play-col').each(function(index, item) {
+			$(item).removeAttr('style');
+		});
+	});
 
 	var flexRules = {
-		direction: 'row',
-		wrap: 'wrap',
-		justify: 'between',
-		align: 'top',
+		direction: '',
+		wrap: '',
+		justify: '',
+		align: '',
 		fluid: null,
 		flush: null,
 		fill: null
 	};
 
 	var updateFlex = function() {
-		var str = '';
-		str += flexRules.direction + " ";
-		str += flexRules.wrap + " ";
-		str += flexRules.justify + " ";
-		str += flexRules.align;
-		if (flexRules.fluid) { str += ' ' + flexRules.fluid; }
-		if (flexRules.flush) { str += ' ' + flexRules.flush; }
-		if (flexRules.fill) { str += ' ' + flexRules.fill; }
-
-		$playFlex.attr('flex', str);
+		$playFlex.attr('flex', Object.values(flexRules).join(" ").trim())
 	};
 	updateFlex();
 
-	// col sizes
-	$playCols.find('select').on('change', function(e) {
-		$(this).closest('.play-col').attr('col', $(this).val());
-	});
+	// cols
+	var updateCol = function(e) {
+		$col = $(e.target).closest('.play-col');
+		var str = $col.find('select').val();
+		var $checks = $col.find('input');
+		$checks.each(function(index,item) {
+			if (item.checked) {
+				str += " " + item.value;
+			}
+		$col.attr('col', str);
+		});
+
+	};
+	$playCols.find('select').on('change',updateCol);
+	$playCols.find('input').on('change', updateCol);
 
 	// main flex selects
 	$playTools.find('select').on('change', function(e) {
@@ -121,7 +114,7 @@ jQuery(document).ready(function($) {
 		updateFlex();
 	});
 	// flex flush/fill
-	$playTools.find('#play-flush-fill input').on('change', function(e) {
+	$playTools.find('.play-flush-fill').on('change', function(e) {
 		if (e.target.checked) {
 			flexRules[e.target.name] = e.target.name;
 		} else {

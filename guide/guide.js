@@ -43,8 +43,6 @@ jQuery(document).ready(function($) {
 		e.preventDefault();
 		$play.find('.play-col').each(function(index, item) {
 			$(item).find('hr').remove();
-			// min 1, max 6
-			//var num = Math.floor(Math.random() * (max - min + 1)) + min;
 			var num = Math.floor(Math.random() * 20) + 1;
 			for (var i = 0; i < num; i++) {
 				$(item).append('<hr/>');
@@ -54,7 +52,7 @@ jQuery(document).ready(function($) {
 	$playTools.find('#reset').on('click', function(e) {
 		e.preventDefault();
 		$play.find('.play-col').each(function(index, item) {
-			$(item).removeAttr('style');
+			$(item).find('hr').remove();
 		});
 	});
 
@@ -91,7 +89,6 @@ jQuery(document).ready(function($) {
 
 	// main flex selects
 	$playTools.find('select').on('change', function(e) {
-		console.log(e);
 		flexRules[e.target.name] = e.target.value;
 		updateFlex();
 	});

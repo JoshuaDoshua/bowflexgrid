@@ -300,5 +300,3 @@ If key is defined in `$bps`, return the value. Otherwise return `$key`
 
 - [ ] rewrite media query to be to/from
 - [ref](https://github.com/sass-mq/sass-mq/blob/master/_mq.scss)
-- [ ] check wow bounceIn vs rubberBand
-- [ ] check stretch vs middle

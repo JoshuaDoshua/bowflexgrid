@@ -110,39 +110,39 @@
 	}
 
 	// gutter stuff
-	[flex#{$size}~="left"] [col],
-	[flex#{$size}~="center"] [col] {
+	[flex#{$size}~="left"] > [col],
+	[flex#{$size}~="center"] > [col] {
 		margin-left: $gutter;
 		&:first-child { margin-left: 0; }
 	}
-	[flex#{$size}~="right"] [col] {
+	[flex#{$size}~="right"] > [col] {
 		margin-left: 0;
 		margin-right: $gutter;
 		&:last-child { margin-right: 0; }
 	}
-	[flex#{$size}~="rowrev"][flex#{$size}~="left"]:not([flex#{$size}~="flush"]) [col],
-	[flex#{$size}~="rowrev"][flex#{$size}~="center"] [col] {
+	[flex#{$size}~="rowrev"][flex#{$size}~="left"]:not([flex#{$size}~="flush"]) > [col],
+	[flex#{$size}~="rowrev"][flex#{$size}~="center"] > [col] {
 		&:first-child { margin-left: $gutter; }
 		&:last-child { margin-left: 0; }
 	}
-	[flex#{$size}~="rowrev"][flex#{$size}~="right"]:not([flex#{$size}~="flush"]) [col] {
+	[flex#{$size}~="rowrev"][flex#{$size}~="right"]:not([flex#{$size}~="flush"]) > [col] {
 		&:last-child { margin-right: $gutter; }
 		&:first-child { margin-right: 0; }
 	}
-	[flex#{$size}~="vert"][flex#{$size}~="left"] [col],
-	[flex#{$size}~="vertrev"][flex#{$size}~="left"] [col] {
+	[flex#{$size}~="vert"][flex#{$size}~="left"] > [col],
+	[flex#{$size}~="vertrev"][flex#{$size}~="left"] > [col] {
 		margin-left: 0;
 	}
-	[flex#{$size}~="vert"][flex#{$size}~="center"] [col],
-	[flex#{$size}~="vertrev"][flex#{$size}~="center"] [col] {
+	[flex#{$size}~="vert"][flex#{$size}~="center"] > [col],
+	[flex#{$size}~="vertrev"][flex#{$size}~="center"] > [col] {
 		margin-left: 0;
 		margin-right: 0;
 	}
-	[flex#{$size}~="vert"][flex#{$size}~="right"] [col],
-	[flex#{$size}~="vertrev"][flex#{$size}~="right"] [col] {
+	[flex#{$size}~="vert"][flex#{$size}~="right"] > [col],
+	[flex#{$size}~="vertrev"][flex#{$size}~="right"] > [col] {
 		margin-right: 0;
 	}
-	[flex#{$size}~="flush"] [col] {
+	[flex#{$size}~="flush"] > [col] {
 		&,
 		&:first-child,
 		&:last-child {
@@ -178,13 +178,14 @@
 		// column
 		[col#{$size}~="#{$i}"] {
 			display: block; // override col=0
+			&[flex] { display: flex; } // ensure col/flex are flex
 			flex-basis: $width;
 
 			// natural feeling columns
-			[flex~="vert"] &,
-			[flex~="vertrev"] & { width: $width; }
+			[flex~="vert"] > &,
+			[flex~="vertrev"] > & { width: $width; }
 
-			[flex#{$size}~="fill"] &,
+			[flex#{$size}~="fill"] > &,
 			&[col#{$size}~="fill"] {
 				flex-basis: percentage($i / $cols);
 			}

@@ -39,6 +39,7 @@
     "gulp-watch": "^4.3.11",
     "sassdoc": "^2.5.0"
   },
+  "main": "src/_bowflex.scss",
   "files": [
     "src/_utility.scss",
     "src/bowflex.scss"

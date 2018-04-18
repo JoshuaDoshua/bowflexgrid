@@ -45,6 +45,7 @@
 		align-items: flex-start;
 
 		// TODO ADD FLUSH RULES
+		// TODO ensure padding _near_ breakpoints
 		padding-left: #{$mobilePadding};
 		padding-right: #{$mobilePadding};
 		// flex inside flex doesnt need mobile padding

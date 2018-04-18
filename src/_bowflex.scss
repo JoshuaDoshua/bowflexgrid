@@ -47,6 +47,8 @@
 		// TODO ADD FLUSH RULES
 		padding-left: #{$mobilePadding};
 		padding-right: #{$mobilePadding};
+		// flex inside flex doesnt need mobile padding
+		[flex] { padding-left: 0; padding-right: 0; }
 		@include respond($main) {
 			padding-left: 0;
 			padding-right: 0;

@@ -59,7 +59,7 @@
 	}
 
 	[bow~="fluid"],
-	[flex~="fluid"] { max-width: 100%; }
+	[flex~="fluid"] { max-width: 100%; padding-left: 0; padding-right: 0; }
 
 	// null - default, mobile first
 	@include flex-grid-size('', $cols, $baseWidth, $gutter);

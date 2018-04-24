@@ -58,8 +58,7 @@
 		&[flex~="container"] { display: block; }
 	}
 
-	[bow~="fluid"],
-	[flex~="fluid"] { max-width: 100%; padding-left: 0; padding-right: 0; }
+	[bow~="fluid"] { max-width: 100%; padding-left: 0; padding-right: 0; }
 
 	// null - default, mobile first
 	@include flex-grid-size('', $cols, $baseWidth, $gutter);
@@ -80,6 +79,7 @@
 
 	// just a container, without flex rules
 	[flex#{$size}~="container"]		{ display: block; }
+	[flex#{$size}~"fluid"] { max-width: 100%; padding-left: 0; padding-right: 0; }
 
 	// flex-wrap
 	[flex#{$size}~="wrap"]				{ flex-wrap: wrap; }

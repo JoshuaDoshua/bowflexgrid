@@ -79,7 +79,7 @@
 
 	// just a container, without flex rules
 	[flex#{$size}~="container"]		{ display: block; }
-	[flex#{$size}~"fluid"] { max-width: 100%; padding-left: 0; padding-right: 0; }
+	[flex#{$size}~="fluid"] { max-width: 100%; padding-left: 0; padding-right: 0; }
 
 	// flex-wrap
 	[flex#{$size}~="wrap"]				{ flex-wrap: wrap; }

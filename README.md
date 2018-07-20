@@ -1,10 +1,9 @@
 # BowFlex Grid
 
-
+[![npm](https://img.shields.io/npm/v/bowflexgrid.svg?style=for-the-badge)](https://www.npmjs.com/package/bowflexgrid)
 [![npm](https://img.shields.io/npm/dt/bowflexgrid.svg?style=for-the-badge)](https://www.npmjs.com/package/bowflexgrid)
 [![Github file size](https://img.shields.io/github/size/joshuadoshua/bowflexgrid/dist/bowflex.min.css.svg?style=for-the-badge)](https://www.npmjs.com/package/bowflexgrid)
 [![license](https://img.shields.io/github/license/joshuadoshua/bowflexgrid.svg?style=for-the-badge)](https://github.com/JoshuaDoshua/bowflexgrid/blob/master/License)
-
 
 ## Introduction
 

@@ -1,5 +1,5 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Bowflexgrid - v0.9.1</title><link rel="stylesheet" href="assets/css/main.css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700" rel="stylesheet" type="text/css"><meta name="viewport" content="width=device-width"><meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"><!-- Open Graph tags --><meta property="og:title" content="Bowflexgrid - SassDoc"><meta property="og:type" content="website"><meta property="og:description" content="<p>BowFlex grid system sass generator based on the flexbox model</p>
-"><!-- Thanks to Sass-lang.com for the icons --><link href="assets/images/favicon.png" rel="shortcut icon"></head><body><aside class="sidebar" role="nav"><div class="sidebar__header"><h1 class="sidebar__title"><a href="http://joshuadoshua.github.io/bowflexgrid/">Bowflexgrid - v0.9.1</a></h1></div><div class="sidebar__body"><button type="button" class="btn-toggle js-btn-toggle" data-alt="Open all">Close all</button><p class="sidebar__item sidebar__item--heading" data-slug="grid-system"><a href="#grid-system">Grid System</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="grid-system-mixin"><a href="#grid-system-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="grid-system" data-name="bowflex-grid" data-type="mixin"><a href="#grid-system-mixin-bowflex-grid">bowflex-grid</a></li><li class="sidebar__item sassdoc__item" data-group="grid-system" data-name="flex-grid-size" data-type="mixin"><a href="#grid-system-mixin-flex-grid-size">flex-grid-size</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="grid-system-variable"><a href="#grid-system-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="grid-system" data-name="columns" data-type="variable"><a href="#grid-system-variable-columns">columns</a></li><li class="sidebar__item sassdoc__item" data-group="grid-system" data-name="gutter" data-type="variable"><a href="#grid-system-variable-gutter">gutter</a></li><li class="sidebar__item sassdoc__item" data-group="grid-system" data-name="bps" data-type="variable"><a href="#grid-system-variable-bps">bps</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="utility"><a href="#utility">Utility</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="utility-function"><a href="#utility-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="utility" data-name="bp" data-type="function"><a href="#utility-function-bp">bp</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="utility-mixin"><a href="#utility-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="utility" data-name="respond" data-type="mixin"><a href="#utility-mixin-respond">respond</a></li><li class="sidebar__item sassdoc__item" data-group="utility" data-name="respondBetween" data-type="mixin"><a href="#utility-mixin-respondBetween">respondBetween</a></li></ul></div></div></aside><article class="main" role="main"><header class="header" role="banner"><div class="container"><div class="sassdoc__searchbar searchbar"><label for="js-search-input" class="visually-hidden">Search</label><div class="searchbar__form" id="js-search"><input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search"><ul class="searchbar__suggestions" id="js-search-suggestions"></ul></div></div></div></header><section class="main__section"><h1 class="main__heading" id="grid-system"><div class="container">Grid System</div></h1><section class="main__sub-section" id="grid-system-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="grid-system-mixin-bowflex-grid"><h3 class="item__heading"><a class="item__name" href="#mixin-bowflex-grid">bowflex-grid</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin bowflex-grid($bps, $columns: 12, $gutter: 20px, $main: lrg, $outer: xlg) { 
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Bowflexgrid - v1.0.10-0</title><link rel="stylesheet" href="assets/css/main.css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700" rel="stylesheet" type="text/css"><meta name="viewport" content="width=device-width"><meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"><!-- Open Graph tags --><meta property="og:title" content="Bowflexgrid - SassDoc"><meta property="og:type" content="website"><meta property="og:description" content="<p>BowFlex grid system sass generator based on the flexbox model</p>
+"><!-- Thanks to Sass-lang.com for the icons --><link href="assets/images/favicon.png" rel="shortcut icon"></head><body><aside class="sidebar" role="nav"><div class="sidebar__header"><h1 class="sidebar__title"><a href="http://joshuadoshua.github.io/bowflexgrid/">Bowflexgrid - v1.0.10-0</a></h1></div><div class="sidebar__body"><button type="button" class="btn-toggle js-btn-toggle" data-alt="Open all">Close all</button><p class="sidebar__item sidebar__item--heading" data-slug="grid-system"><a href="#grid-system">Grid System</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="grid-system-mixin"><a href="#grid-system-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="grid-system" data-name="bowflex-grid" data-type="mixin"><a href="#grid-system-mixin-bowflex-grid">bowflex-grid</a></li><li class="sidebar__item sassdoc__item" data-group="grid-system" data-name="flex-grid-size" data-type="mixin"><a href="#grid-system-mixin-flex-grid-size">flex-grid-size</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="grid-system-variable"><a href="#grid-system-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="grid-system" data-name="columns" data-type="variable"><a href="#grid-system-variable-columns">columns</a></li><li class="sidebar__item sassdoc__item" data-group="grid-system" data-name="gutter" data-type="variable"><a href="#grid-system-variable-gutter">gutter</a></li><li class="sidebar__item sassdoc__item" data-group="grid-system" data-name="bps" data-type="variable"><a href="#grid-system-variable-bps">bps</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="utility"><a href="#utility">Utility</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="utility-function"><a href="#utility-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="utility" data-name="bp" data-type="function"><a href="#utility-function-bp">bp</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="utility-mixin"><a href="#utility-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="utility" data-name="respond" data-type="mixin"><a href="#utility-mixin-respond">respond</a></li><li class="sidebar__item sassdoc__item" data-group="utility" data-name="respondBetween" data-type="mixin"><a href="#utility-mixin-respondBetween">respondBetween</a></li></ul></div></div></aside><article class="main" role="main"><header class="header" role="banner"><div class="container"><div class="sassdoc__searchbar searchbar"><label for="js-search-input" class="visually-hidden">Search</label><div class="searchbar__form" id="js-search"><input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search"><ul class="searchbar__suggestions" id="js-search-suggestions"></ul></div></div></div></header><section class="main__section"><h1 class="main__heading" id="grid-system"><div class="container">Grid System</div></h1><section class="main__sub-section" id="grid-system-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="grid-system-mixin-bowflex-grid"><h3 class="item__heading"><a class="item__name" href="#mixin-bowflex-grid">bowflex-grid</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin bowflex-grid($bps, $columns: 12, $gutter: 20px, $main: lrg, $outer: xlg) { 
 
 	$main: bp($main);
 	$outer: bp($outer);
@@ -35,8 +35,11 @@
 		align-items: flex-start;
 
 		// TODO ADD FLUSH RULES
+		// TODO ensure padding _near_ breakpoints
 		padding-left: #{$mobilePadding};
 		padding-right: #{$mobilePadding};
+		// flex inside flex doesnt need mobile padding
+		[flex] { padding-left: 0; padding-right: 0; }
 		@include respond($main) {
 			padding-left: 0;
 			padding-right: 0;
@@ -45,8 +48,7 @@
 		&amp;[flex~=&quot;container&quot;] { display: block; }
 	}
 
-	[bow~=&quot;fluid&quot;],
-	[flex~=&quot;fluid&quot;] { max-width: 100%; }
+	[bow~=&quot;fluid&quot;] { max-width: 100%; padding-left: 0; padding-right: 0; }
 
 	// null - default, mobile first
 	@include flex-grid-size(&#39;&#39;, $cols, $baseWidth, $gutter);
@@ -62,6 +64,7 @@
 
 	// just a container, without flex rules
 	[flex#{$size}~=&quot;container&quot;]		{ display: block; }
+	[flex#{$size}~=&quot;fluid&quot;] { max-width: 100%; padding-left: 0; padding-right: 0; }
 
 	// flex-wrap
 	[flex#{$size}~=&quot;wrap&quot;]				{ flex-wrap: wrap; }
@@ -95,39 +98,39 @@
 	}
 
 	// gutter stuff
-	[flex#{$size}~=&quot;left&quot;] [col],
-	[flex#{$size}~=&quot;center&quot;] [col] {
+	[flex#{$size}~=&quot;left&quot;] &gt; [col],
+	[flex#{$size}~=&quot;center&quot;] &gt; [col] {
 		margin-left: $gutter;
 		&amp;:first-child { margin-left: 0; }
 	}
-	[flex#{$size}~=&quot;right&quot;] [col] {
+	[flex#{$size}~=&quot;right&quot;] &gt; [col] {
 		margin-left: 0;
 		margin-right: $gutter;
 		&amp;:last-child { margin-right: 0; }
 	}
-	[flex#{$size}~=&quot;rowrev&quot;][flex#{$size}~=&quot;left&quot;]:not([flex#{$size}~=&quot;flush&quot;]) [col],
-	[flex#{$size}~=&quot;rowrev&quot;][flex#{$size}~=&quot;center&quot;] [col] {
+	[flex#{$size}~=&quot;rowrev&quot;][flex#{$size}~=&quot;left&quot;]:not([flex#{$size}~=&quot;flush&quot;]) &gt; [col],
+	[flex#{$size}~=&quot;rowrev&quot;][flex#{$size}~=&quot;center&quot;] &gt; [col] {
 		&amp;:first-child { margin-left: $gutter; }
 		&amp;:last-child { margin-left: 0; }
 	}
-	[flex#{$size}~=&quot;rowrev&quot;][flex#{$size}~=&quot;right&quot;]:not([flex#{$size}~=&quot;flush&quot;]) [col] {
+	[flex#{$size}~=&quot;rowrev&quot;][flex#{$size}~=&quot;right&quot;]:not([flex#{$size}~=&quot;flush&quot;]) &gt; [col] {
 		&amp;:last-child { margin-right: $gutter; }
 		&amp;:first-child { margin-right: 0; }
 	}
-	[flex#{$size}~=&quot;vert&quot;][flex#{$size}~=&quot;left&quot;] [col],
-	[flex#{$size}~=&quot;vertrev&quot;][flex#{$size}~=&quot;left&quot;] [col] {
+	[flex#{$size}~=&quot;vert&quot;][flex#{$size}~=&quot;left&quot;] &gt; [col],
+	[flex#{$size}~=&quot;vertrev&quot;][flex#{$size}~=&quot;left&quot;] &gt; [col] {
 		margin-left: 0;
 	}
-	[flex#{$size}~=&quot;vert&quot;][flex#{$size}~=&quot;center&quot;] [col],
-	[flex#{$size}~=&quot;vertrev&quot;][flex#{$size}~=&quot;center&quot;] [col] {
+	[flex#{$size}~=&quot;vert&quot;][flex#{$size}~=&quot;center&quot;] &gt; [col],
+	[flex#{$size}~=&quot;vertrev&quot;][flex#{$size}~=&quot;center&quot;] &gt; [col] {
 		margin-left: 0;
 		margin-right: 0;
 	}
-	[flex#{$size}~=&quot;vert&quot;][flex#{$size}~=&quot;right&quot;] [col],
-	[flex#{$size}~=&quot;vertrev&quot;][flex#{$size}~=&quot;right&quot;] [col] {
+	[flex#{$size}~=&quot;vert&quot;][flex#{$size}~=&quot;right&quot;] &gt; [col],
+	[flex#{$size}~=&quot;vertrev&quot;][flex#{$size}~=&quot;right&quot;] &gt; [col] {
 		margin-right: 0;
 	}
-	[flex#{$size}~=&quot;flush&quot;] [col] {
+	[flex#{$size}~=&quot;flush&quot;] &gt; [col] {
 		&amp;,
 		&amp;:first-child,
 		&amp;:last-child {
@@ -163,13 +166,14 @@
 		// column
 		[col#{$size}~=&quot;#{$i}&quot;] {
 			display: block; // override col=0
+			&amp;[flex] { display: flex; } // ensure col/flex are flex
 			flex-basis: $width;
 
 			// natural feeling columns
-			[flex~=&quot;vert&quot;] &amp;,
-			[flex~=&quot;vertrev&quot;] &amp; { width: $width; }
+			[flex~=&quot;vert&quot;] &gt; &amp;,
+			[flex~=&quot;vertrev&quot;] &gt; &amp; { width: $width; }
 
-			[flex#{$size}~=&quot;fill&quot;] &amp;,
+			[flex#{$size}~=&quot;fill&quot;] &gt; &amp;,
 			&amp;[col#{$size}~=&quot;fill&quot;] {
 				flex-basis: percentage($i / $cols);
 			}
@@ -208,4 +212,4 @@ respond(1140px, max) { @content }</code></pre></div><h3 class="item__sub-heading
  }" data-collapsed="@mixin respondBetween($min: med, $max: lrg) { ... }"><code>@mixin respondBetween($min: med, $max: lrg) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$min</code></th><td data-label="desc"><p>the minimum value</p></td><td data-label="type"><code>Str</code></td><td data-label="default"><code>med</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$max</code></th><td data-label="desc"><p>the maximum value</p></td><td data-label="type"><code>Str</code></td><td data-label="default"><code>lrg</code></td></tr></tbody></table><h3 class="item__sub-heading">Content</h3><p>This mixin allows extra content to be passed (through the <code>@content</code> directive). Role: CSS Rules inside the media query</p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>respondBetween(med, lrg) { @content }
 respondBetween(map-get($bps, med), map-get($bps, lrg)) { @content }
 respondBetween($someSize, $anotherSize) { @content }
-respondBetween(300px, 768px) { @content }</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#utility-function-bp"><code>bp</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#utility-function-bp"><code>bp</code></a></li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --> <a class="project-info__name" href="http://joshuadoshua.github.io/bowflexgrid/">Bowflexgrid</a><!-- Version --> <span class="project-info__version">- v0.9.1</span><!-- License --> <span class="project-info__license">, under GPL-3.0</span></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>
+respondBetween(300px, 768px) { @content }</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#utility-function-bp"><code>bp</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#utility-function-bp"><code>bp</code></a></li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --> <a class="project-info__name" href="http://joshuadoshua.github.io/bowflexgrid/">Bowflexgrid</a><!-- Version --> <span class="project-info__version">- v1.0.10-0</span><!-- License --> <span class="project-info__license">, under GPL-3.0</span></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>

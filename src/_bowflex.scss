@@ -156,8 +156,7 @@
 
 	// TODO: Does not include the "align-content" rules
 
-	// columns
-	// alignments
+	// alignself
 	[col#{$size}~="top"]					{ align-self: flex-start; }
 	[col#{$size}~="middle"] 			{ align-self: center; }
 	[col#{$size}~="bottom"] 			{ align-self: flex-end; }
@@ -168,6 +167,12 @@
 		[col#{$size}~="center"]			{ align-self: center; }
 		[col#{$size}~="right"]			{ align-self: flex-end; }
 	}
+	// justifyself
+	[col#{$size}~="left"]					{ justify-self: flex-start; }
+	[col#{$size}~="center"]				{ justify-self: center; }
+	[col#{$size}~="right"]				{ justify-self: flex-end; }
+	[col#{$size}~="stretch"]			{ justify-self: stretch; }
+	[col#{$size}~="baseline"]			{ justify-self: baseline; }
 
 	// sizes
 	[col#{$size}="0"] { display: none; }

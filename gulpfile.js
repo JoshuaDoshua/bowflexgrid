@@ -32,8 +32,6 @@ gulp.task('grid', () => {
 		}))
 })
 
-gulp.task('report', () => {
-	gulp.src('./dist/**/*.css')
 		.pipe($.sizereport())
 })
 

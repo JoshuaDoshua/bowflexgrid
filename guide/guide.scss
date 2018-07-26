@@ -98,6 +98,7 @@ h3 {
     transform: translate(-50%,-50%);
   }
   [col="1"]::after { content: 'col=1'; }
+  [col="auto"]::after { content: 'col="auto"'; }
 }
 
 .atts {

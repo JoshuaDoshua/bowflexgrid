@@ -170,7 +170,8 @@
 	}
 
 	// sizes
-	[col#{$size}="0"] { display: none; }
+	[col#{$size}~="0"] { display: none; }
+	[col#{$size}~="auto"] { flex-basis: auto; }
 
 	$i: $cols;
 	@while $i > 0 {

@@ -198,9 +198,11 @@ $bps: (
 
 #### Size
 ```html
-<div col(-size)="[0-12]">
+<div col(-size)="[0-12|auto]">
 ```
 > Setting to `0` will hide the column at that breakpoint
+>
+> Setting to `auto` will ignore the flex-basis (width) value at that breakpoint
 
 #### Align-Self
 ```html

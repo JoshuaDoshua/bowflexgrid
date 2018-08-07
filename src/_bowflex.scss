@@ -189,7 +189,7 @@
 			[flex~="vert"] > &,
 			[flex~="vertrev"] > & { width: $width; }
 
-			[flex#{$size}~="fill"] > &,
+			[flex#{$size}~="fill"] > [col#{$size}~="#{$i}"],
 			&[col#{$size}~="fill"] {
 				flex-basis: percentage($i / $cols);
 			}

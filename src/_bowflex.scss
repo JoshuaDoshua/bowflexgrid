@@ -170,7 +170,8 @@
 	}
 
 	// sizes
-	[col#{$size}="0"] { display: none; }
+	[col#{$size}~="0"] { display: none; }
+	[col#{$size}~="auto"] { flex-basis: auto; }
 
 	$i: $cols;
 	@while $i > 0 {
@@ -188,7 +189,7 @@
 			[flex~="vert"] > &,
 			[flex~="vertrev"] > & { width: $width; }
 
-			[flex#{$size}~="fill"] > &,
+			[flex#{$size}~="fill"] > [col#{$size}~="#{$i}"],
 			&[col#{$size}~="fill"] {
 				flex-basis: percentage($i / $cols);
 			}

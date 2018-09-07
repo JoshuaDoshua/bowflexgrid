@@ -155,7 +155,8 @@
 	}
 
 	// sizes
-	[col#{$size}=&quot;0&quot;] { display: none; }
+	[col#{$size}~=&quot;0&quot;] { display: none; }
+	[col#{$size}~=&quot;auto&quot;] { flex-basis: auto; }
 
 	$i: $cols;
 	@while $i &gt; 0 {

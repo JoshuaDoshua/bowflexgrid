@@ -1,6 +1,6 @@
 {
   "name": "bowflexgrid",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "BowFlex grid system sass generator based on the flexbox model",
   "repository": {
     "type": "git",

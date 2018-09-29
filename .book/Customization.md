@@ -34,4 +34,8 @@ $outer: xlg;
 
 `$mobilePadding` - row padding for the main container below the main breakpoint
 
-`$bps` - associate array of breakpoints
+`$bps` - associative array of breakpoints
+
+`$main` - the main content wrapper width, or bps key
+
+`$outer` - the outer wrapper width, or bps key

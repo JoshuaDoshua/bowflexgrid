@@ -12,6 +12,8 @@ or use a cdn
 cdn
 ```
 
+or
+
 ```bash
 npm install bowflexgrid
 ```

@@ -37,7 +37,7 @@
 		flex="wrap between middle"
 		flex-med="nowrap bottom"
 		>
-		<div
+		<div 
 			col="12"
 			col-sml="9"
 			col-med="6"

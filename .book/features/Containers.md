@@ -28,8 +28,6 @@ div {
 
 > \* Bowflex defines default rules for a `<div flex>`, this is just an example
 
-> \* ! Move this out of features
-
 ## With a Wrapper Container
 
 This container is optional; use it if you need to wrap something wider than the main content area.

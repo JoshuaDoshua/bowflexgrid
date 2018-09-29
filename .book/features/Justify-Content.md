@@ -1,17 +1,15 @@
 # Justify Content
 
+```html
+<div flex(-size)="[left|center|right|between|around|even]">
+```
+
 ## CSS
 
 ```css
 .row {
 	justify-content: [flex-start|center|flex-end|space-between|space-around|space-evenly];
 }
-```
-
-## BowFlex
-
-```html
-<div flex(-size)="[left|center|right|between|around|even]">
 ```
 
 ## Translation
@@ -24,5 +22,3 @@
 |`space-between`|`between`|children distributed evenly from beginning to end|
 |`space-around`|`around`|children distributed with equal space around|
 |`space-evenly`|`even`|children distributed with equal space between items|
-
-# ! TODO - add space-evenly

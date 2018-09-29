@@ -1,5 +1,9 @@
 # Flex Wrap
 
+```html
+<div flex(-size)="[wrap|nowrap|wraprev]">
+```
+
 ## CSS
 
 ```css
@@ -7,13 +11,6 @@
 	flex-wrap: [wrap|nowrap|wrap-reverse];
 }
 ```
-
-## Bowflex
-
-```html
-<div flex(-size)="[wrap|nowrap|wraprev]">
-```
-
 ## Translation
 
 |Flexbox|BowFlex|Behaviour\*|

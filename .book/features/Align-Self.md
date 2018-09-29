@@ -1,17 +1,15 @@
 # Align Self
 
+```html
+<div col(-size)="[top|middle|bottom|stretch|baseline]">
+```
+
 ## CSS
 
 ```css
 .column {
 	align-self: [flex-start|center|flex-end|stretch|baseline];
 }
-```
-
-## Bowflex
-
-```html
-<div col(-size)="[top|middle|bottom|stretch|baseline]">
 ```
 
 ## Translation

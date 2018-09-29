@@ -2,18 +2,16 @@
 
 use "vert" to avoid confusion with the grid column definitions
 
+```html
+<div flex(-size)="[row|rowrev|vert|vertrev]">
+```
+
 ## CSS
 
 ```css
 .row {
 	flex-direction: [row|row-reverse|column|column-reverse];
 }
-```
-
-## Bowflex
-
-```html
-<div flex(-size)="[row|rowrev|vert|vertrev]">
 ```
 
 ## Translation

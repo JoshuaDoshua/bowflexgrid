@@ -2,18 +2,16 @@
 
 replace flex-start,flex-end with top,bottom & center with middle
 
+```html
+<div flex(-size)="[top|middle|bottom|stretch|baseline]">
+```
+
 ## CSS
 
 ```css
 .row {
 	align-items: [flex-start|center|flex-end|stretch|baseline];
 }
-```
-
-## BowFlex
-
-```html
-<div flex(-size)="[top|middle|bottom|stretch|baseline]">
 ```
 
 ## Translation

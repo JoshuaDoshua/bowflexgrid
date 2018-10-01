@@ -17,4 +17,5 @@
 	* [Align Self](features/Align-Self.md)
 	* [Responsive](features/Responsive.md)
 	* [Overrides](features/Overrides.md)
+* [FAQ](FAQ.md)
 * [Changelog](../CHANGELOG.md)

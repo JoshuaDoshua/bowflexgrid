@@ -3,10 +3,10 @@
 $space: 20px;
 
 $bps: (
-sml: 505px, // < large phone / small tablet
-med: 768px, // common tablet
-lrg: 1024px, // large tablet / small desktop
-xlg: 1400px // large desktop >
+	sml: 505px, // < large phone / small tablet
+	med: 768px, // common tablet
+	lrg: 1024px, // large tablet / small desktop
+	xlg: 1400px // large desktop >
 );
 
 * {
@@ -337,4 +337,27 @@ $selfs: (1,120),
 @media (max-width:500px) {
 	.github-corner:hover .octo-arm{ animation: none; }
 	.github-corner .octo-arm{ animation: octocat-wave 560ms ease-in-out; }
+}
+
+#nav {
+	display: block;
+	width: 150px;
+	background: red;
+	background: white;
+	border: 1px solid powderblue;
+	border-left-width: 0;
+	border-radius: 0 1em 1em 0;
+	position: fixed;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	a {
+		font-family: "Source Code Pro", "monospace";
+		display: block;
+		padding: .5em;
+		font-size: .75em;
+		color: black;
+		text-decoration: none;
+		&.active { color: darken(powderblue, 30); text-decoration: underline; }
+	}
 }

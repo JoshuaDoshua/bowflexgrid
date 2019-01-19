@@ -1,0 +1,6 @@
+
+@mixin container(bp) {
+	max-width: bp(bp);
+	margin-left: auto;
+	margin-right: auto;
+}
